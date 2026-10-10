@@ -2,7 +2,7 @@
 
 ゲームセンターしのみ屋の公開入口、1号店のRustゲーム、2号店のUnity WebGL配布をまとめるリポジトリ。
 
-2026-10-11 JST: ユーザーの公開GOにより統合実装済み。配布物の整合・型検査・15件のテストを通過し、BASE検証・公開切替を進めている。公開完了の証拠はsnapshot/CURRENT_SNAPSHOT.mdを参照。
+2026-10-11 JST: BASEへの統合配置と公開切替を完了。1号店・2号店のHTTPS、配布物、API、WebSocket、ブラウザ起動・基本操作を検証済み。実行release SHAは041e0548362a2040bfd94d518866a04456849e05。詳細はsnapshot/CURRENT_SNAPSHOT.mdを参照。
 
 | 公開先 | 用途 |
 |---|---|
