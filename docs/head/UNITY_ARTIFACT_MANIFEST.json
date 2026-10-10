@@ -1,0 +1,778 @@
+{
+  "schema": 1,
+  "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+  "unitySourceSha": null,
+  "unityBuildPerformed": false,
+  "games": [
+    {
+      "game": "airrace3d",
+      "catalogs": {
+        "aircraft_prefab_catalog.json": "airrace3d-aircraft-prefab-20260510032007",
+        "round_world_catalog.json": "airrace3d-round-world-20260510032007",
+        "world_object_catalog.json": "airrace3d-world-objects-20260510032007",
+        "airrace_rounds.json": null
+      },
+      "required": [
+        "Build/294c32c135e99bb44f680ec85c268685.wasm.gz",
+        "Build/35922c889a363237ff424bb9c86eef5c.loader.js",
+        "Build/8fcff25ecd727ba9b4138b4ff30d4eb6.symbols.json.gz",
+        "Build/9585e6c39f95bd6476c44d4b4834ecde.data.gz",
+        "Build/b81532f0ba97e9c58dd2c63baead9e28.framework.js.gz",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+        "StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+        "StreamingAssets/AirRace/airrace_rounds.json",
+        "StreamingAssets/AirRace/round_world_catalog.json",
+        "StreamingAssets/AirRace/world_object_catalog.json",
+        "TemplateData/diagnostics.css",
+        "TemplateData/diagnostics.js",
+        "TemplateData/favicon.ico",
+        "TemplateData/style.css",
+        "TemplateData/webmemd-icon.png",
+        "index.html"
+      ],
+      "files": [
+        {
+          "path": "Build/294c32c135e99bb44f680ec85c268685.wasm.gz",
+          "bytes": 10530533,
+          "sha256": "54600f20f185e33069caeaf2ed080d714b94f0d5edf9335a2b02c4f48ec35711",
+          "httpSha256": "4d83551975b156ef9dc0c752833e67f6235b4a54f991d0b7d0709caae10775ba"
+        },
+        {
+          "path": "Build/35922c889a363237ff424bb9c86eef5c.loader.js",
+          "bytes": 27420,
+          "sha256": "c3b1071637416c89a40e89ffd6cf7e94525fcf74f579b640fa9ec270add221a2",
+          "httpSha256": "c3b1071637416c89a40e89ffd6cf7e94525fcf74f579b640fa9ec270add221a2"
+        },
+        {
+          "path": "Build/8fcff25ecd727ba9b4138b4ff30d4eb6.symbols.json.gz",
+          "bytes": 2190812,
+          "sha256": "9cda73caa34bec5be9fa24a9d8a58cbb0ce03ae49af6f8a156cdef48d196364b",
+          "httpSha256": "88373f5d7dbe3568ef353617d54682aa6f0ad832c178cd2ff779b740e573faa2"
+        },
+        {
+          "path": "Build/9585e6c39f95bd6476c44d4b4834ecde.data.gz",
+          "bytes": 2964272,
+          "sha256": "2d5e4771c65ea0d0de58c6d863c7395141ae2777a8e6c588dfa2bc38f3aa5cb5",
+          "httpSha256": "717c72081b39c1840f540502f3194751ad5e66264c452269ef07b68b660a0023"
+        },
+        {
+          "path": "Build/b81532f0ba97e9c58dd2c63baead9e28.framework.js.gz",
+          "bytes": 95211,
+          "sha256": "91da50fa89f50bce51f95a3ca60f8c913d2f113d9dd31483b86a627572f9beb1",
+          "httpSha256": "e2c5d0bdc716cffc63b25c4253a5f510229c4e6c74e7ddb077c8fc5f7be4a1be"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/.gitkeep",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "httpSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/Bundles",
+          "bytes": 2228,
+          "sha256": "45c64db845043fa9ec6561435082cf83094a0b9c8eed7fab60a0df67e93744e3",
+          "httpSha256": "45c64db845043fa9ec6561435082cf83094a0b9c8eed7fab60a0df67e93744e3"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/Bundles.manifest",
+          "bytes": 1486,
+          "sha256": "fea64840ce574348c705b02d3f0b2bca9d167e0572b64049ad043657ed2b52ff",
+          "httpSha256": "fea64840ce574348c705b02d3f0b2bca9d167e0572b64049ad043657ed2b52ff"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+          "bytes": 8053,
+          "sha256": "931bfbf482ab0e7c04920bda895045ab26d28e3c73dd68f48e16a4249b07034f",
+          "httpSha256": "931bfbf482ab0e7c04920bda895045ab26d28e3c73dd68f48e16a4249b07034f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk.manifest",
+          "bytes": 844,
+          "sha256": "846b0744796ab261548d39a434860be7fcedc1b88b2c8a2d1c1355ed9609b924",
+          "httpSha256": "846b0744796ab261548d39a434860be7fcedc1b88b2c8a2d1c1355ed9609b924"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+          "bytes": 7289,
+          "sha256": "9e06386b6d341e5f82707c81c16a9ed736cccb149a4a1ee4343fcc706296cbbf",
+          "httpSha256": "9e06386b6d341e5f82707c81c16a9ed736cccb149a4a1ee4343fcc706296cbbf"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar.manifest",
+          "bytes": 848,
+          "sha256": "f8a261378a02bda8c1b890bbd361a76ea727fa8b50940d9d7b5b8f27576d00bf",
+          "httpSha256": "f8a261378a02bda8c1b890bbd361a76ea727fa8b50940d9d7b5b8f27576d00bf"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+          "bytes": 7557,
+          "sha256": "c7b46d71364b3099e821f19815029dee8e8b46eec941799f11b7a18b1ca7a97f",
+          "httpSha256": "c7b46d71364b3099e821f19815029dee8e8b46eec941799f11b7a18b1ca7a97f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer.manifest",
+          "bytes": 846,
+          "sha256": "8223438d002ec3f574b8c131367e5b88dae49d5ceb7d6367d91bec4f0e456361",
+          "httpSha256": "8223438d002ec3f574b8c131367e5b88dae49d5ceb7d6367d91bec4f0e456361"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+          "bytes": 7428,
+          "sha256": "3ba26819d68c83c6c85df62859c6d228f97b2c5cec1d228bc66b059de830b5da",
+          "httpSha256": "3ba26819d68c83c6c85df62859c6d228f97b2c5cec1d228bc66b059de830b5da"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang.manifest",
+          "bytes": 846,
+          "sha256": "f56d74186c22f0d5a83f31e492592e1571e73a6977b3549c185e795f35f3ec3b",
+          "httpSha256": "f56d74186c22f0d5a83f31e492592e1571e73a6977b3549c185e795f35f3ec3b"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+          "bytes": 7520,
+          "sha256": "18bea984264ac8be93f781cf72f9d870438380a0fecab13a58138734bc05c183",
+          "httpSha256": "18bea984264ac8be93f781cf72f9d870438380a0fecab13a58138734bc05c183"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt.manifest",
+          "bytes": 848,
+          "sha256": "d6f83b1e08e36e139e9d68b7a12574e17bda5284d5d63c762068432d4dced613",
+          "httpSha256": "d6f83b1e08e36e139e9d68b7a12574e17bda5284d5d63c762068432d4dced613"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+          "bytes": 1308231,
+          "sha256": "addcce9fb4b03541f768e87f51d2cb9c846f49d4c8cdaa9e8869295eb83e952f",
+          "httpSha256": "addcce9fb4b03541f768e87f51d2cb9c846f49d4c8cdaa9e8869295eb83e952f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab.manifest",
+          "bytes": 1203,
+          "sha256": "083d0fd8bd81d42f36b09f410014efbefa4f42be608b6c5290e7f5379676ac09",
+          "httpSha256": "083d0fd8bd81d42f36b09f410014efbefa4f42be608b6c5290e7f5379676ac09"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+          "bytes": 801490,
+          "sha256": "3998d43f2f127c86373765f8caa13f414e1d96ee99cb37124c059141194c1616",
+          "httpSha256": "3998d43f2f127c86373765f8caa13f414e1d96ee99cb37124c059141194c1616"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab.manifest",
+          "bytes": 1119,
+          "sha256": "0c76300d2ff18a21de5caefc9c2e585ea1b3a249a4b7462faa97cad14e9a68ea",
+          "httpSha256": "0c76300d2ff18a21de5caefc9c2e585ea1b3a249a4b7462faa97cad14e9a68ea"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+          "bytes": 885326,
+          "sha256": "3a320dd0a3b78f57cd9e0d9def3b319eeeb71eaeb90582208af69f2bf2fa2390",
+          "httpSha256": "3a320dd0a3b78f57cd9e0d9def3b319eeeb71eaeb90582208af69f2bf2fa2390"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab.manifest",
+          "bytes": 1137,
+          "sha256": "188cf4a8e8c0b74524764120b0966f337a697ca1dc7883542d50929c292956bd",
+          "httpSha256": "188cf4a8e8c0b74524764120b0966f337a697ca1dc7883542d50929c292956bd"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+          "bytes": 946756,
+          "sha256": "151c303374001ffd8b8a3200ae6a5c5a026639de0bb12fdc41f4d7f194306108",
+          "httpSha256": "151c303374001ffd8b8a3200ae6a5c5a026639de0bb12fdc41f4d7f194306108"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab.manifest",
+          "bytes": 1139,
+          "sha256": "6c36e26ab011f4732b3c183ecd5fac3e8fb041ef7447f71b694d0ae9734f8c04",
+          "httpSha256": "6c36e26ab011f4732b3c183ecd5fac3e8fb041ef7447f71b694d0ae9734f8c04"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+          "bytes": 1033820,
+          "sha256": "e80f249ba252d0428a328958aef1e18c2c847a5ad34c139891da56c3425d7b83",
+          "httpSha256": "e80f249ba252d0428a328958aef1e18c2c847a5ad34c139891da56c3425d7b83"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab.manifest",
+          "bytes": 1139,
+          "sha256": "1051f9856286359b474bfb36118a48a77f799464ba2b785219b7fc33179edd0f",
+          "httpSha256": "1051f9856286359b474bfb36118a48a77f799464ba2b785219b7fc33179edd0f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+          "bytes": 893829,
+          "sha256": "3430a9c753227e675317ca62fc557f42d6778a149307487fc0d3f135fcb447bf",
+          "httpSha256": "3430a9c753227e675317ca62fc557f42d6778a149307487fc0d3f135fcb447bf"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab.manifest",
+          "bytes": 1137,
+          "sha256": "5038e443637803ccd0c0c58f5b01949950e6d7fe0b14871a66989e8386e5d5b9",
+          "httpSha256": "5038e443637803ccd0c0c58f5b01949950e6d7fe0b14871a66989e8386e5d5b9"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+          "bytes": 1016262,
+          "sha256": "860336bb3c78729f6909c55be0e9aa172e3e10a1dc57b21c8a8b87f0024cae8d",
+          "httpSha256": "860336bb3c78729f6909c55be0e9aa172e3e10a1dc57b21c8a8b87f0024cae8d"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab.manifest",
+          "bytes": 1142,
+          "sha256": "69816ee257a8b723f8e5b6227304cb21a9de0f9d537ba01a651920c4a9ff33c9",
+          "httpSha256": "69816ee257a8b723f8e5b6227304cb21a9de0f9d537ba01a651920c4a9ff33c9"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+          "bytes": 1605145,
+          "sha256": "645184e5e871b34830fa12b6b705c59c159931202b7e02945786c4ba906aa64d",
+          "httpSha256": "645184e5e871b34830fa12b6b705c59c159931202b7e02945786c4ba906aa64d"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab.manifest",
+          "bytes": 1139,
+          "sha256": "ea133cd53c0b0bfc49f1c7970aca3ae192fba11cf6a15a831898ed5bd7cdcd31",
+          "httpSha256": "ea133cd53c0b0bfc49f1c7970aca3ae192fba11cf6a15a831898ed5bd7cdcd31"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+          "bytes": 869760,
+          "sha256": "69c5fee5aa144b05b227244825f17151b0d3751dd5e2ea48f4d4c22434265172",
+          "httpSha256": "69c5fee5aa144b05b227244825f17151b0d3751dd5e2ea48f4d4c22434265172"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab.manifest",
+          "bytes": 1137,
+          "sha256": "2e433ed5352f9b434d1a5f515762fda6fa40f38f1fd133d0f5ba52e693dfeb56",
+          "httpSha256": "2e433ed5352f9b434d1a5f515762fda6fa40f38f1fd133d0f5ba52e693dfeb56"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+          "bytes": 1167362,
+          "sha256": "5bdfd2da3df306cf2e4ca1cf776194a05cfd5c4305378147f49004c6419527b9",
+          "httpSha256": "5bdfd2da3df306cf2e4ca1cf776194a05cfd5c4305378147f49004c6419527b9"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab.manifest",
+          "bytes": 1138,
+          "sha256": "2488e42bc478969b67cab21375a5b2fe426230307bf9b51c96c968346b711971",
+          "httpSha256": "2488e42bc478969b67cab21375a5b2fe426230307bf9b51c96c968346b711971"
+        },
+        {
+          "path": "StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+          "bytes": 2165,
+          "sha256": "9dc2c3b2ceda1f7c5caddb020fcca8af3f47f5ea487aa1bef3e2b028b5ca5f8d",
+          "httpSha256": "9dc2c3b2ceda1f7c5caddb020fcca8af3f47f5ea487aa1bef3e2b028b5ca5f8d"
+        },
+        {
+          "path": "StreamingAssets/AirRace/airrace_rounds.json",
+          "bytes": 12110,
+          "sha256": "3ca2eaddb691ff3c7c5e7ad8fe79e005e9a036e206fcb309d2d24ad287c7f522",
+          "httpSha256": "3ca2eaddb691ff3c7c5e7ad8fe79e005e9a036e206fcb309d2d24ad287c7f522"
+        },
+        {
+          "path": "StreamingAssets/AirRace/round_world_catalog.json",
+          "bytes": 4281,
+          "sha256": "44f6a49bbe6f01fcbb25e58cc54d7abab6b8251072edce7ff7281976724a4806",
+          "httpSha256": "44f6a49bbe6f01fcbb25e58cc54d7abab6b8251072edce7ff7281976724a4806"
+        },
+        {
+          "path": "StreamingAssets/AirRace/world_object_catalog.json",
+          "bytes": 79,
+          "sha256": "245e19d2da50f7611e40205ea16cc7003f6d6681ef32ff4c929c0f9f8885f896",
+          "httpSha256": "245e19d2da50f7611e40205ea16cc7003f6d6681ef32ff4c929c0f9f8885f896"
+        },
+        {
+          "path": "TemplateData/MemoryProfiler.png",
+          "bytes": 665,
+          "sha256": "0ce87be20d0c24ab6cb73b57de2004da261cc2a641e69319c6ae3fe11fc85483",
+          "httpSha256": "0ce87be20d0c24ab6cb73b57de2004da261cc2a641e69319c6ae3fe11fc85483"
+        },
+        {
+          "path": "TemplateData/diagnostics.css",
+          "bytes": 1709,
+          "sha256": "fc224198ae411c51746eb114613bd382178770221cd18187da78f3f03c41e606",
+          "httpSha256": "fc224198ae411c51746eb114613bd382178770221cd18187da78f3f03c41e606"
+        },
+        {
+          "path": "TemplateData/diagnostics.js",
+          "bytes": 12054,
+          "sha256": "d659a20c32eddc7603e22f25cce0fd1a9f321b9733fbd37d47b0614256d48005",
+          "httpSha256": "d659a20c32eddc7603e22f25cce0fd1a9f321b9733fbd37d47b0614256d48005"
+        },
+        {
+          "path": "TemplateData/favicon.ico",
+          "bytes": 2305,
+          "sha256": "9c13beb90ee8f70580d52a21d5233970d1c89e71e4a34a462c22610941c3c77f",
+          "httpSha256": "9c13beb90ee8f70580d52a21d5233970d1c89e71e4a34a462c22610941c3c77f"
+        },
+        {
+          "path": "TemplateData/fullscreen-button.png",
+          "bytes": 175,
+          "sha256": "21221581673a54b8139d408d4a3f8d2b879e86827d4b6fc53b995ff7a99ee3e9",
+          "httpSha256": "21221581673a54b8139d408d4a3f8d2b879e86827d4b6fc53b995ff7a99ee3e9"
+        },
+        {
+          "path": "TemplateData/progress-bar-empty-dark.png",
+          "bytes": 96,
+          "sha256": "bbee7131afe8a3365906240d89184dc86234c119467f390bc4bc6802328fdb4d",
+          "httpSha256": "bbee7131afe8a3365906240d89184dc86234c119467f390bc4bc6802328fdb4d"
+        },
+        {
+          "path": "TemplateData/progress-bar-empty-light.png",
+          "bytes": 109,
+          "sha256": "143696c060ad43d6c30f19ff5f49000927a139a2a1e4c9f45fafaa2b90d7d2be",
+          "httpSha256": "143696c060ad43d6c30f19ff5f49000927a139a2a1e4c9f45fafaa2b90d7d2be"
+        },
+        {
+          "path": "TemplateData/progress-bar-full-dark.png",
+          "bytes": 74,
+          "sha256": "3306a6244dcb3926fca38a28e3ced589df8ff1beed955eb17c0bbf01c918bc62",
+          "httpSha256": "3306a6244dcb3926fca38a28e3ced589df8ff1beed955eb17c0bbf01c918bc62"
+        },
+        {
+          "path": "TemplateData/progress-bar-full-light.png",
+          "bytes": 84,
+          "sha256": "12395ea785480c5cdf12fade6e6cbf49666d5bb1cef7240c113dbcba6bdc5c87",
+          "httpSha256": "12395ea785480c5cdf12fade6e6cbf49666d5bb1cef7240c113dbcba6bdc5c87"
+        },
+        {
+          "path": "TemplateData/style.css",
+          "bytes": 1448,
+          "sha256": "8e3625e108a61dcd1d31303376d9e02d7bdc08921d254e8f4359b892b3825caa",
+          "httpSha256": "8e3625e108a61dcd1d31303376d9e02d7bdc08921d254e8f4359b892b3825caa"
+        },
+        {
+          "path": "TemplateData/unity-logo-dark.png",
+          "bytes": 3042,
+          "sha256": "c1b72d26c096487dabc948b54bc203f8dac7ed4e3f5733918798e858acb4b159",
+          "httpSha256": "c1b72d26c096487dabc948b54bc203f8dac7ed4e3f5733918798e858acb4b159"
+        },
+        {
+          "path": "TemplateData/unity-logo-light.png",
+          "bytes": 3077,
+          "sha256": "002990aea0d946833cadc1519d5b7e50a4570bd537a0517dd79a59d3eec84da7",
+          "httpSha256": "002990aea0d946833cadc1519d5b7e50a4570bd537a0517dd79a59d3eec84da7"
+        },
+        {
+          "path": "TemplateData/unity-logo-title-footer.png",
+          "bytes": 1151,
+          "sha256": "9e8b3bdb67c2446d16362fe59449d892100931dbbadfe6a9d923a4142b57a79f",
+          "httpSha256": "9e8b3bdb67c2446d16362fe59449d892100931dbbadfe6a9d923a4142b57a79f"
+        },
+        {
+          "path": "TemplateData/webmemd-icon.png",
+          "bytes": 1670,
+          "sha256": "c56f5494640cedda273aad38d58e6ab9da625d5b3f4d875c0ff92c6192a569c2",
+          "httpSha256": "c56f5494640cedda273aad38d58e6ab9da625d5b3f4d875c0ff92c6192a569c2"
+        },
+        {
+          "path": "index.html",
+          "bytes": 6484,
+          "sha256": "e3d194f8bdbb7ea260a3d6dbbd748d2c90d7272b3368f16a6c7aefdfbb099b94",
+          "httpSha256": "e3d194f8bdbb7ea260a3d6dbbd748d2c90d7272b3368f16a6c7aefdfbb099b94"
+        }
+      ]
+    },
+    {
+      "game": "colony-racer",
+      "catalogs": {
+        "aircraft_prefab_catalog.json": "airrace3d-aircraft-prefab-20260516143353",
+        "round_world_catalog.json": "airrace3d-round-world-20260516143353",
+        "world_object_catalog.json": "airrace3d-world-objects-20260516143353",
+        "airrace_rounds.json": null
+      },
+      "required": [
+        "Build/633ede84d286f8a8e15f7a0bf3960220.wasm.gz",
+        "Build/737e57b897c96d5d301663a0860746ae.loader.js",
+        "Build/886371ec748e095ccda2e13ebab6437d.symbols.json.gz",
+        "Build/d04b259385ba830dce4fdad134d98d7a.data.gz",
+        "Build/dcc412335d058db475417492572a73a0.framework.js.gz",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+        "StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+        "StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+        "StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+        "StreamingAssets/AirRace/airrace_rounds.json",
+        "StreamingAssets/AirRace/round_world_catalog.json",
+        "StreamingAssets/AirRace/world_object_catalog.json",
+        "TemplateData/diagnostics.css",
+        "TemplateData/diagnostics.js",
+        "TemplateData/favicon.ico",
+        "TemplateData/style.css",
+        "TemplateData/webmemd-icon.png",
+        "index.html"
+      ],
+      "files": [
+        {
+          "path": "Build/633ede84d286f8a8e15f7a0bf3960220.wasm.gz",
+          "bytes": 10560264,
+          "sha256": "f1291d14e9cd1e791ee3fc61f0cc0f786555079fc5c513c381e997f69a8ba31c",
+          "httpSha256": "f757cfcffb02597092eb7691ab10edf04037f20d2e299fb8feb3bebc851f04b1"
+        },
+        {
+          "path": "Build/737e57b897c96d5d301663a0860746ae.loader.js",
+          "bytes": 27420,
+          "sha256": "a29be3f1693e730bb5b7983f17bb57818d6dc635277330ce108f4201e777217e",
+          "httpSha256": "a29be3f1693e730bb5b7983f17bb57818d6dc635277330ce108f4201e777217e"
+        },
+        {
+          "path": "Build/886371ec748e095ccda2e13ebab6437d.symbols.json.gz",
+          "bytes": 2197794,
+          "sha256": "a415d96f274eacdc5cbe18702cfeac43a3c58f01fcb127ee0d8c50ca18067013",
+          "httpSha256": "1bdbc30b7d4e30750b8b1b11640dcfa0408df20daa990c3cd35501c2669bd946"
+        },
+        {
+          "path": "Build/d04b259385ba830dce4fdad134d98d7a.data.gz",
+          "bytes": 4142000,
+          "sha256": "fc03b0cf570e4bd664f4fb8b15d07ae16c07fdad0091ee04c8c346a78a6b8e81",
+          "httpSha256": "644211d39bab6dc9c2ea14e88edf929ed6824c956f85210c672fde0e0c018274"
+        },
+        {
+          "path": "Build/dcc412335d058db475417492572a73a0.framework.js.gz",
+          "bytes": 95283,
+          "sha256": "969c721a78f64287409f74e4dbf67ec936a6d6016bba4777ccbd114b143cc229",
+          "httpSha256": "e0396dcd2699789bcd1b55570858471e4e920f3f6ca1d550b460215997a0397b"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/.gitkeep",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "httpSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/Bundles",
+          "bytes": 2229,
+          "sha256": "1be24e9716026857efcfdfcc1b505ab5adaeb323b11fbceabb0b4b5c983f0ad6",
+          "httpSha256": "1be24e9716026857efcfdfcc1b505ab5adaeb323b11fbceabb0b4b5c983f0ad6"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/Bundles.manifest",
+          "bytes": 1486,
+          "sha256": "67fc3b1fa662a0708f1a68c23d822491e5dcda2ca81df16f79edd782a5f6faa0",
+          "httpSha256": "67fc3b1fa662a0708f1a68c23d822491e5dcda2ca81df16f79edd782a5f6faa0"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+          "bytes": 8053,
+          "sha256": "931bfbf482ab0e7c04920bda895045ab26d28e3c73dd68f48e16a4249b07034f",
+          "httpSha256": "931bfbf482ab0e7c04920bda895045ab26d28e3c73dd68f48e16a4249b07034f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk.manifest",
+          "bytes": 844,
+          "sha256": "846b0744796ab261548d39a434860be7fcedc1b88b2c8a2d1c1355ed9609b924",
+          "httpSha256": "846b0744796ab261548d39a434860be7fcedc1b88b2c8a2d1c1355ed9609b924"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+          "bytes": 7289,
+          "sha256": "9e06386b6d341e5f82707c81c16a9ed736cccb149a4a1ee4343fcc706296cbbf",
+          "httpSha256": "9e06386b6d341e5f82707c81c16a9ed736cccb149a4a1ee4343fcc706296cbbf"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar.manifest",
+          "bytes": 848,
+          "sha256": "f8a261378a02bda8c1b890bbd361a76ea727fa8b50940d9d7b5b8f27576d00bf",
+          "httpSha256": "f8a261378a02bda8c1b890bbd361a76ea727fa8b50940d9d7b5b8f27576d00bf"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+          "bytes": 7557,
+          "sha256": "c7b46d71364b3099e821f19815029dee8e8b46eec941799f11b7a18b1ca7a97f",
+          "httpSha256": "c7b46d71364b3099e821f19815029dee8e8b46eec941799f11b7a18b1ca7a97f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer.manifest",
+          "bytes": 846,
+          "sha256": "8223438d002ec3f574b8c131367e5b88dae49d5ceb7d6367d91bec4f0e456361",
+          "httpSha256": "8223438d002ec3f574b8c131367e5b88dae49d5ceb7d6367d91bec4f0e456361"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+          "bytes": 7428,
+          "sha256": "3ba26819d68c83c6c85df62859c6d228f97b2c5cec1d228bc66b059de830b5da",
+          "httpSha256": "3ba26819d68c83c6c85df62859c6d228f97b2c5cec1d228bc66b059de830b5da"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang.manifest",
+          "bytes": 846,
+          "sha256": "f56d74186c22f0d5a83f31e492592e1571e73a6977b3549c185e795f35f3ec3b",
+          "httpSha256": "f56d74186c22f0d5a83f31e492592e1571e73a6977b3549c185e795f35f3ec3b"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+          "bytes": 7520,
+          "sha256": "18bea984264ac8be93f781cf72f9d870438380a0fecab13a58138734bc05c183",
+          "httpSha256": "18bea984264ac8be93f781cf72f9d870438380a0fecab13a58138734bc05c183"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt.manifest",
+          "bytes": 848,
+          "sha256": "d6f83b1e08e36e139e9d68b7a12574e17bda5284d5d63c762068432d4dced613",
+          "httpSha256": "d6f83b1e08e36e139e9d68b7a12574e17bda5284d5d63c762068432d4dced613"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+          "bytes": 1308212,
+          "sha256": "1b85828b35f29fa8170987d55a9df483240a2324b67527a0b0f36ba2393842bb",
+          "httpSha256": "1b85828b35f29fa8170987d55a9df483240a2324b67527a0b0f36ba2393842bb"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab.manifest",
+          "bytes": 1201,
+          "sha256": "47d62e12edcbad94250286f5b92bcdac528da232e258fed7ab622da2afaa9c0f",
+          "httpSha256": "47d62e12edcbad94250286f5b92bcdac528da232e258fed7ab622da2afaa9c0f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+          "bytes": 801376,
+          "sha256": "5beb575a887a2f9c06e40ea077a1bfdfb8c550c659f99eb459154900b274f175",
+          "httpSha256": "5beb575a887a2f9c06e40ea077a1bfdfb8c550c659f99eb459154900b274f175"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab.manifest",
+          "bytes": 1118,
+          "sha256": "aa9754e299d92a11f9a639a3c8c35c2094f5fc9abfe62f539b7189cebc0ab0dc",
+          "httpSha256": "aa9754e299d92a11f9a639a3c8c35c2094f5fc9abfe62f539b7189cebc0ab0dc"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+          "bytes": 885303,
+          "sha256": "795d6da9c9f681f37b360cf625868e305609d81d25de3020912da34dd330ff0b",
+          "httpSha256": "795d6da9c9f681f37b360cf625868e305609d81d25de3020912da34dd330ff0b"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab.manifest",
+          "bytes": 1137,
+          "sha256": "694fdf669168ba8365d237bc522611325b442557f92a6ed0c7439b12f524ebb8",
+          "httpSha256": "694fdf669168ba8365d237bc522611325b442557f92a6ed0c7439b12f524ebb8"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+          "bytes": 946720,
+          "sha256": "09fd905a28e2b5335c1a6741d50f257be065b7b517ffeb2e9d70672b17b9a9d5",
+          "httpSha256": "09fd905a28e2b5335c1a6741d50f257be065b7b517ffeb2e9d70672b17b9a9d5"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab.manifest",
+          "bytes": 1139,
+          "sha256": "87b4cc9d9a7ac2acd30aad16b1949d8ff46380743ef55c06773a6d07f2141bf0",
+          "httpSha256": "87b4cc9d9a7ac2acd30aad16b1949d8ff46380743ef55c06773a6d07f2141bf0"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+          "bytes": 1033801,
+          "sha256": "b3d383f2e749f6888513e4d18f09a15839b34fc84acdbf89c94c5fcbb626ba4c",
+          "httpSha256": "b3d383f2e749f6888513e4d18f09a15839b34fc84acdbf89c94c5fcbb626ba4c"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab.manifest",
+          "bytes": 1140,
+          "sha256": "faba63339a0f0b098b0c7542d7cd3525c49531db6ec549f643606bc5a656acee",
+          "httpSha256": "faba63339a0f0b098b0c7542d7cd3525c49531db6ec549f643606bc5a656acee"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+          "bytes": 893796,
+          "sha256": "029e6a560d0aa04cfa08d29b8a6040e2878ad848af8fa997de160018138fc45d",
+          "httpSha256": "029e6a560d0aa04cfa08d29b8a6040e2878ad848af8fa997de160018138fc45d"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab.manifest",
+          "bytes": 1136,
+          "sha256": "c90ed5d033776ebb64353f6db7fb21b3ea078ba4a3c1de45050da76a8de5ff0e",
+          "httpSha256": "c90ed5d033776ebb64353f6db7fb21b3ea078ba4a3c1de45050da76a8de5ff0e"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+          "bytes": 1016211,
+          "sha256": "b4478e762dcb0da64acb7ff2fdf11cae50791656c25f231b1276cc92a6ea08ca",
+          "httpSha256": "b4478e762dcb0da64acb7ff2fdf11cae50791656c25f231b1276cc92a6ea08ca"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab.manifest",
+          "bytes": 1142,
+          "sha256": "9e0dc7d34e8c6ea0279600073052e4bf7e5e0e66583c2f43f1ea764c12c4aa5b",
+          "httpSha256": "9e0dc7d34e8c6ea0279600073052e4bf7e5e0e66583c2f43f1ea764c12c4aa5b"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+          "bytes": 1605155,
+          "sha256": "4ed7b901e1219a301acf39b5de3a4e0f83221298aacb05ec5ed29880278ed2d8",
+          "httpSha256": "4ed7b901e1219a301acf39b5de3a4e0f83221298aacb05ec5ed29880278ed2d8"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab.manifest",
+          "bytes": 1139,
+          "sha256": "04e727bf62de0891510f5ed56ebd328f5d1bb9e4608a08fa312ed9480ebc4074",
+          "httpSha256": "04e727bf62de0891510f5ed56ebd328f5d1bb9e4608a08fa312ed9480ebc4074"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+          "bytes": 869730,
+          "sha256": "4c7ecbb5e68a9590db6362488fcf85db0741113cc80fce50f9cea44739d10f57",
+          "httpSha256": "4c7ecbb5e68a9590db6362488fcf85db0741113cc80fce50f9cea44739d10f57"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab.manifest",
+          "bytes": 1138,
+          "sha256": "e5f8aefcb9c514e129f8bc57a882ebdc0af8930c56a1e81cc8d4d82833810d98",
+          "httpSha256": "e5f8aefcb9c514e129f8bc57a882ebdc0af8930c56a1e81cc8d4d82833810d98"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+          "bytes": 1167362,
+          "sha256": "4889fb1461183d85516c56be56f08939a873cd72f0ef57c581c31826cf23e332",
+          "httpSha256": "4889fb1461183d85516c56be56f08939a873cd72f0ef57c581c31826cf23e332"
+        },
+        {
+          "path": "StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab.manifest",
+          "bytes": 1138,
+          "sha256": "cbe4696b80c0e0f0485816a58cce150f2778c970ec69b794f5e16d23b8198551",
+          "httpSha256": "cbe4696b80c0e0f0485816a58cce150f2778c970ec69b794f5e16d23b8198551"
+        },
+        {
+          "path": "StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+          "bytes": 2165,
+          "sha256": "65cee033aac33dead681dab04739b1220bf1cec71e95ca9b7ccd32fbc5f8141f",
+          "httpSha256": "65cee033aac33dead681dab04739b1220bf1cec71e95ca9b7ccd32fbc5f8141f"
+        },
+        {
+          "path": "StreamingAssets/AirRace/airrace_rounds.json",
+          "bytes": 12110,
+          "sha256": "3ca2eaddb691ff3c7c5e7ad8fe79e005e9a036e206fcb309d2d24ad287c7f522",
+          "httpSha256": "3ca2eaddb691ff3c7c5e7ad8fe79e005e9a036e206fcb309d2d24ad287c7f522"
+        },
+        {
+          "path": "StreamingAssets/AirRace/round_world_catalog.json",
+          "bytes": 4281,
+          "sha256": "abfeb92011d184aeb28bf73dbf3efa65ee6c36d97a5059eed364c47a301c70cf",
+          "httpSha256": "abfeb92011d184aeb28bf73dbf3efa65ee6c36d97a5059eed364c47a301c70cf"
+        },
+        {
+          "path": "StreamingAssets/AirRace/world_object_catalog.json",
+          "bytes": 79,
+          "sha256": "13d095596cb0a89d592daafb97394f1dd00e20561ccbe7bba841cb75d13cf080",
+          "httpSha256": "13d095596cb0a89d592daafb97394f1dd00e20561ccbe7bba841cb75d13cf080"
+        },
+        {
+          "path": "TemplateData/MemoryProfiler.png",
+          "bytes": 665,
+          "sha256": "0ce87be20d0c24ab6cb73b57de2004da261cc2a641e69319c6ae3fe11fc85483",
+          "httpSha256": "0ce87be20d0c24ab6cb73b57de2004da261cc2a641e69319c6ae3fe11fc85483"
+        },
+        {
+          "path": "TemplateData/diagnostics.css",
+          "bytes": 1709,
+          "sha256": "fc224198ae411c51746eb114613bd382178770221cd18187da78f3f03c41e606",
+          "httpSha256": "fc224198ae411c51746eb114613bd382178770221cd18187da78f3f03c41e606"
+        },
+        {
+          "path": "TemplateData/diagnostics.js",
+          "bytes": 12054,
+          "sha256": "d659a20c32eddc7603e22f25cce0fd1a9f321b9733fbd37d47b0614256d48005",
+          "httpSha256": "d659a20c32eddc7603e22f25cce0fd1a9f321b9733fbd37d47b0614256d48005"
+        },
+        {
+          "path": "TemplateData/favicon.ico",
+          "bytes": 2305,
+          "sha256": "9c13beb90ee8f70580d52a21d5233970d1c89e71e4a34a462c22610941c3c77f",
+          "httpSha256": "9c13beb90ee8f70580d52a21d5233970d1c89e71e4a34a462c22610941c3c77f"
+        },
+        {
+          "path": "TemplateData/fullscreen-button.png",
+          "bytes": 175,
+          "sha256": "21221581673a54b8139d408d4a3f8d2b879e86827d4b6fc53b995ff7a99ee3e9",
+          "httpSha256": "21221581673a54b8139d408d4a3f8d2b879e86827d4b6fc53b995ff7a99ee3e9"
+        },
+        {
+          "path": "TemplateData/progress-bar-empty-dark.png",
+          "bytes": 96,
+          "sha256": "bbee7131afe8a3365906240d89184dc86234c119467f390bc4bc6802328fdb4d",
+          "httpSha256": "bbee7131afe8a3365906240d89184dc86234c119467f390bc4bc6802328fdb4d"
+        },
+        {
+          "path": "TemplateData/progress-bar-empty-light.png",
+          "bytes": 109,
+          "sha256": "143696c060ad43d6c30f19ff5f49000927a139a2a1e4c9f45fafaa2b90d7d2be",
+          "httpSha256": "143696c060ad43d6c30f19ff5f49000927a139a2a1e4c9f45fafaa2b90d7d2be"
+        },
+        {
+          "path": "TemplateData/progress-bar-full-dark.png",
+          "bytes": 74,
+          "sha256": "3306a6244dcb3926fca38a28e3ced589df8ff1beed955eb17c0bbf01c918bc62",
+          "httpSha256": "3306a6244dcb3926fca38a28e3ced589df8ff1beed955eb17c0bbf01c918bc62"
+        },
+        {
+          "path": "TemplateData/progress-bar-full-light.png",
+          "bytes": 84,
+          "sha256": "12395ea785480c5cdf12fade6e6cbf49666d5bb1cef7240c113dbcba6bdc5c87",
+          "httpSha256": "12395ea785480c5cdf12fade6e6cbf49666d5bb1cef7240c113dbcba6bdc5c87"
+        },
+        {
+          "path": "TemplateData/style.css",
+          "bytes": 1448,
+          "sha256": "8e3625e108a61dcd1d31303376d9e02d7bdc08921d254e8f4359b892b3825caa",
+          "httpSha256": "8e3625e108a61dcd1d31303376d9e02d7bdc08921d254e8f4359b892b3825caa"
+        },
+        {
+          "path": "TemplateData/unity-logo-dark.png",
+          "bytes": 3042,
+          "sha256": "c1b72d26c096487dabc948b54bc203f8dac7ed4e3f5733918798e858acb4b159",
+          "httpSha256": "c1b72d26c096487dabc948b54bc203f8dac7ed4e3f5733918798e858acb4b159"
+        },
+        {
+          "path": "TemplateData/unity-logo-light.png",
+          "bytes": 3077,
+          "sha256": "002990aea0d946833cadc1519d5b7e50a4570bd537a0517dd79a59d3eec84da7",
+          "httpSha256": "002990aea0d946833cadc1519d5b7e50a4570bd537a0517dd79a59d3eec84da7"
+        },
+        {
+          "path": "TemplateData/unity-logo-title-footer.png",
+          "bytes": 1151,
+          "sha256": "9e8b3bdb67c2446d16362fe59449d892100931dbbadfe6a9d923a4142b57a79f",
+          "httpSha256": "9e8b3bdb67c2446d16362fe59449d892100931dbbadfe6a9d923a4142b57a79f"
+        },
+        {
+          "path": "TemplateData/webmemd-icon.png",
+          "bytes": 1670,
+          "sha256": "c56f5494640cedda273aad38d58e6ab9da625d5b3f4d875c0ff92c6192a569c2",
+          "httpSha256": "c56f5494640cedda273aad38d58e6ab9da625d5b3f4d875c0ff92c6192a569c2"
+        },
+        {
+          "path": "index.html",
+          "bytes": 6484,
+          "sha256": "39deadfcff001da6fc26d4a6fc215099f98d146b5f90576925733f92cab14344",
+          "httpSha256": "39deadfcff001da6fc26d4a6fc215099f98d146b5f90576925733f92cab14344"
+        }
+      ]
+    }
+  ]
+}

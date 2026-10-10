@@ -1,0 +1,18 @@
+name: Verify distribution
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/unity-web/package-lock.json
+      - run: npm ci && npm run check
+        working-directory: apps/unity-web
+      - run: node --test tests/game-delivery.test.mjs
+      - run: SOURCE_SHA=7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8 node scripts/verify-game-delivery.mjs . /tmp/unity-manifest.json
+      - run: cargo check --locked
+        working-directory: apps/classic

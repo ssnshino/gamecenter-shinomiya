@@ -1,0 +1,1170 @@
+{
+  "schema": 1,
+  "importedOn": "2026-10-11",
+  "unityBuildPerformed": false,
+  "unitySourceSha": null,
+  "files": [
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/Cargo.lock",
+      "destination": "apps/classic/Cargo.lock",
+      "sha256": "5ebc56acd9c6ea92409d9ac7049eeae461fe244fc033f4cacbc4a74a1948a266"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/Cargo.toml",
+      "destination": "apps/classic/Cargo.toml",
+      "sha256": "4344117d56bb34b1794b4d8653c349527eef0695a17958fca3f900a9638ba358"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/airrace.css",
+      "destination": "apps/classic/src/airrace/airrace.css",
+      "sha256": "f8e2a3fc0481c027c09bb406e03f26053ff225447968a8c7749a51ee9e894392"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/airrace.html",
+      "destination": "apps/classic/src/airrace/airrace.html",
+      "sha256": "e6b8fe004c7b228bc648dc6d5b35e842d104076275dfeb8ddf2bbbb8d63cfee3"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/airrace.js",
+      "destination": "apps/classic/src/airrace/airrace.js",
+      "sha256": "16476ff2b8b483348761306cecb0793bc01aa26ec5c1f564b8a7f67f8ff00a8b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/airrace.webmanifest",
+      "destination": "apps/classic/src/airrace/airrace.webmanifest",
+      "sha256": "7034dd65ac71b690bc5f1f04e5b0e5a5fb50491f83195710269e1db71905f580"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/airrace_rounds.json",
+      "destination": "apps/classic/src/airrace/airrace_rounds.json",
+      "sha256": "e7520445a05b250c9c9f1bbfd25473a05523398a24993e55a0d6917a8c958b23"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/js/aircraft.js",
+      "destination": "apps/classic/src/airrace/js/aircraft.js",
+      "sha256": "ffc63d964481596102389ad3fc6362639a10ed128cb8701572cd05bec552835a"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/js/config.js",
+      "destination": "apps/classic/src/airrace/js/config.js",
+      "sha256": "b4a9c04299d31eb948829bafac809af5cc9f944bec30d6fecaf3fba3928cc047"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/js/course.js",
+      "destination": "apps/classic/src/airrace/js/course.js",
+      "sha256": "6db390bc7a2f62587b833e9ab2a3040ddeea8cfb8fc1d2e5e19950c2c6db44e1"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/js/game.js",
+      "destination": "apps/classic/src/airrace/js/game.js",
+      "sha256": "951aa3e3d06c9615c98d628453a63489d7d61abee1c83b4606c5f831032fa9dc"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/airrace/js/render.js",
+      "destination": "apps/classic/src/airrace/js/render.js",
+      "sha256": "1c484f0ede73943c1dff83ac342a8d82a209ccef0e43846dd119a871f5f89c78"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/breakout.html",
+      "destination": "apps/classic/src/breakout.html",
+      "sha256": "02b9820a4f68b9105c509a60e218ac402728099222c097381f8c17d507e92613"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/breakout.rs",
+      "destination": "apps/classic/src/breakout.rs",
+      "sha256": "c8f5ba93517fcbe47549c4cc2626f39c937c05a01d2fc84b812c6ba01d2ea233"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/dungeon.html",
+      "destination": "apps/classic/src/dungeon.html",
+      "sha256": "2e3fead1f4d4cfcea5e0ac6d8d0344bc24990d6a7f4afd605f651c73f0a69182"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/dungeon.rs",
+      "destination": "apps/classic/src/dungeon.rs",
+      "sha256": "bbf63ab7218dcf4ae342d8a37ad9aadc642a964291c6149827b18030dbdffe7e"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/dungeon_gen.rs",
+      "destination": "apps/classic/src/dungeon_gen.rs",
+      "sha256": "01412a5b0650e82ab750dd9a05a0952837da5a7bef8b22b343d0a15ae7ad6e88"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/favicon.ico",
+      "destination": "apps/classic/src/favicon.ico",
+      "sha256": "3509ff3f57b1c49dc96b8777f730ab43277356256cc3c2b1419158d02329455d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/fighting.html",
+      "destination": "apps/classic/src/fighting.html",
+      "sha256": "3af5a533d2991d3556a3be240f1e23c725db62038445890ff578b36d2299e3b4"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/fighting.rs",
+      "destination": "apps/classic/src/fighting.rs",
+      "sha256": "2d0a26f966f9170be63953f21de831e9cc5aff39748fcd06bcccdc564c876275"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/game.rs",
+      "destination": "apps/classic/src/game.rs",
+      "sha256": "6dc4673b01f8dd424a5b7ca2bb732aef92903446ecea9f65ad2c81de517b2afd"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/index.html",
+      "destination": "apps/classic/src/index.html",
+      "sha256": "beeb370bd408a728f77a30794da4b443213154b2bdc602f8156bcc09516fdd63"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/main.rs",
+      "destination": "apps/classic/src/main.rs",
+      "sha256": "82d726e495ad8edb944a513a9f1b9ce35807ad96f623afd5e6239102e1274aab"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/pong.html",
+      "destination": "apps/classic/src/pong.html",
+      "sha256": "2c474bea550a8f6e856e194f96f2d2b71738107ca823adf7bb54fadd1590f248"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/scores.rs",
+      "destination": "apps/classic/src/scores.rs",
+      "sha256": "4a6a572f4d7632fa6d07fd255d386ec8530e13a8826226ad8048ddf9e73e6f97"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/audio.js",
+      "destination": "apps/classic/src/truckers/js/audio.js",
+      "sha256": "1ef4536582f851fc53b0f61f05dc0637c4d3378ec7ba7793e934fedd10afad26"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/game.js",
+      "destination": "apps/classic/src/truckers/js/game.js",
+      "sha256": "9193831cf230b021d839fe7d5e385908dce84b67db51cff98f6f14fb88c301e9"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/i18n.js",
+      "destination": "apps/classic/src/truckers/js/i18n.js",
+      "sha256": "bc4112f6f671391be22778397c8ca99bffe30f150699762e1aca2f5308f98402"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/input.js",
+      "destination": "apps/classic/src/truckers/js/input.js",
+      "sha256": "bdb85029dd10a7488c0fe619de864010a8a3c7056209a75715b560cfbe20afc3"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/main.js",
+      "destination": "apps/classic/src/truckers/js/main.js",
+      "sha256": "38d470470e66d3aaa622bcda3fda84917d425efc9880c47b34a9cb1812ffb229"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/render.js",
+      "destination": "apps/classic/src/truckers/js/render.js",
+      "sha256": "26be55a17054ca4cbba244d1f2ee030ac3ef63da492a06e54535f6d5c9c88c95"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/state.js",
+      "destination": "apps/classic/src/truckers/js/state.js",
+      "sha256": "883d2265274ea255dc071a03ec554c7ab9961b1f1ab94104d82fd02d69dd6895"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/ui.js",
+      "destination": "apps/classic/src/truckers/js/ui.js",
+      "sha256": "7c8fc23f7fc1c72396df265d3349ca204038ca16c5326e008618eb57034db9d3"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/js/ws.js",
+      "destination": "apps/classic/src/truckers/js/ws.js",
+      "sha256": "9daed0bff774ac9da5e22ced360f5fec879e6b841db35a1f44ae17bbbfe99343"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/mod.rs",
+      "destination": "apps/classic/src/truckers/mod.rs",
+      "sha256": "7669422ff3e0fd6954a5de5f33be34df1b7dd154bd2b395b29875a82cd4d1bb3"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/truckers.css",
+      "destination": "apps/classic/src/truckers/truckers.css",
+      "sha256": "5a0aaa67c7eafee975b32537f205a01177227a27a11d5a9615899c6018d7cc65"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/truckers.html",
+      "destination": "apps/classic/src/truckers/truckers.html",
+      "sha256": "6d8a79756231a510c1665144cda1b4b10a488d35e99232d82d8749898d710cfa"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/truckers.i18n.json",
+      "destination": "apps/classic/src/truckers/truckers.i18n.json",
+      "sha256": "360486cc38f82ed37575c6aaed9d626bfe3c0652129a50c0589909f73017e6d6"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/truckers.js",
+      "destination": "apps/classic/src/truckers/truckers.js",
+      "sha256": "2d84543ed7317b273662311039d06bb1727af52e0a5d7fab24c15304a16828fc"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/truckers_girl.jpg",
+      "destination": "apps/classic/src/truckers/truckers_girl.jpg",
+      "sha256": "32e0a1f337dab23488bafb6316de6ef461061fd3cd6168511af27441ba0358be"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea",
+      "sourcePath": "app/src/truckers/truckers_man.jpg",
+      "destination": "apps/classic/src/truckers/truckers_man.jpg",
+      "sha256": "4a319daf391df6a580c50d6acaaa42946e9096f68e167da7e785633394d311df"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/Dockerfile",
+      "destination": "apps/unity-web/Dockerfile",
+      "sha256": "872ae6bf39e7927c14aa035226fbabcb0a9023c8d381e0fdfc6617f811fd61a3"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/package-lock.json",
+      "destination": "apps/unity-web/package-lock.json",
+      "sha256": "356e9a8ece0db2b1ba436311df647a0032366bda7e1ded5674fed24d7b1ea09d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/package.json",
+      "destination": "apps/unity-web/package.json",
+      "sha256": "b9307097279ef44eabe7970690a6086b6228c152c36115258a308a3c95feeab3"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/Build/294c32c135e99bb44f680ec85c268685.wasm.gz",
+      "destination": "apps/unity-web/public/airrace3d/Build/294c32c135e99bb44f680ec85c268685.wasm.gz",
+      "sha256": "54600f20f185e33069caeaf2ed080d714b94f0d5edf9335a2b02c4f48ec35711"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/Build/35922c889a363237ff424bb9c86eef5c.loader.js",
+      "destination": "apps/unity-web/public/airrace3d/Build/35922c889a363237ff424bb9c86eef5c.loader.js",
+      "sha256": "c3b1071637416c89a40e89ffd6cf7e94525fcf74f579b640fa9ec270add221a2"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/Build/8fcff25ecd727ba9b4138b4ff30d4eb6.symbols.json.gz",
+      "destination": "apps/unity-web/public/airrace3d/Build/8fcff25ecd727ba9b4138b4ff30d4eb6.symbols.json.gz",
+      "sha256": "9cda73caa34bec5be9fa24a9d8a58cbb0ce03ae49af6f8a156cdef48d196364b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/Build/9585e6c39f95bd6476c44d4b4834ecde.data.gz",
+      "destination": "apps/unity-web/public/airrace3d/Build/9585e6c39f95bd6476c44d4b4834ecde.data.gz",
+      "sha256": "2d5e4771c65ea0d0de58c6d863c7395141ae2777a8e6c588dfa2bc38f3aa5cb5"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/Build/b81532f0ba97e9c58dd2c63baead9e28.framework.js.gz",
+      "destination": "apps/unity-web/public/airrace3d/Build/b81532f0ba97e9c58dd2c63baead9e28.framework.js.gz",
+      "sha256": "91da50fa89f50bce51f95a3ca60f8c913d2f113d9dd31483b86a627572f9beb1"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/.gitkeep",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/Bundles",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/Bundles",
+      "sha256": "45c64db845043fa9ec6561435082cf83094a0b9c8eed7fab60a0df67e93744e3"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/Bundles.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/Bundles.manifest",
+      "sha256": "fea64840ce574348c705b02d3f0b2bca9d167e0572b64049ad043657ed2b52ff"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+      "sha256": "931bfbf482ab0e7c04920bda895045ab26d28e3c73dd68f48e16a4249b07034f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk.manifest",
+      "sha256": "846b0744796ab261548d39a434860be7fcedc1b88b2c8a2d1c1355ed9609b924"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+      "sha256": "9e06386b6d341e5f82707c81c16a9ed736cccb149a4a1ee4343fcc706296cbbf"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar.manifest",
+      "sha256": "f8a261378a02bda8c1b890bbd361a76ea727fa8b50940d9d7b5b8f27576d00bf"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+      "sha256": "c7b46d71364b3099e821f19815029dee8e8b46eec941799f11b7a18b1ca7a97f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer.manifest",
+      "sha256": "8223438d002ec3f574b8c131367e5b88dae49d5ceb7d6367d91bec4f0e456361"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+      "sha256": "3ba26819d68c83c6c85df62859c6d228f97b2c5cec1d228bc66b059de830b5da"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang.manifest",
+      "sha256": "f56d74186c22f0d5a83f31e492592e1571e73a6977b3549c185e795f35f3ec3b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+      "sha256": "18bea984264ac8be93f781cf72f9d870438380a0fecab13a58138734bc05c183"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt.manifest",
+      "sha256": "d6f83b1e08e36e139e9d68b7a12574e17bda5284d5d63c762068432d4dced613"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+      "sha256": "addcce9fb4b03541f768e87f51d2cb9c846f49d4c8cdaa9e8869295eb83e952f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab.manifest",
+      "sha256": "083d0fd8bd81d42f36b09f410014efbefa4f42be608b6c5290e7f5379676ac09"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+      "sha256": "3998d43f2f127c86373765f8caa13f414e1d96ee99cb37124c059141194c1616"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab.manifest",
+      "sha256": "0c76300d2ff18a21de5caefc9c2e585ea1b3a249a4b7462faa97cad14e9a68ea"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+      "sha256": "3a320dd0a3b78f57cd9e0d9def3b319eeeb71eaeb90582208af69f2bf2fa2390"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab.manifest",
+      "sha256": "188cf4a8e8c0b74524764120b0966f337a697ca1dc7883542d50929c292956bd"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+      "sha256": "151c303374001ffd8b8a3200ae6a5c5a026639de0bb12fdc41f4d7f194306108"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab.manifest",
+      "sha256": "6c36e26ab011f4732b3c183ecd5fac3e8fb041ef7447f71b694d0ae9734f8c04"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+      "sha256": "e80f249ba252d0428a328958aef1e18c2c847a5ad34c139891da56c3425d7b83"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab.manifest",
+      "sha256": "1051f9856286359b474bfb36118a48a77f799464ba2b785219b7fc33179edd0f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+      "sha256": "3430a9c753227e675317ca62fc557f42d6778a149307487fc0d3f135fcb447bf"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab.manifest",
+      "sha256": "5038e443637803ccd0c0c58f5b01949950e6d7fe0b14871a66989e8386e5d5b9"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+      "sha256": "860336bb3c78729f6909c55be0e9aa172e3e10a1dc57b21c8a8b87f0024cae8d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab.manifest",
+      "sha256": "69816ee257a8b723f8e5b6227304cb21a9de0f9d537ba01a651920c4a9ff33c9"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+      "sha256": "645184e5e871b34830fa12b6b705c59c159931202b7e02945786c4ba906aa64d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab.manifest",
+      "sha256": "ea133cd53c0b0bfc49f1c7970aca3ae192fba11cf6a15a831898ed5bd7cdcd31"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+      "sha256": "69c5fee5aa144b05b227244825f17151b0d3751dd5e2ea48f4d4c22434265172"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab.manifest",
+      "sha256": "2e433ed5352f9b434d1a5f515762fda6fa40f38f1fd133d0f5ba52e693dfeb56"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+      "sha256": "5bdfd2da3df306cf2e4ca1cf776194a05cfd5c4305378147f49004c6419527b9"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab.manifest",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab.manifest",
+      "sha256": "2488e42bc478969b67cab21375a5b2fe426230307bf9b51c96c968346b711971"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+      "sha256": "9dc2c3b2ceda1f7c5caddb020fcca8af3f47f5ea487aa1bef3e2b028b5ca5f8d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/airrace_rounds.json",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/airrace_rounds.json",
+      "sha256": "3ca2eaddb691ff3c7c5e7ad8fe79e005e9a036e206fcb309d2d24ad287c7f522"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/round_world_catalog.json",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/round_world_catalog.json",
+      "sha256": "44f6a49bbe6f01fcbb25e58cc54d7abab6b8251072edce7ff7281976724a4806"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/StreamingAssets/AirRace/world_object_catalog.json",
+      "destination": "apps/unity-web/public/airrace3d/StreamingAssets/AirRace/world_object_catalog.json",
+      "sha256": "245e19d2da50f7611e40205ea16cc7003f6d6681ef32ff4c929c0f9f8885f896"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/MemoryProfiler.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/MemoryProfiler.png",
+      "sha256": "0ce87be20d0c24ab6cb73b57de2004da261cc2a641e69319c6ae3fe11fc85483"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/diagnostics.css",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/diagnostics.css",
+      "sha256": "fc224198ae411c51746eb114613bd382178770221cd18187da78f3f03c41e606"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/diagnostics.js",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/diagnostics.js",
+      "sha256": "d659a20c32eddc7603e22f25cce0fd1a9f321b9733fbd37d47b0614256d48005"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/favicon.ico",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/favicon.ico",
+      "sha256": "9c13beb90ee8f70580d52a21d5233970d1c89e71e4a34a462c22610941c3c77f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/fullscreen-button.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/fullscreen-button.png",
+      "sha256": "21221581673a54b8139d408d4a3f8d2b879e86827d4b6fc53b995ff7a99ee3e9"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/progress-bar-empty-dark.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/progress-bar-empty-dark.png",
+      "sha256": "bbee7131afe8a3365906240d89184dc86234c119467f390bc4bc6802328fdb4d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/progress-bar-empty-light.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/progress-bar-empty-light.png",
+      "sha256": "143696c060ad43d6c30f19ff5f49000927a139a2a1e4c9f45fafaa2b90d7d2be"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/progress-bar-full-dark.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/progress-bar-full-dark.png",
+      "sha256": "3306a6244dcb3926fca38a28e3ced589df8ff1beed955eb17c0bbf01c918bc62"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/progress-bar-full-light.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/progress-bar-full-light.png",
+      "sha256": "12395ea785480c5cdf12fade6e6cbf49666d5bb1cef7240c113dbcba6bdc5c87"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/style.css",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/style.css",
+      "sha256": "8e3625e108a61dcd1d31303376d9e02d7bdc08921d254e8f4359b892b3825caa"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/unity-logo-dark.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/unity-logo-dark.png",
+      "sha256": "c1b72d26c096487dabc948b54bc203f8dac7ed4e3f5733918798e858acb4b159"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/unity-logo-light.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/unity-logo-light.png",
+      "sha256": "002990aea0d946833cadc1519d5b7e50a4570bd537a0517dd79a59d3eec84da7"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/unity-logo-title-footer.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/unity-logo-title-footer.png",
+      "sha256": "9e8b3bdb67c2446d16362fe59449d892100931dbbadfe6a9d923a4142b57a79f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/TemplateData/webmemd-icon.png",
+      "destination": "apps/unity-web/public/airrace3d/TemplateData/webmemd-icon.png",
+      "sha256": "c56f5494640cedda273aad38d58e6ab9da625d5b3f4d875c0ff92c6192a569c2"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/airrace3d/index.html",
+      "destination": "apps/unity-web/public/airrace3d/index.html",
+      "sha256": "e3d194f8bdbb7ea260a3d6dbbd748d2c90d7272b3368f16a6c7aefdfbb099b94"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/Build/633ede84d286f8a8e15f7a0bf3960220.wasm.gz",
+      "destination": "apps/unity-web/public/colony-racer/Build/633ede84d286f8a8e15f7a0bf3960220.wasm.gz",
+      "sha256": "f1291d14e9cd1e791ee3fc61f0cc0f786555079fc5c513c381e997f69a8ba31c"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/Build/737e57b897c96d5d301663a0860746ae.loader.js",
+      "destination": "apps/unity-web/public/colony-racer/Build/737e57b897c96d5d301663a0860746ae.loader.js",
+      "sha256": "a29be3f1693e730bb5b7983f17bb57818d6dc635277330ce108f4201e777217e"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/Build/886371ec748e095ccda2e13ebab6437d.symbols.json.gz",
+      "destination": "apps/unity-web/public/colony-racer/Build/886371ec748e095ccda2e13ebab6437d.symbols.json.gz",
+      "sha256": "a415d96f274eacdc5cbe18702cfeac43a3c58f01fcb127ee0d8c50ca18067013"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/Build/d04b259385ba830dce4fdad134d98d7a.data.gz",
+      "destination": "apps/unity-web/public/colony-racer/Build/d04b259385ba830dce4fdad134d98d7a.data.gz",
+      "sha256": "fc03b0cf570e4bd664f4fb8b15d07ae16c07fdad0091ee04c8c346a78a6b8e81"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/Build/dcc412335d058db475417492572a73a0.framework.js.gz",
+      "destination": "apps/unity-web/public/colony-racer/Build/dcc412335d058db475417492572a73a0.framework.js.gz",
+      "sha256": "969c721a78f64287409f74e4dbf67ec936a6d6016bba4777ccbd114b143cc229"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/.gitkeep",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/Bundles",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/Bundles",
+      "sha256": "1be24e9716026857efcfdfcc1b505ab5adaeb323b11fbceabb0b4b5c983f0ad6"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/Bundles.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/Bundles.manifest",
+      "sha256": "67fc3b1fa662a0708f1a68c23d822491e5dcda2ca81df16f79edd782a5f6faa0"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
+      "sha256": "931bfbf482ab0e7c04920bda895045ab26d28e3c73dd68f48e16a4249b07034f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk.manifest",
+      "sha256": "846b0744796ab261548d39a434860be7fcedc1b88b2c8a2d1c1355ed9609b924"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
+      "sha256": "9e06386b6d341e5f82707c81c16a9ed736cccb149a4a1ee4343fcc706296cbbf"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar.manifest",
+      "sha256": "f8a261378a02bda8c1b890bbd361a76ea727fa8b50940d9d7b5b8f27576d00bf"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
+      "sha256": "c7b46d71364b3099e821f19815029dee8e8b46eec941799f11b7a18b1ca7a97f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer.manifest",
+      "sha256": "8223438d002ec3f574b8c131367e5b88dae49d5ceb7d6367d91bec4f0e456361"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang",
+      "sha256": "3ba26819d68c83c6c85df62859c6d228f97b2c5cec1d228bc66b059de830b5da"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_spiralfang.manifest",
+      "sha256": "f56d74186c22f0d5a83f31e492592e1571e73a6977b3549c185e795f35f3ec3b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt",
+      "sha256": "18bea984264ac8be93f781cf72f9d870438380a0fecab13a58138734bc05c183"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_aircraft_thunderbolt.manifest",
+      "sha256": "d6f83b1e08e36e139e9d68b7a12574e17bda5284d5d63c762068432d4dced613"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab",
+      "sha256": "1b85828b35f29fa8170987d55a9df483240a2324b67527a0b0f36ba2393842bb"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_01_round1worldprefab.manifest",
+      "sha256": "47d62e12edcbad94250286f5b92bcdac528da232e258fed7ab622da2afaa9c0f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab",
+      "sha256": "5beb575a887a2f9c06e40ea077a1bfdfb8c550c659f99eb459154900b274f175"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_02_round2spacecolonyworldprefab.manifest",
+      "sha256": "aa9754e299d92a11f9a639a3c8c35c2094f5fc9abfe62f539b7189cebc0ab0dc"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab",
+      "sha256": "795d6da9c9f681f37b360cf625868e305609d81d25de3020912da34dd330ff0b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_03_round3desertmesaworldprefab.manifest",
+      "sha256": "694fdf669168ba8365d237bc522611325b442557f92a6ed0c7439b12f524ebb8"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab",
+      "sha256": "09fd905a28e2b5335c1a6741d50f257be065b7b517ffeb2e9d70672b17b9a9d5"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_04_round4rivercircuitworldprefab.manifest",
+      "sha256": "87b4cc9d9a7ac2acd30aad16b1949d8ff46380743ef55c06773a6d07f2141bf0"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab",
+      "sha256": "b3d383f2e749f6888513e4d18f09a15839b34fc84acdbf89c94c5fcbb626ba4c"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_05_round5coastalsprintworldprefab.manifest",
+      "sha256": "faba63339a0f0b098b0c7542d7cd3525c49531db6ec549f643606bc5a656acee"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab",
+      "sha256": "029e6a560d0aa04cfa08d29b8a6040e2878ad848af8fa997de160018138fc45d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_06_round6harborwindworldprefab.manifest",
+      "sha256": "c90ed5d033776ebb64353f6db7fb21b3ea078ba4a3c1de45050da76a8de5ff0e"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab",
+      "sha256": "b4478e762dcb0da64acb7ff2fdf11cae50791656c25f231b1276cc92a6ea08ca"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_07_round7rhineindustrialworldprefab.manifest",
+      "sha256": "9e0dc7d34e8c6ea0279600073052e4bf7e5e0e66583c2f43f1ea764c12c4aa5b"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab",
+      "sha256": "4ed7b901e1219a301acf39b5de3a4e0f83221298aacb05ec5ed29880278ed2d8"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_08_round8megacityringworldprefab.manifest",
+      "sha256": "04e727bf62de0891510f5ed56ebd328f5d1bb9e4608a08fa312ed9480ebc4074"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab",
+      "sha256": "4c7ecbb5e68a9590db6362488fcf85db0741113cc80fce50f9cea44739d10f57"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_09_round9skydunerushworldprefab.manifest",
+      "sha256": "e5f8aefcb9c514e129f8bc57a882ebdc0af8930c56a1e81cc8d4d82833810d98"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab",
+      "sha256": "4889fb1461183d85516c56be56f08939a873cd72f0ef57c581c31826cf23e332"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab.manifest",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/Bundles/airrace_round_world_10_round10grandfinalworldprefab.manifest",
+      "sha256": "cbe4696b80c0e0f0485816a58cce150f2778c970ec69b794f5e16d23b8198551"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/aircraft_prefab_catalog.json",
+      "sha256": "65cee033aac33dead681dab04739b1220bf1cec71e95ca9b7ccd32fbc5f8141f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/airrace_rounds.json",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/airrace_rounds.json",
+      "sha256": "3ca2eaddb691ff3c7c5e7ad8fe79e005e9a036e206fcb309d2d24ad287c7f522"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/round_world_catalog.json",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/round_world_catalog.json",
+      "sha256": "abfeb92011d184aeb28bf73dbf3efa65ee6c36d97a5059eed364c47a301c70cf"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/StreamingAssets/AirRace/world_object_catalog.json",
+      "destination": "apps/unity-web/public/colony-racer/StreamingAssets/AirRace/world_object_catalog.json",
+      "sha256": "13d095596cb0a89d592daafb97394f1dd00e20561ccbe7bba841cb75d13cf080"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/MemoryProfiler.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/MemoryProfiler.png",
+      "sha256": "0ce87be20d0c24ab6cb73b57de2004da261cc2a641e69319c6ae3fe11fc85483"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/diagnostics.css",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/diagnostics.css",
+      "sha256": "fc224198ae411c51746eb114613bd382178770221cd18187da78f3f03c41e606"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/diagnostics.js",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/diagnostics.js",
+      "sha256": "d659a20c32eddc7603e22f25cce0fd1a9f321b9733fbd37d47b0614256d48005"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/favicon.ico",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/favicon.ico",
+      "sha256": "9c13beb90ee8f70580d52a21d5233970d1c89e71e4a34a462c22610941c3c77f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/fullscreen-button.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/fullscreen-button.png",
+      "sha256": "21221581673a54b8139d408d4a3f8d2b879e86827d4b6fc53b995ff7a99ee3e9"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/progress-bar-empty-dark.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/progress-bar-empty-dark.png",
+      "sha256": "bbee7131afe8a3365906240d89184dc86234c119467f390bc4bc6802328fdb4d"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/progress-bar-empty-light.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/progress-bar-empty-light.png",
+      "sha256": "143696c060ad43d6c30f19ff5f49000927a139a2a1e4c9f45fafaa2b90d7d2be"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/progress-bar-full-dark.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/progress-bar-full-dark.png",
+      "sha256": "3306a6244dcb3926fca38a28e3ced589df8ff1beed955eb17c0bbf01c918bc62"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/progress-bar-full-light.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/progress-bar-full-light.png",
+      "sha256": "12395ea785480c5cdf12fade6e6cbf49666d5bb1cef7240c113dbcba6bdc5c87"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/style.css",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/style.css",
+      "sha256": "8e3625e108a61dcd1d31303376d9e02d7bdc08921d254e8f4359b892b3825caa"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/unity-logo-dark.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/unity-logo-dark.png",
+      "sha256": "c1b72d26c096487dabc948b54bc203f8dac7ed4e3f5733918798e858acb4b159"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/unity-logo-light.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/unity-logo-light.png",
+      "sha256": "002990aea0d946833cadc1519d5b7e50a4570bd537a0517dd79a59d3eec84da7"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/unity-logo-title-footer.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/unity-logo-title-footer.png",
+      "sha256": "9e8b3bdb67c2446d16362fe59449d892100931dbbadfe6a9d923a4142b57a79f"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/TemplateData/webmemd-icon.png",
+      "destination": "apps/unity-web/public/colony-racer/TemplateData/webmemd-icon.png",
+      "sha256": "c56f5494640cedda273aad38d58e6ab9da625d5b3f4d875c0ff92c6192a569c2"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/colony-racer/index.html",
+      "destination": "apps/unity-web/public/colony-racer/index.html",
+      "sha256": "39deadfcff001da6fc26d4a6fc215099f98d146b5f90576925733f92cab14344"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/public/index.html",
+      "destination": "apps/unity-web/public/index.html",
+      "sha256": "a441ff67fde51a10ce77bdf2798bb7ee8b6b974a7c708cad04a5667b7d0a7de0"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/src/lib/files.ts",
+      "destination": "apps/unity-web/src/lib/files.ts",
+      "sha256": "b6cf1a6b1c874e97b04e017bd4cb0fb4f9d945b0fbe16a3d8105ff2e171b5121"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/src/lib/paths.ts",
+      "destination": "apps/unity-web/src/lib/paths.ts",
+      "sha256": "bb6b158fff786604c79a7f9eaf3c2ec8ec4602164a29c975654a8e9edeaffb33"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/src/routes/airrace3d.ts",
+      "destination": "apps/unity-web/src/routes/airrace3d.ts",
+      "sha256": "f7237e53c2d22c6e2d901e5d00326c2bba45a84aaf739a31e6fd7b6e0b23f0ed"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/src/routes/colony-racer.ts",
+      "destination": "apps/unity-web/src/routes/colony-racer.ts",
+      "sha256": "801fe076513bd56dfa23f1e7ff6cb45c0df94bc88af1a12591937b59625101f9"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/src/routes/home.ts",
+      "destination": "apps/unity-web/src/routes/home.ts",
+      "sha256": "d86b706cb243ee8dfc258feca3acac2101f24c0775503531b719717b0b815a94"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/src/server.ts",
+      "destination": "apps/unity-web/src/server.ts",
+      "sha256": "0f1fa6a00f01433cd1b72fb61a5756786be2c4c84cde9dae5780eb40d1f98e00"
+    },
+    {
+      "sourceRepo": "ssnshino/rust-sandbox",
+      "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
+      "sourcePath": "web/tsconfig.json",
+      "destination": "apps/unity-web/tsconfig.json",
+      "sha256": "7667f2c5b1115ddc0b3678c6ebae16602bd64f95dfba138e2c3b628c8c65d76f"
+    }
+  ]
+}

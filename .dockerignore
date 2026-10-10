@@ -1,0 +1,10 @@
+.git
+**/target
+**/node_modules
+**/dist
+runtime
+.env*
+snapshot
+plan
+docs
+tests

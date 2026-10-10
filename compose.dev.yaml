@@ -1,0 +1,40 @@
+name: gamecenter-shinomiya
+services:
+  classic:
+    container_name: gamecenter-shinomiya-classic
+    image: gamecenter-shinomiya-classic:${RELEASE_TAG:-local}
+    build:
+      context: .
+      dockerfile: apps/classic/Dockerfile
+    restart: unless-stopped
+    read_only: true
+    mem_limit: 384m
+    environment:
+      GIT_HASH: ${RELEASE_TAG:-local}
+    volumes:
+      - ./runtime/classic:/data
+    networks: [internal]
+  unity-web:
+    container_name: gamecenter-shinomiya-unity-web
+    image: gamecenter-shinomiya-unity-web:${RELEASE_TAG:-local}
+    build:
+      context: .
+      dockerfile: apps/unity-web/Dockerfile
+    restart: unless-stopped
+    read_only: true
+    mem_limit: 256m
+    networks: [internal]
+  gateway:
+    container_name: gamecenter-shinomiya-gateway
+    image: gamecenter-shinomiya-gateway:${RELEASE_TAG:-local}
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    restart: unless-stopped
+    mem_limit: 128m
+    depends_on: [classic, unity-web]
+    ports:
+      - "127.0.0.1:18094:80"
+    networks: [internal]
+networks:
+  internal: {}

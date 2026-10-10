@@ -1,0 +1,10 @@
+# Apply only after private-port acceptance. The existing proxy discovers the gateway.
+services:
+  gateway:
+    environment:
+      VIRTUAL_HOST: ${GAMECENTER_PUBLIC_HOSTS:?Existing routing hosts must be supplied}
+      VIRTUAL_PORT: "80"
+    networks: [internal, wos-proxy-network]
+networks:
+  wos-proxy-network:
+    external: true
