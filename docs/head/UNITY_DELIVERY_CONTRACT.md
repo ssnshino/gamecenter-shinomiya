@@ -19,3 +19,5 @@ AirRaceの出力先上書きはAIRRACE_WEBGL_BUILD_PATHを新airrace3d path、AI
 
 現行配布はssnshino/rust-sandbox/devで、Mac/BASEのcheckout名はunity-rust-games。現行URLは/airrace3d/と/colony-racer/。移行を完了するまで既存のbuilder既定path、配備先、公開経路を新しいものへ変更済みと記録しない。unity-rust-games2は別AIRRACE3D2 stagingであり、今回の配布先ではない。
 
+
+画面QAで、既存compiled resolverがURLの先頭segmentを使い /02/StreamingAssets/* を要求することを確認。gatewayはRefererの/02/airrace3d/または/02/colony-racer/を厳密に選び、対応するゲームだけへ配信する。Referer不明なら404。共有URLに別ゲームのcacheが混ざらないようprivate/no-storeとVary: Refererを付ける。正規の/02/<game>/StreamingAssets/*はReferer不要。Unity編集元の次回ビルドではresolverをサブパス対応にする候補だが、今回編集しない。
