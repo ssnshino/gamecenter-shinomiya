@@ -1,0 +1,72 @@
+name: Build classic and gateway
+on:
+  push:
+    paths: ['apps/classic/**', 'gateway/**', 'compose*.yaml', '.dockerignore', 'scripts/deploy-classic-gateway.sh', 'scripts/check-classic-gateway.py', 'scripts/smoke-classic-gateway.mjs', 'tests/test_classic_gateway.py', '.github/workflows/build-classic-gateway.yml', '!**/*.md']
+  pull_request:
+    branches: [dev]
+    paths: ['apps/classic/**', 'gateway/**', 'compose*.yaml', '.dockerignore', 'scripts/deploy-classic-gateway.sh', 'scripts/check-classic-gateway.py', 'scripts/smoke-classic-gateway.mjs', 'tests/test_classic_gateway.py', '.github/workflows/build-classic-gateway.yml', '!**/*.md']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: classic-gateway-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci && npm run check
+        working-directory: apps/unity-web
+      - run: node --test tests/game-delivery.test.mjs
+      - name: Match the committed Unity artifact manifest without rebuilding Unity
+        run: |
+          SOURCE_SHA=$(node -p "JSON.parse(require('fs').readFileSync('docs/head/UNITY_ARTIFACT_MANIFEST.json')).sourceSha") node scripts/verify-game-delivery.mjs . /tmp/actual-unity.json
+          node -e "require('assert').deepStrictEqual(require('/tmp/actual-unity.json'),require('./docs/head/UNITY_ARTIFACT_MANIFEST.json'))"
+      - run: python3 -m unittest discover -s tests -p 'test_classic_gateway.py'
+      - run: bash -n scripts/deploy-classic-gateway.sh
+      - run: docker build -f apps/classic/Dockerfile -t gamecenter-classic-check:${{ github.sha }} .
+      - run: docker build -f gateway/Dockerfile -t gamecenter-gateway-check:${{ github.sha }} .
+      - name: Validate nginx with isolated service DNS
+        run: |
+          docker network create gamecenter-check
+          docker run -d --name classic --network gamecenter-check --entrypoint sh gamecenter-gateway-check:${{ github.sha }} -c 'sleep 60'
+          docker run -d --name unity-web --network gamecenter-check --entrypoint sh gamecenter-gateway-check:${{ github.sha }} -c 'sleep 60'
+          docker run --rm --network gamecenter-check gamecenter-gateway-check:${{ github.sha }} nginx -t
+      - name: Remove isolated test containers
+        if: always()
+        run: |
+          docker rm -f classic unity-web 2>/dev/null || true
+          docker network rm gamecenter-check 2>/dev/null || true
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev' && vars.CLASSIC_GATEWAY_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Build and update only classic and gateway on existing BASE
+        run: bash scripts/deploy-classic-gateway.sh
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          DEV_DEPLOY_ENABLED: ${{ vars.CLASSIC_GATEWAY_DEPLOY_ENABLED }}
+          DEV_DEPLOY_HOST: ${{ secrets.DEPLOY_DEV_HOST }}
+          DEV_DEPLOY_PORT: ${{ secrets.DEPLOY_DEV_PORT }}
+          DEV_DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_DEV_SSH_KEY }}
+          DEV_DEPLOY_REPO_PATH: ${{ vars.DEV_DEPLOY_REPO_PATH }}
+          DEV_DEPLOY_KNOWN_HOSTS: ${{ vars.DEV_DEPLOY_KNOWN_HOSTS }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Verify existing public Unity bytes and API (no Unity build)
+        run: node scripts/smoke-game-delivery.mjs docs/head/UNITY_ARTIFACT_MANIFEST.json https://unity-games.wos.ktsys.jp/02/ .
+      - name: Verify portal, classic API and WebSocket without posting scores
+        run: node scripts/smoke-classic-gateway.mjs

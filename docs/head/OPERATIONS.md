@@ -34,3 +34,20 @@ runtime/classicの6JSONは実ユーザーデータ。Git、Docker build context�
 旧containerと元checkoutを削除しない。公開切替失敗時は新gatewayを停止、classicも停止。新classicのdataを別backupに保存し、構造が同じ6JSONを旧appへ戻す場合はhashを照合してから旧Rustを起動する。旧Unity containerも起動し、旧経路・WSを検証する。新データを無視して古いbackupだけを復元しない。proxy/firewall/volumeを削除しない。
 
 古いrust-sandbox/devは現在Unity入口の配布元であり、1号店の復元元は固定SHA 58e6f73cfd2bf78e7d7612fc0b0f75ab909d5bea。unity-rust-games2は別stagingなのでこの手順の対象外。
+
+
+## classic・共通入口だけの実ビルド／配備
+
+`build-classic-gateway.yml` はdev向けPRと対象コードのbranch更新でclassic/gatewayのDocker imageを実ビルドし、隔離networkでnginx設定を検査する。既存Node検査・成果物テストと、生成manifestが保管manifestに一致することも確認する。README等の文書だけの更新ではこのworkflowを起動しない。既存verify.ymlは維持する。
+
+配備jobは `CLASSIC_GATEWAY_DEPLOY_ENABLED=true` の時だけdevで動く。初期値は未設定（OFF）。同repoの既存 `DEPLOY_DEV_HOST` / `DEPLOY_DEV_PORT` / `DEPLOY_DEV_SSH_KEY` と `DEV_DEPLOY_REPO_PATH` / `DEV_DEPLOY_KNOWN_HOSTS` を参照する。旧repoで使えた名前であっても新repoでの設定・利用権限・接続成功は未確認。新しい鍵やrunnerは作成しない。有効化は確認後の別承認とする。
+
+CIでビルド検証後、既存SSH経路でBASEに接続し、固定SHAのソースからclassic/gatewayを順次ビルドする。registryやimage転送方式は追加しない。clean dev、origin、最新dev SHA、fast-forward、サーバlock、公開Compose、runtime6JSONの存在/JSON妥当性/所有者と、稼働classicの/dataが同じRW bindであることを確認する。Unityコードや保管manifestの差分がある時はこの経路で配備しない。
+
+個別タグ `CLASSIC_RELEASE_TAG` / `GATEWAY_RELEASE_TAG` は未指定なら従来 `RELEASE_TAG` を使う。配備ではこの2つだけを更新し、既存 `RELEASE_TAG` とunity-web imageを保つ。`compose.dev.yaml` と `compose.public.yaml` を併用して `up -d --no-build --no-deps --force-recreate classic`、続いて `gateway` を実行する。gateway再作成でclassicの名前解決も更新する。既存unity-webのcontainer ID・image・startedAt・restart回数を前後比較する。
+
+短い1号店停止とWebSocket切断の可能性がある。runtime/classicは上書き・初期化しない。公開後に共通入口・Rust API/WS・redirect・Unity配布物hash/APIを確認する。実ブラウザ操作は別確認。公開smokeに失敗しても自動で旧データを復元しない。
+
+失敗時は処理を止め、runtime/deploy/classic-gateway-*.jsonの旧image/checkout SHAと切替段階、ログを確認する。receiptのlocal-verified-public-pendingは公開確認完了ではなく、公開確認の結果は同じActions runで確認する。必要な復旧は以前の個別タグへ戻してclassic/gatewayだけを上記--no-deps方式で再作成し、runtimeとUnityは保持する。実行前にlive dataと状態を確認し、別途承認を得る。途中失敗時は実containerと.env.release記録が異なる場合があるため、ファイルだけで稼働版を判断しない。旧全体RELEASE_TAGへ戻すために全serviceを再作成しない。
+
+この追加時点ではローカルPython guardテスト・shell/Node構文検査のみ実施。Docker/RustがDOTS環境にないためDocker build、実効Compose、BASE配備、公開確認は未実施。PR CIの実結果を確認してから配備を判断する。
