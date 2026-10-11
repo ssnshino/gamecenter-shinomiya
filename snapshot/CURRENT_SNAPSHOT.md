@@ -15,6 +15,17 @@
 - classicとunity-webは内部3000、gatewayの確認ポートは127.0.0.1:18094 → 80。公開gatewayだけを既存wos-proxy-networkへ接続。既存proxy設定ファイル、鍵/firewall/NAT/runnerは変更していない。
 - 切替完了 2026-10-11 01:12:08 JST。3container running/restarts=0、他の既存containerのrunning/startedAt変化は0件。
 
+## classic/gateway自動配備の現在地（2026-10-11 03:40 UTC / 12:40 JST）
+
+- PR #2は2026-10-11 02:33 UTCにdevへマージ済み。最新dev SHAは25c625e3ba441655c33cf3e868cfca086cbd2088。
+- 同SHAの[Docker build CI run 38105519621](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519621)と[配布検証run 38105519655](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519655)はsuccess。classic/gatewayの実ビルド、nginx設定、Node/Rust検証、成果物manifest照合、guardテストを実施済み。deploy jobはliteral falseによってskipped。
+- BASEのcheckoutはclean dev、HEAD d39f535d4248625f9e937247a100e51f1e0944ce。稼働classic/gateway/unity-webのimage tagとclassic GIT_HASHは全て041e0548362a2040bfd94d518866a04456849e05。3container running、restarts=0。CIでビルド済みのSHAを稼働済みとは扱わない。
+- 新repoのActions SecretsとVariablesは確認時点で両方空。登録・有効化PRの投稿・devマージは本人の個別承認待ち。秘密鍵は本人がGitHubの安全な入力画面で既存dev用鍵を登録し、agentは内容を取得・転記しない。共通DEPLOY_SSH_KEYや新規鍵を使用しない。
+- DEV_DEPLOY_KNOWN_HOSTSのed25519 fingerprintはSHA256:jxrQwD92EJgL/MQZ41cEGG54w+RsgW3FuBHelFoP0Cc。引き継ぎ公開鍵、Macの既存known_hosts、StrictHostKeyChecking=yesの既存BASE接続で得たホスト公開鍵、wos.ktsys.jp:4523の現在の取得値が一致。
+- 配備前基準: Unity container/image/StartedAt/restarts、既存114ファイルのhash inventory、runtime/classicの6JSONのhash/サイズ/JSON妥当性/uid=1000を確認。6JSONは合計7,177,421 bytes。data本文や秘密値は記録に含めていない。
+- 有効化用の変更はworkflowのliteral false解除と事実記録のみ。配備変数、dev限定/PR除外、strict known_hosts、最新SHA/clean fast-forward、flock、個別タグ、classic→gatewayの--no-deps更新は維持する。feature CI成功後に設定登録・PR本文投稿・devマージと1回の自動配備をまとめて承認依頼する。
+- 新経路のBASE build/deployと配備後のHTTP/WS/公開114ファイル/実ブラウザ/データ保持検証は未実行。Unity再ビルド、他アプリ・Godot・runner・firewallの変更は対象外。
+
 ## 確認結果
 
 - ローカル型検査、15件の成果物テスト、GitHub CI success（run 38066409344）。RustはBASEで1 compilation jobのrelease build。Node/gatewayのbuildも順次完了。nginx -t success。
