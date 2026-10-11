@@ -2,7 +2,7 @@ name: gamecenter-shinomiya
 services:
   classic:
     container_name: gamecenter-shinomiya-classic
-    image: gamecenter-shinomiya-classic:${RELEASE_TAG:-local}
+    image: gamecenter-shinomiya-classic:${CLASSIC_RELEASE_TAG:-${RELEASE_TAG:-local}}
     build:
       context: .
       dockerfile: apps/classic/Dockerfile
@@ -10,7 +10,7 @@ services:
     read_only: true
     mem_limit: 384m
     environment:
-      GIT_HASH: ${RELEASE_TAG:-local}
+      GIT_HASH: ${CLASSIC_RELEASE_TAG:-${RELEASE_TAG:-local}}
     volumes:
       - ./runtime/classic:/data
     networks: [internal]
@@ -26,7 +26,7 @@ services:
     networks: [internal]
   gateway:
     container_name: gamecenter-shinomiya-gateway
-    image: gamecenter-shinomiya-gateway:${RELEASE_TAG:-local}
+    image: gamecenter-shinomiya-gateway:${GATEWAY_RELEASE_TAG:-${RELEASE_TAG:-local}}
     build:
       context: .
       dockerfile: gateway/Dockerfile
@@ -38,3 +38,4 @@ services:
     networks: [internal]
 networks:
   internal: {}
+

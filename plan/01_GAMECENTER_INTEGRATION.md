@@ -104,3 +104,10 @@ Rustコードはbreakout_scores.json、dungeon_scores.json、fighting_scores.jso
 
 未確定: BASEの新公開ポートと実マウント、既存proxyへ新gatewayを登録する具体的な方法、GitHub repoの可視性と配備設定、Rust永続データの実在と切替時の保全、旧domainを残す期間、各ゲームの実機QA範囲。これらは実物確認後に決め、現在の計画で稼働状態を上書きしない。
 
+
+## 2026-10-11 追加: 共通入口・1号店のビルドと既存配備経路
+
+ユーザーの最小整備GOに基づき、classic/gatewayの実Docker build CIと既存SSH→BASE側build経路を追加する。Unity成果物・image/containerとruntime6JSONを保持し、個別releaseタグと--no-depsで2サービスだけ更新する。詳細と停止条件はdocs/head/OPERATIONS.md。新鍵・runner・ネットワーク設定は追加しない。
+
+この追加は準備中。新repoの接続設定・権限・BASE実行は未確認で、配備gateは既定OFF。PR作成・merge・有効化は各承認後。旧公開切替の実施記録と、この新しい配備経路の検証完了を混同しない。
+
