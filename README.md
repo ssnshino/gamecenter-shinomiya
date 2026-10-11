@@ -23,3 +23,15 @@ BASE配置先: `/home/shino/source/repos/upstream/gamecenter-shinomiya`。共通
 
 
 開発/配備手順: [運用手順](docs/head/OPERATIONS.md)。Unity再ビルドはこのrepoでは行わず、編集元で新出力先を指定して成果物を取り込む。
+
+## 旧設計・履歴資料と復元入口
+
+旧資料は以下の元repoとGoogle Driveに保全している。この統合repoへ旧資料一式をコピーした状態ではない。受領件数は各manifestの登録件数で、同じ文書の重複を除いた数ではない。
+
+- GameCenter（受領37件）: [旧repo README](https://github.com/ssnshino/rust-sandbox/blob/dev/README.md) / [受領manifest](https://github.com/ssnshino/rust-sandbox/blob/dev/docs/history/2026-10-10-received/MANIFEST.json) / [設計・仕様・作業ログ](https://github.com/ssnshino/rust-sandbox/tree/dev/docs/history) / [旧計画](https://github.com/ssnshino/rust-sandbox/tree/dev/plan/history) / [旧snapshot](https://github.com/ssnshino/rust-sandbox/tree/dev/snapshot/history) / [GD受領保管](https://drive.google.com/drive/folders/12WX_XviuLWFAsVneXv5WWjoV91RffFKd) / [GD恒久復元manifest](https://drive.google.com/file/d/1-VFe5WFgTk7FfVRnZz3TPbqSrOSJIzUB/view)
+- AirRace（受領21件）: [編集元README](https://github.com/ssnshino/airraceUnity/blob/dev/README.md) / [受領manifest](https://github.com/ssnshino/airraceUnity/blob/dev/docs/history/2026-10-10-received/MANIFEST.json) / [設計・仕様・作業ログ](https://github.com/ssnshino/airraceUnity/tree/dev/docs/history) / [旧計画](https://github.com/ssnshino/airraceUnity/tree/dev/plan/history) / [旧snapshot](https://github.com/ssnshino/airraceUnity/tree/dev/snapshot/history) / [GD受領保管](https://drive.google.com/drive/folders/1etPU_9kSnpkP_MD8LhfCad14ApextNm3) / [GD恒久復元manifest](https://drive.google.com/file/d/15z__yY-43GpJ7etITNgMK9AtgKGaYGDP/view)
+- Colony Racer（受領3件）: [編集元README](https://github.com/ssnshino/colony-racer/blob/dev/README.md) / [受領manifest](https://github.com/ssnshino/colony-racer/blob/dev/docs/history/2026-10-10-received/MANIFEST.json) / [旧仕様・作業ログ](https://github.com/ssnshino/colony-racer/tree/dev/docs/history) / [GD受領保管](https://drive.google.com/drive/folders/1BBezWlEpVaWrOZ7TaqI9hAwDMqjwDDL-) / [GD恒久復元manifest](https://drive.google.com/file/d/1KvDMYYskC2KDRyt-9xRQAbpAzF_G0yrb/view)
+
+AirRaceの受領21件には変換済みコピー2件が含まれる。原文一致とは扱わず、manifestの変換記録を確認する。GDの保存資料には草案も含まれるため、現在の配布・運用は本repoのsnapshotとdocs/headを優先する。GDへのアクセスは既存の権限に従う。
+
+2026-10-11: 元repoの文書tree、受領manifestの件数、GD保管フォルダの存在を確認。今回は全ファイルのhash再照合や復元試験は行っていない。旧文書のbranch・配置・deploy手順は履歴であり、そのまま実行しない。
