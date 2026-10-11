@@ -40,18 +40,18 @@ runtime/classicの6JSONは実ユーザーデータ。Git、Docker build context�
 
 `build-classic-gateway.yml` はdev向けPRと対象コードのbranch更新でclassic/gatewayのDocker imageを実ビルドし、隔離networkでnginx設定を検査する。既存Node検査・成果物テストと、生成manifestが保管manifestに一致することも確認する。README等の文書だけの更新ではこのworkflowを起動しない。既存verify.ymlは維持する。
 
-配備jobはPRを除外し、devかつ `CLASSIC_GATEWAY_DEPLOY_ENABLED=true` の時だけ動く。PR #2をマージしたdevにはliteral falseも残り、同SHAのdeployはskippedだった。解除featureはCIで検証し、設定登録とPR投稿・devマージの本人承認後に有効化する。2026-10-11 03:40 UTC確認時点で新repoのSecrets/Variablesは両方空。設定する値は以下のとおり。
+配備jobはPRを除外し、devかつ `CLASSIC_GATEWAY_DEPLOY_ENABLED=true` の時だけ動く。PR #2をマージしたdevにはliteral falseも残り、同SHAのdeployはskippedだった。解除featureはCIで検証し、設定登録とPR投稿・devマージの本人承認後に有効化する。2026-10-11 03:40 UTC確認時点では新repoのSecrets/Variablesは両方空だったが、本人の継続指示に従い03:59 UTCに以下を登録済み。新経路のBASE配備はまだ実施していない。
 
 | Actions設定 | 値・登録方法 |
 |---|---|
 | Secret DEPLOY_DEV_HOST | wos.ktsys.jp |
 | Secret DEPLOY_DEV_PORT | 4523 |
-| Secret DEPLOY_DEV_SSH_KEY | 本人が既存dev用鍵を安全なGitHub入力画面で登録。agentは内容を取得・表示・転記しない |
+| Secret DEPLOY_DEV_SSH_KEY | PR #68と同じ既存ssh base用鍵。本人の承認範囲でCLI標準入力からGitHubへ暗号化登録し、本文をチャット・ログ・添付へ出力しない |
 | Variable DEV_DEPLOY_REPO_PATH | /home/shino/source/repos/upstream/gamecenter-shinomiya |
 | Variable DEV_DEPLOY_KNOWN_HOSTS | 照合済みの[wos.ktsys.jp]:4523 ed25519公開鍵。fingerprint SHA256:jxrQwD92EJgL/MQZ41cEGG54w+RsgW3FuBHelFoP0Cc |
 | Variable CLASSIC_GATEWAY_DEPLOY_ENABLED | 本人承認後にtrue。未設定/falseなら配備しない |
 
-ホスト鍵は引き継ぎ値、既存known_hosts、信頼済みBASE接続、現在の公開接続先で一致を確認した。再開時は再照合し、不一致なら停止する。旧repoのSecretは読み出せる前提にせず、共通DEPLOY_SSH_KEYを使わない。新しい鍵やrunnerを作成しない。Secret名の存在確認だけでSSH接続成功とは扱わない。
+ホスト鍵は引き継ぎ値、既存known_hosts、信頼済みBASE接続、現在の公開接続先で一致を確認した。再開時は再照合し、不一致なら停止する。旧repoのSecretは読み出せる前提にせず、共通DEPLOY_SSH_KEYを使わない。新しい鍵やrunnerを作成しない。既存dev鍵の同定は旧PR #68と成功run 38057134781の読み取り記録を使い、ssh-agentなしで公開接続先への認証を確認した。Secret名の存在確認だけでActionsからのSSH接続成功とは扱わず、配備runで実接続を確認する。
 
 CIでビルド検証後、既存SSH経路でBASEに接続し、固定SHAのソースからclassic/gatewayを順次ビルドする。registryやimage転送方式は追加しない。clean dev、origin、最新dev SHA、fast-forward、サーバlock、公開Compose、runtime6JSONの存在/JSON妥当性/所有者と、稼働classicの/dataが同じRW bindであることを確認する。Unityコードや保管manifestの差分がある時はこの経路で配備しない。
 
@@ -63,6 +63,6 @@ CIでビルド検証後、既存SSH経路でBASEに接続し、固定SHAのソ�
 
 PR #2後のdev 25c625e3ba441655c33cf3e868cfca086cbd2088では、[Docker build CI run 38105519621](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519621)と[verify run 38105519655](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519655)がsuccess。classic/gatewayのDocker build、隔離DNSのnginx設定検査、Node/Rust検証、保管manifest比較、Python guardテストは実行済み。新経路のBASE配備とその配備後公開確認は未実施。初回公開の稼働release 041e0548362a2040bfd94d518866a04456849e05を、CI build済みSHAと区別する。
 
-有効化手順は、featureの変更・CI結果・投稿先とPR本文全文・公開への影響を提示して本人承認をまとめて得る → 接続設定を登録し本人がSSH鍵Secretを入力 → 設定とdev/BASE状態を再確認 → 有効化PRをdevへマージ → 同pushの1回の自動配備を確認 → 前後比較、公開HTTP/WS/114配布ファイルhashと実ブラウザを検証、の順。手動dispatchや同じ配備の重複実行をしない。失敗時は同runと実状態を調べてから再実行範囲を判断する。
+有効化手順は、featureの変更・CI結果・投稿先とPR本文・公開への影響を提示して本人承認を得る → 承認済みの既存dev鍵で接続設定を安全に登録 → 設定とdev/BASE状態を再確認 → 有効化PRをdevへマージ → 同pushの1回の自動配備を確認 → 前後比較、公開HTTP/WS/114配布ファイルhashと実ブラウザを検証、の順。今回の本人指示では従来のCLI登録方式を承認済みで、手入力ハンドオフは不要。手動dispatchや同じ配備の重複実行をしない。失敗時は同runと実状態を調べてから再実行範囲を判断する。
 
 配備前にUnityのcontainer ID/image ID/tag/StartedAt/restarts、114ファイルのinventory hash、runtime6JSONの個別hash/サイズ/JSON妥当性/所有者を記録する。配備後は同じ基準で比較する。公開利用によるJSON更新があれば差分の整合性を確認し、hash不一致を黙って保持成功としない。検証でスコアを投稿しない。秘密値・data本文を文書やCI artifactに含めない。
