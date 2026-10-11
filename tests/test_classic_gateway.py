@@ -1,4 +1,4 @@
-import unittest, importlib.util, copy, tempfile, pathlib, json, os
+import unittest, importlib.util, copy, tempfile, pathlib, json, os, subprocess
 s=importlib.util.spec_from_file_location('guard',pathlib.Path(__file__).parents[1]/'scripts/check-classic-gateway.py'); guard=importlib.util.module_from_spec(s);s.loader.exec_module(guard)
 class Guard(unittest.TestCase):
     def setUp(self):
@@ -34,4 +34,51 @@ class Guard(unittest.TestCase):
         self.assertIn('up -d --no-build --no-deps --force-recreate classic',active)
         self.assertIn('up -d --no-build --no-deps --force-recreate gateway',active)
         self.assertNotIn('up -d --no-build unity-web',active)
+class DeploymentStdin(unittest.TestCase):
+    def test_health_checks_and_tags_complete_when_exec_reads_stdin(self):
+        # The remote script runs through bash -s. An interactive compose exec
+        # must not consume the remaining script from that same standard input.
+        shell = (pathlib.Path(__file__).parents[1] / 'scripts/deploy-classic-gateway.sh').read_text()
+        tail = shell.split('phase=local-verification\n', 1)[1].rsplit('\nREMOTE', 1)[0]
+        sha = 'a' * 40
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            stage = root / 'stage'
+            stage.mkdir()
+            release = root / '.env.release'
+            original = 'RELEASE_TAG=' + 'b' * 40 + '\nEXISTING_SETTING=keep\n'
+            release.write_text(original)
+            release.chmod(0o640)
+            unity = [{'Id': 'same-container', 'Image': 'same-image', 'RestartCount': 0,
+                      'State': {'StartedAt': 'same-time', 'Running': True}}]
+            (stage / 'unity-before.json').write_text(json.dumps(unity))
+            targets = [{'State': {'Running': True}, 'Config': {
+                'Image': 'gamecenter-shinomiya-' + name + ':' + sha,
+                'Env': ['GIT_HASH=' + sha] if name == 'classic' else []}}
+                for name in ['classic', 'gateway']]
+            (stage / 'expected-targets.json').write_text(json.dumps(targets))
+            setup = '''set -euo pipefail
+stage="$TEST_STAGE"; sha="$TEST_SHA"; compose=(docker compose)
+docker() {
+  if [[ $1 == compose ]]; then
+    cat >/dev/null
+  elif [[ $2 == gamecenter-shinomiya-unity-web ]]; then
+    cat "$stage/unity-before.json"
+  else
+    cat "$stage/expected-targets.json"
+  fi
+}
+curl() { printf '%s\\n' "${!#}" >>"$stage/health-requests"; }
+'''
+            result = subprocess.run(['bash', '-s'], input=setup + tail, cwd=root,
+                                    env={**os.environ, 'TEST_STAGE': str(stage), 'TEST_SHA': sha},
+                                    text=True, capture_output=True, timeout=10)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('Classic/gateway release ' + sha, result.stdout)
+            self.assertEqual((stage / 'health-requests').read_text().splitlines(), [
+                'http://127.0.0.1:18094/01/api/status', 'http://127.0.0.1:18094/02/healthz'])
+            self.assertEqual(release.read_text(), original +
+                             'CLASSIC_RELEASE_TAG=' + sha + '\nGATEWAY_RELEASE_TAG=' + sha + '\n')
+            self.assertEqual(release.stat().st_mode & 0o777, 0o640)
+
 if __name__=='__main__':unittest.main()

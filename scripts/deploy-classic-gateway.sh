@@ -74,7 +74,7 @@ phase=classic-update
 phase=gateway-update
 "${compose[@]}" up -d --no-build --no-deps --force-recreate gateway
 phase=local-verification
-"${compose[@]}" exec -T gateway nginx -t
+"${compose[@]}" exec -T gateway nginx -t </dev/null
 curl --fail --retry 6 --retry-connrefused --retry-delay 3 --max-time 10 http://127.0.0.1:18094/01/api/status
 curl --fail --retry 3 --max-time 10 http://127.0.0.1:18094/02/healthz
 docker inspect gamecenter-shinomiya-classic gamecenter-shinomiya-gateway > "$stage/current-images.json"
