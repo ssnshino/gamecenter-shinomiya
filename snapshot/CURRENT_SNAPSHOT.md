@@ -1,6 +1,6 @@
-# 現在地: 2026-10-11 JST — 統合公開済み
+# 現在地: 2026-10-11 JST — classic/gateway自動配備・公開検証済み
 
-ユーザーの「１号店、２号店公開まですすめて！」に従い、統合実装、GitHub作成/反映、BASE配備と公開切替を完了した。Unity編集ソースは各repoに残した。
+統合公開後、本人の「既存の鍵を使う従来方式で完遂」の指示に従い、自動配備を有効化してdevマージによる1回のclassic/gateway配備と公開検証を完了した。Unity編集ソースは各repoに残し、既存配布物・image/container・データを保持した。
 
 ## 現在の公開と配備
 
@@ -10,14 +10,35 @@
 - 配布repo: ssnshino/gamecenter-shinomiya、default/運用branch dev。
 - Mac: /Volumes/SSD250GBUSB/source/repos/upstream/gamecenter-shinomiya。
 - BASE: /home/shino/source/repos/upstream/gamecenter-shinomiya。
-- 実行release SHA: 041e0548362a2040bfd94d518866a04456849e05。以後の記録用commitは文書のみで、imageの実行SHAと区別する。
+- classic/gateway実行release SHA: a45dc158dbe1785d971e597ec16d95fe9e77bd4e（PR #3のdevマージ）。
+- Unity実行release SHA: 041e0548362a2040bfd94d518866a04456849e05。後続の配備script修正・文書commitをimageの実行SHAと混同しない。
 - Compose project gamecenter-shinomiya。container/serviceはgamecenter-shinomiya-classic / classic、gamecenter-shinomiya-unity-web / unity-web、gamecenter-shinomiya-gateway / gateway。
 - classicとunity-webは内部3000、gatewayの確認ポートは127.0.0.1:18094 → 80。公開gatewayだけを既存wos-proxy-networkへ接続。既存proxy設定ファイル、鍵/firewall/NAT/runnerは変更していない。
-- 切替完了 2026-10-11 01:12:08 JST。3container running/restarts=0、他の既存containerのrunning/startedAt変化は0件。
+- 初回公開切替は2026-10-11 01:12:08 JSTに完了。その後のclassic/gateway自動更新は13:07 JST。3container running/restarts=0。
+
+## 2026-10-11 — 1回の自動配備と保全確認
+
+- [PR #3](https://github.com/ssnshino/gamecenter-shinomiya/pull/3)を04:04:57 UTCにdevへマージ。PRの[Docker CI 38110287938](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110287938)と[verify 38110288061](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110288061)は事前に成功した。
+- dev a45dc158dbe1785d971e597ec16d95fe9e77bd4eの[build/deploy 38110443542](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443542)と[verify 38110443571](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443571)はsuccess。既存dev用SecretでSSH接続し、classic→gatewayだけを--no-depsで更新。手動dispatch・再実行は0回。
+
+| service | 実行image tagのSHA | BASEで照合したimage ID |
+|---|---|---|
+| classic | a45dc158dbe1785d971e597ec16d95fe9e77bd4e | sha256:3f4a29feae5aedf74b2a2d64506618148ee2636efa9338a6753da4f40611608f |
+| gateway | a45dc158dbe1785d971e597ec16d95fe9e77bd4e | sha256:23cd0831ae7295e4841839a96ae39b1b78dcf4de9e72485780b505681482b1a5 |
+| unity-web | 041e0548362a2040bfd94d518866a04456849e05 | sha256:5aaf891d0e7c167a87e6bfe633f044c15538d2e1483419306542c8616740afbf |
+
+- 各tagが指すimage IDと稼働containerのImageが一致。classicのGIT_HASHはa45dc158dbe1785d971e597ec16d95fe9e77bd4e。classic StartedAt=04:07:22 UTC、gateway=04:07:25 UTC。Unityはcontainer ID 4bc818141ac1623ef74dacb6f45ae3fcbf6aa7a92cffa2a22a94d74985253dbe、StartedAt=2026-10-10 16:09:03 UTC、image/restarts=0を含め前後一致。
+- 同じActions runでUnity全114ファイルのHTTP hash・gzip復号・MIME/catalog APIとportal/classic API/WSを検証。追加確認ではHTTP15経路、classic/portal静的24ファイルhash、query保持redirect6件、互換Bundle2件とroot catalog API6比較、classic WS7経路のJSON状態受信が成功。
+- Macの実ブラウザでportal/両店menu、Pongの描画と上入力、AirRace ROUND1の開始・飛行・旋回、Colony ROUND2の開始・歩行・旋回を確認。観察したconsole errorは0。スコア・ゴーストを投稿していない。
+- Unity114ファイルとmanifestのhash inventoryは配備前と一致。runtime/classicの6JSONは個別hash・サイズ・JSON構造・uid/gid=1000・mode=0644が一致、合計7,177,421 bytesを保持。Unityを含む対象外131コンテナのID/image/state/StartedAt/restartsも前後一致。routingファイルは無変更。Unity再ビルド、旧workflow/旧container再実行、Godot・runner・firewall変更は行っていない。
+- 配備後照合で.env.releaseの個別タグ未保存を発見。SSHのbash -sの残りの標準入力をcompose execが読み取ったため、runのBASE stepがnginx -t後に終了していた。公開検証stepは成功。04:12 UTCにlock/clean/稼働SHA/保全guardを再確認し、nginx -t・local health2経路・タグ記録だけを補完した。再build・再作成は行っていない。RELEASE_TAGは旧Unity SHAのまま、CLASSIC_RELEASE_TAG/GATEWAY_RELEASE_TAGはa45dc158dbe1785d971e597ec16d95fe9e77bd4eに保存済み。
+- [PR #4](https://github.com/ssnshino/gamecenter-shinomiya/pull/4)の修正はnginx -tへのstdinを/dev/nullにする1行と回帰テスト。修正前の早期終了を再現し、修正後はhealth・保全検証・タグ保存まで到達。ブランチ[Docker CI 38110872759](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110872759)と[verify 38110872746](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110872746)、PRの[Docker CI 38110956338](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110956338)と[verify 38110956411](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110956411)はsuccess。04:18:05 UTCにdevへマージした修正SHAはce2a22b9f25e60f9cd7e250f7afa35ba693d803d。
+- PR #4のマージ時だけ配備変数をfalseにし、同SHAの[Docker CI 38111146311](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38111146311)と[verify 38111146286](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38111146286)のsuccess・deploy skippedを確認してtrueへ戻した。CIでbuildした修正SHAと、稼働classic/gatewayのa45dc158dbe1785d971e597ec16d95fe9e77bd4eは区別する。アプリ・gateway・Compose・Unityのソース差分はなく、2回目のBASE配備は行っていない。
+- 自動配備receiptはruntime/deploy/classic-gateway-a45dc158dbe1785d971e597ec16d95fe9e77bd4e-20261011T040657Z.json。元のphase=local-verification/status=local-verified-public-pending/exitCode=0を保全し、それだけでタグ保存・公開完了と扱わない。公開結果は上記Actions run、補完・前後比較はMacの/tmp/gamecenter-shinomiya-classic-gateway-20261011/に記録。秘密値・data本文は含めていない。
 
 ## classic/gateway有効化前の確認（2026-10-11 03:40 UTC / 12:40 JST）
 
-- PR #2は2026-10-11 02:33 UTCにdevへマージ済み。最新dev SHAは25c625e3ba441655c33cf3e868cfca086cbd2088。
+- PR #2は2026-10-11 02:33 UTCにdevへマージ済み。当時のdev SHAは25c625e3ba441655c33cf3e868cfca086cbd2088。
 - 同SHAの[Docker build CI run 38105519621](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519621)と[配布検証run 38105519655](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519655)はsuccess。classic/gatewayの実ビルド、nginx設定、Node/Rust検証、成果物manifest照合、guardテストを実施済み。deploy jobはliteral falseによってskipped。
 - BASEのcheckoutはclean dev、HEAD d39f535d4248625f9e937247a100e51f1e0944ce。稼働classic/gateway/unity-webのimage tagとclassic GIT_HASHは全て041e0548362a2040bfd94d518866a04456849e05。3container running、restarts=0。CIでビルド済みのSHAを稼働済みとは扱わない。
 - この確認時点では新repoのActions SecretsとVariablesは両方空で、設定登録・有効化PRの投稿・devマージは承認待ちだった。後述の本人の継続指示により従来方式で登録した。共通DEPLOY_SSH_KEYや新規鍵を使用しない。
@@ -34,7 +55,7 @@
 - workflow変更commit 09c0385f52467451ef1ac61c0182c0cfe996a51aのDocker CI run 38109240822とverify run 38109240828はsuccess、featureのdeployはskipped。BASEの実効Compose/runtime guard、公開HTTP/API/7本のWS、Unity全114ファイルとclassic静的24ファイルのhash、redirect6件、Unity互換Bundle2件とroot catalog APIを配備前に確認済み。
 - この時点では有効化PRのdevマージ・新経路のBASE配備・配備後検証は未実行。稼働3imageは引き続き041e0548362a2040bfd94d518866a04456849e05。
 
-## 確認結果
+## 初回公開切替の確認結果（履歴）
 
 - ローカル型検査、15件の成果物テスト、GitHub CI success（run 38066409344）。RustはBASEで1 compilation jobのrelease build。Node/gatewayのbuildも順次完了。nginx -t success。
 - 非公開HTTP: 共通入口、1号店の全ゲームpage/API/代表module/image、2号店の入口/health/catalog HTTP200。/01・/02・ゲームpathの末尾slash補完は308、query保持。
@@ -44,7 +65,7 @@
 - 公開ブラウザ: 共通入口と両店のmenu、PongのWS描画・上下入力、AirRace ROUND1の開始・飛行・旋回、Colony ROUND2の開始・歩行で状態変化を確認。観察したコンソールerrorは0。既存UnityのpersistentDataPath非推奨warningは残る。
 - 旧rust-sandbox URLは新/01へ308。旧/airrace3d/・/colony-racer/は新/02配下へ308。旧Rust root WS/APIは既に開いていたpage用に互換維持。
 
-## データとrollback
+## 初回公開切替のデータとrollback（履歴）
 
 6JSON（scores 5種類とairrace_ghosts）の合計7,177,421 bytesを、旧Rust停止後に最終backup・複製し、全ファイルのcmp一致とJSON妥当性を確認。
 

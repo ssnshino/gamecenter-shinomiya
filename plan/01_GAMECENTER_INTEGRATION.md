@@ -1,6 +1,6 @@
 # 1号店・2号店の配布統合計画
 
-2026-10-11 JST: ユーザーの公開GO後に本計画を実装し、BASE公開切替と検証を完了。現在の構成と証拠はsnapshot/CURRENT_SNAPSHOT.mdを参照。以下は移行計画の原記録。Unityソースや既存ゲームの仕様変更、旧配置の削除は行っていない。
+2026-10-11 JST: 統合公開切替と検証を完了。続いてPR #3をdevへマージし、既存dev鍵でclassic/gatewayを1回自動配備。run 38110443542とverify 38110443571はsuccess、公開HTTP/WS/hash・Macブラウザ・データ保全を確認した。稼働classic/gatewayはa45dc158dbe1785d971e597ec16d95fe9e77bd4e、Unityは041e0548362a2040bfd94d518866a04456849e05。現在の構成と証拠はsnapshot/CURRENT_SNAPSHOT.mdを参照。以下は移行計画の原記録。Unityソースや既存ゲームの仕様変更、旧配置の削除は行っていない。
 
 作成時の記録（2026-10-11 JST）: 方針合意、設計・配置先文書を作成。この時点では実装・公開切替は未実施。現在は上記のとおり統合公開済み。
 
@@ -109,7 +109,9 @@ Rustコードはbreakout_scores.json、dungeon_scores.json、fighting_scores.jso
 
 ユーザーの最小整備GOに基づき、classic/gatewayの実Docker build CIと既存SSH→BASE側build経路を追加する。Unity成果物・image/containerとruntime6JSONを保持し、個別releaseタグと--no-depsで2サービスだけ更新する。詳細と停止条件はdocs/head/OPERATIONS.md。新鍵・runner・ネットワーク設定は追加しない。
 
-PR #2でdevへ実装を反映済み。dev 25c625e3ba441655c33cf3e868cfca086cbd2088のDocker build CI run 38105519621とverify run 38105519655はsuccess。配備jobはliteral falseによってskippedで、新経路のBASE実行は未実施。旧公開切替の実施記録と、この新しい配備経路の検証完了を混同しない。
+PR #2マージ時点の記録: dev 25c625e3ba441655c33cf3e868cfca086cbd2088のDocker build CI run 38105519621とverify run 38105519655はsuccess。配備jobはliteral falseによってskippedで、その時点では新経路のBASE実行は未実施だった。
 
-2026-10-11の仕上げでは、最新dev/BASE稼働版/接続先ホスト鍵/Unity114ファイル/runtime6JSONを再確認し、literal falseだけを解除するfeatureを検証した。workflow変更commit 09c0385の両CIはsuccess。本人の継続指示に従い、PR #68と同じ既存ssh base用鍵を秘密値非表示で暗号化登録する従来方式で、新repoの接続設定6件を登録済み。設定完了後の有効化PRのdevマージでclassic/gatewayだけを1回自動配備する。配備後は実行SHA/image ID、公開HTTP/WS/配布hash、実ブラウザ、Unity container/image/filesとruntime6JSONの保持を比較し、文書を実結果に同期する。将来の配備成功を事前に実行済みとは記載しない。
+2026-10-11の仕上げでは、dev/BASE稼働版/信頼済みホスト鍵/保全基準を再確認。既存ssh base用dev鍵を秘密値非表示で暗号化登録し、新repoの接続設定6件を登録した。PR #3はliteral falseだけを解除し、dev限定・PR除外・有効化変数・strict known_hosts・最新SHA/clean fast-forward/flock・個別タグ・--no-depsを維持した。
+
+devマージによるclassic/gatewayの自動配備と公開検証は1回成功した。配備後照合でSSH標準入力の消費による後続検証・タグ保存の未実行を発見し、health確認とタグ記録だけを補完。Unityのimage/container/114ファイル、runtime6JSON、対象外131コンテナ、routingを保持した。stdinを/dev/nullへ向ける1行修正と回帰テストはPR #4でCI成功後にdevへマージ済み。マージ時に配備変数を一時falseにして重複配備を防ぎ、devのDocker CI 38111146311とverify 38111146286のsuccess・deploy skippedを確認してtrueへ戻した。修正SHA ce2a22b9f25e60f9cd7e250f7afa35ba693d803d・文書commitと稼働image SHAを区別する。
 

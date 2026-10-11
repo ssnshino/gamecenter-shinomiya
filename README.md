@@ -2,9 +2,9 @@
 
 ゲームセンターしのみ屋の公開入口、1号店のRustゲーム、2号店のUnity WebGL配布をまとめるリポジトリ。
 
-2026-10-11 JST: BASEへの統合配置と公開切替を完了。1号店・2号店のHTTPS、配布物、API、WebSocket、ブラウザ起動・基本操作を検証済み。実行release SHAは041e0548362a2040bfd94d518866a04456849e05。詳細はsnapshot/CURRENT_SNAPSHOT.mdを参照。
+2026-10-11 JST: BASEへの統合公開に続き、[PR #3](https://github.com/ssnshino/gamecenter-shinomiya/pull/3)をdevへマージしてclassic/gatewayを1回自動配備。[build/deploy run 38110443542](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443542)と[verify run 38110443571](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443571)は成功。公開HTTP・WebSocket・配布hashとMacブラウザの起動・基本操作を確認した。
 
-classic/gatewayの自動ビルド・配備経路はPR #2でdevへ追加済み。dev 25c625e3ba441655c33cf3e868cfca086cbd2088のDocker buildと配布検証CIは成功したが、BASEへの自動配備は未実行。本人の継続指示に従い、既存dev用鍵を使う従来方式で新repoの接続設定を登録済み。有効化PRのdevマージと配備後検証はこれから行い、稼働releaseとは区別する。条件と保全範囲は[運用手順](docs/head/OPERATIONS.md)を参照。
+稼働release SHAはclassic/gatewayがa45dc158dbe1785d971e597ec16d95fe9e77bd4e、Unityが041e0548362a2040bfd94d518866a04456849e05。Unityのimage/container・114ファイルとruntime6JSONを保持した。既存dev用鍵を使う従来方式で接続設定を登録済み。配備後に見つけたSSH標準入力の問題は[PR #4](https://github.com/ssnshino/gamecenter-shinomiya/pull/4)で修正し、未実行だったhealth確認と個別タグ記録は再配備せず補完済み。修正・文書commitと稼働image SHAを区別する。詳細は[現在地](snapshot/CURRENT_SNAPSHOT.md)と[運用手順](docs/head/OPERATIONS.md)を参照。
 
 | 公開先 | 用途 |
 |---|---|

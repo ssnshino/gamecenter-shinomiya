@@ -40,7 +40,7 @@ runtime/classicの6JSONは実ユーザーデータ。Git、Docker build context�
 
 `build-classic-gateway.yml` はdev向けPRと対象コードのbranch更新でclassic/gatewayのDocker imageを実ビルドし、隔離networkでnginx設定を検査する。既存Node検査・成果物テストと、生成manifestが保管manifestに一致することも確認する。README等の文書だけの更新ではこのworkflowを起動しない。既存verify.ymlは維持する。
 
-配備jobはPRを除外し、devかつ `CLASSIC_GATEWAY_DEPLOY_ENABLED=true` の時だけ動く。PR #2をマージしたdevにはliteral falseも残り、同SHAのdeployはskippedだった。解除featureはCIで検証し、設定登録とPR投稿・devマージの本人承認後に有効化する。2026-10-11 03:40 UTC確認時点では新repoのSecrets/Variablesは両方空だったが、本人の継続指示に従い03:59 UTCに以下を登録済み。新経路のBASE配備はまだ実施していない。
+配備jobはPRを除外し、devかつ `CLASSIC_GATEWAY_DEPLOY_ENABLED=true` の時だけ動く。PR #2時点のliteral falseはPR #3で解除済み。本人の従来方式で完遂する指示に従い、2026-10-11 03:59 UTCに以下を登録し、devマージのbuild/deploy run 38110443542で既存dev用鍵によるSSHとclassic/gateway更新・公開検証の成功を確認した。設定登録前のSecrets/Variables空状態と、CI build済みだが未配備だった時点はsnapshotの履歴を参照。
 
 | Actions設定 | 値・登録方法 |
 |---|---|
@@ -49,20 +49,26 @@ runtime/classicの6JSONは実ユーザーデータ。Git、Docker build context�
 | Secret DEPLOY_DEV_SSH_KEY | PR #68と同じ既存ssh base用鍵。本人の承認範囲でCLI標準入力からGitHubへ暗号化登録し、本文をチャット・ログ・添付へ出力しない |
 | Variable DEV_DEPLOY_REPO_PATH | /home/shino/source/repos/upstream/gamecenter-shinomiya |
 | Variable DEV_DEPLOY_KNOWN_HOSTS | 照合済みの[wos.ktsys.jp]:4523 ed25519公開鍵。fingerprint SHA256:jxrQwD92EJgL/MQZ41cEGG54w+RsgW3FuBHelFoP0Cc |
-| Variable CLASSIC_GATEWAY_DEPLOY_ENABLED | 本人承認後にtrue。未設定/falseなら配備しない |
+| Variable CLASSIC_GATEWAY_DEPLOY_ENABLED | trueでdevの対象変更を自動配備。未設定/falseなら配備しない。修正だけを配備せず反映する時は一時falseにし、対象runのdeploy skipped確認後に戻す |
 
 ホスト鍵は引き継ぎ値、既存known_hosts、信頼済みBASE接続、現在の公開接続先で一致を確認した。再開時は再照合し、不一致なら停止する。旧repoのSecretは読み出せる前提にせず、共通DEPLOY_SSH_KEYを使わない。新しい鍵やrunnerを作成しない。既存dev鍵の同定は旧PR #68と成功run 38057134781の読み取り記録を使い、ssh-agentなしで公開接続先への認証を確認した。Secret名の存在確認だけでActionsからのSSH接続成功とは扱わず、配備runで実接続を確認する。
 
 CIでビルド検証後、既存SSH経路でBASEに接続し、固定SHAのソースからclassic/gatewayを順次ビルドする。registryやimage転送方式は追加しない。clean dev、origin、最新dev SHA、fast-forward、サーバlock、公開Compose、runtime6JSONの存在/JSON妥当性/所有者と、稼働classicの/dataが同じRW bindであることを確認する。Unityコードや保管manifestの差分がある時はこの経路で配備しない。
 
-個別タグ `CLASSIC_RELEASE_TAG` / `GATEWAY_RELEASE_TAG` は未指定なら従来 `RELEASE_TAG` を使う。配備ではこの2つだけを更新し、既存 `RELEASE_TAG` とunity-web imageを保つ。`compose.dev.yaml` と `compose.public.yaml` を併用して `up -d --no-build --no-deps --force-recreate classic`、続いて `gateway` を実行する。gateway再作成でclassicの名前解決も更新する。既存unity-webのcontainer ID・image・startedAt・restart回数を前後比較する。
+個別タグ `CLASSIC_RELEASE_TAG` / `GATEWAY_RELEASE_TAG` は未指定なら従来 `RELEASE_TAG` を使う。配備ではこの2つだけを更新し、既存 `RELEASE_TAG` とunity-web imageを保つ。`compose.dev.yaml` と `compose.public.yaml` を併用して `up -d --no-build --no-deps --force-recreate classic`、続いて `gateway` を実行する。gateway再作成でclassicの名前解決も更新する。既存unity-webのcontainer ID・image・startedAt・restart回数を前後比較する。health・保全確認後に2つの個別タグを.env.releaseへ保存する。
+
+SSHの `bash -s` はスクリプト自体を標準入力で読むため、`compose exec -T gateway nginx -t </dev/null` としてexecへ残りのスクリプトを渡さない。`-T`だけではstdin消費を防げず、後続検証・タグ保存前に成功終了することがある。PR #4の回帰テストはこの早期終了を再現し、health2経路・Unity保全・RELEASE_TAGと既存設定の保持・個別タグ保存まで到達することを検証する。
 
 短い1号店停止とWebSocket切断の可能性がある。runtime/classicは上書き・初期化しない。公開後に共通入口・Rust API/WS・redirect・Unity配布物hash/APIを確認する。実ブラウザ操作は別確認。公開smokeに失敗しても自動で旧データを復元しない。
 
 失敗時は処理を止め、runtime/deploy/classic-gateway-*.jsonの旧image/checkout SHAと切替段階、ログを確認する。receiptのlocal-verified-public-pendingは公開確認完了ではなく、公開確認の結果は同じActions runで確認する。必要な復旧は以前の個別タグへ戻してclassic/gatewayだけを上記--no-deps方式で再作成し、runtimeとUnityは保持する。実行前にlive dataと状態を確認し、別途承認を得る。途中失敗時は実containerと.env.release記録が異なる場合があるため、ファイルだけで稼働版を判断しない。旧全体RELEASE_TAGへ戻すために全serviceを再作成しない。
 
-PR #2後のdev 25c625e3ba441655c33cf3e868cfca086cbd2088では、[Docker build CI run 38105519621](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519621)と[verify run 38105519655](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519655)がsuccess。classic/gatewayのDocker build、隔離DNSのnginx設定検査、Node/Rust検証、保管manifest比較、Python guardテストは実行済み。新経路のBASE配備とその配備後公開確認は未実施。初回公開の稼働release 041e0548362a2040bfd94d518866a04456849e05を、CI build済みSHAと区別する。
+今回の実行: [PR #3](https://github.com/ssnshino/gamecenter-shinomiya/pull/3)のdevマージSHA a45dc158dbe1785d971e597ec16d95fe9e77bd4eを[build/deploy run 38110443542](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443542)で1回配備。[verify run 38110443571](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443571)もsuccess。両serviceの同SHAのtag/image IDとclassicのGIT_HASHを照合し、Unityの041e0548362a2040bfd94d518866a04456849e05を保持した。公開114ファイルhash/API/WS、Macブラウザの基本操作、Unity・runtime6JSON・対象外コンテナ・routingの前後一致を確認した。
 
-有効化手順は、featureの変更・CI結果・投稿先とPR本文・公開への影響を提示して本人承認を得る → 承認済みの既存dev鍵で接続設定を安全に登録 → 設定とdev/BASE状態を再確認 → 有効化PRをdevへマージ → 同pushの1回の自動配備を確認 → 前後比較、公開HTTP/WS/114配布ファイルhashと実ブラウザを検証、の順。今回の本人指示では従来のCLI登録方式を承認済みで、手入力ハンドオフは不要。手動dispatchや同じ配備の重複実行をしない。失敗時は同runと実状態を調べてから再実行範囲を判断する。
+同runのBASE stepはnginx -t後にstdinを消費して終了していたため、配備後の照合で.env.releaseの個別タグ未保存を発見した。04:12 UTCに稼働SHA・clean/lock・保全基準を確認し、nginx -t/local health/個別タグ保存だけを補完。再build・container再作成・run再実行は行っていない。元receiptのphase=local-verificationとexitCode=0だけでは後続処理の完了を証明しない。公開結果はActions run、補完とimage/data保持結果はsnapshotへ記録した。
+
+今回の有効化は、本人の完遂指示に従い既存dev鍵をCLI標準入力で暗号化登録 → 設定とdev/BASE・ホスト鍵/保全基準を再確認 → PR #3のCI成功後にdevマージ → 同pushの1回の自動配備と公開検証 → 実状態の前後比較とブラウザ検証、の順に実施した。手入力ハンドオフは不要とされた。手動dispatchや同じ配備の重複実行をしない。失敗時は同runと実状態を調べてから再実行範囲を判断する。
+
+PR #4の配備script修正は04:18 UTCに配備変数を一時falseにしてdev反映済み。修正SHA ce2a22b9f25e60f9cd7e250f7afa35ba693d803dの[Docker CI 38111146311](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38111146311)と[verify 38111146286](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38111146286)がsuccess、deployはskipped。その確認後に変数をtrueへ戻した。BASEの稼働releaseはa45dc158dbe1785d971e597ec16d95fe9e77bd4eを保持し、修正CIのbuild済みSHA・文書のみのcommitと区別する。
 
 配備前にUnityのcontainer ID/image ID/tag/StartedAt/restarts、114ファイルのinventory hash、runtime6JSONの個別hash/サイズ/JSON妥当性/所有者を記録する。配備後は同じ基準で比較する。公開利用によるJSON更新があれば差分の整合性を確認し、hash不一致を黙って保持成功としない。検証でスコアを投稿しない。秘密値・data本文を文書やCI artifactに含めない。
