@@ -15,6 +15,25 @@
 - classicとunity-webは内部3000、gatewayの確認ポートは127.0.0.1:18094 → 80。公開gatewayだけを既存wos-proxy-networkへ接続。既存proxy設定ファイル、鍵/firewall/NAT/runnerは変更していない。
 - 切替完了 2026-10-11 01:12:08 JST。3container running/restarts=0、他の既存containerのrunning/startedAt変化は0件。
 
+## classic/gateway有効化前の確認（2026-10-11 03:40 UTC / 12:40 JST）
+
+- PR #2は2026-10-11 02:33 UTCにdevへマージ済み。最新dev SHAは25c625e3ba441655c33cf3e868cfca086cbd2088。
+- 同SHAの[Docker build CI run 38105519621](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519621)と[配布検証run 38105519655](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38105519655)はsuccess。classic/gatewayの実ビルド、nginx設定、Node/Rust検証、成果物manifest照合、guardテストを実施済み。deploy jobはliteral falseによってskipped。
+- BASEのcheckoutはclean dev、HEAD d39f535d4248625f9e937247a100e51f1e0944ce。稼働classic/gateway/unity-webのimage tagとclassic GIT_HASHは全て041e0548362a2040bfd94d518866a04456849e05。3container running、restarts=0。CIでビルド済みのSHAを稼働済みとは扱わない。
+- この確認時点では新repoのActions SecretsとVariablesは両方空で、設定登録・有効化PRの投稿・devマージは承認待ちだった。後述の本人の継続指示により従来方式で登録した。共通DEPLOY_SSH_KEYや新規鍵を使用しない。
+- DEV_DEPLOY_KNOWN_HOSTSのed25519 fingerprintはSHA256:jxrQwD92EJgL/MQZ41cEGG54w+RsgW3FuBHelFoP0Cc。引き継ぎ公開鍵、Macの既存known_hosts、StrictHostKeyChecking=yesの既存BASE接続で得たホスト公開鍵、wos.ktsys.jp:4523の現在の取得値が一致。
+- 配備前基準: Unity container/image/StartedAt/restarts、既存114ファイルのhash inventory、runtime/classicの6JSONのhash/サイズ/JSON妥当性/uid=1000を確認。6JSONは合計7,177,421 bytes。data本文や秘密値は記録に含めていない。
+- 有効化用の変更はworkflowのliteral false解除と事実記録のみ。配備変数、dev限定/PR除外、strict known_hosts、最新SHA/clean fast-forward、flock、個別タグ、classic→gatewayの--no-deps更新は維持する。
+- 新経路のBASE build/deployと配備後のHTTP/WS/公開114ファイル/実ブラウザ/データ保持検証は未実行。Unity再ビルド、他アプリ・Godot・runner・firewallの変更は対象外。
+
+## 2026-10-11 03:59 UTC / 12:59 JST — 設定登録済み・自動配備前
+
+- 本人から既存鍵を使う従来方式で完遂する指示を受け、設定登録・PR投稿・devマージと1回の自動配備を継続する。手入力ハンドオフを必須とした先の手順を更新した。
+- 旧rust-sandboxの[PR #68](https://github.com/ssnshino/rust-sandbox/pull/68)と成功run 38057134781を読み取り確認し、既存ssh base用鍵がdev専用Secretの先例だと同定。ssh-agentなし・その鍵のみ・strict known_hostsでwos.ktsys.jp:4523への認証成功。旧workflowや旧containerは実行していない。
+- 新repoにDEPLOY_DEV_HOST/DEPLOY_DEV_PORT/DEPLOY_DEV_SSH_KEYのSecretと、DEV_DEPLOY_REPO_PATH/DEV_DEPLOY_KNOWN_HOSTS/CLASSIC_GATEWAY_DEPLOY_ENABLED=trueのVariableを登録しmetadataを確認。秘密鍵はCLIの標準入力からGitHubへ暗号化登録し、本文をチャット・ログ・添付へ出力していない。既存鍵の権限・BASE authorized_keysは変更していない。
+- workflow変更commit 09c0385f52467451ef1ac61c0182c0cfe996a51aのDocker CI run 38109240822とverify run 38109240828はsuccess、featureのdeployはskipped。BASEの実効Compose/runtime guard、公開HTTP/API/7本のWS、Unity全114ファイルとclassic静的24ファイルのhash、redirect6件、Unity互換Bundle2件とroot catalog APIを配備前に確認済み。
+- この時点では有効化PRのdevマージ・新経路のBASE配備・配備後検証は未実行。稼働3imageは引き続き041e0548362a2040bfd94d518866a04456849e05。
+
 ## 確認結果
 
 - ローカル型検査、15件の成果物テスト、GitHub CI success（run 38066409344）。RustはBASEで1 compilation jobのrelease build。Node/gatewayのbuildも順次完了。nginx -t success。

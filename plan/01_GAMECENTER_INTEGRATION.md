@@ -2,7 +2,7 @@
 
 2026-10-11 JST: ユーザーの公開GO後に本計画を実装し、BASE公開切替と検証を完了。現在の構成と証拠はsnapshot/CURRENT_SNAPSHOT.mdを参照。以下は移行計画の原記録。Unityソースや既存ゲームの仕様変更、旧配置の削除は行っていない。
 
-作成: 2026-10-11 JST。状態: 方針合意、設計・配置先文書を作成。実装・公開切替は未実施。
+作成時の記録（2026-10-11 JST）: 方針合意、設計・配置先文書を作成。この時点では実装・公開切替は未実施。現在は上記のとおり統合公開済み。
 
 ## 目的と範囲
 
@@ -109,5 +109,7 @@ Rustコードはbreakout_scores.json、dungeon_scores.json、fighting_scores.jso
 
 ユーザーの最小整備GOに基づき、classic/gatewayの実Docker build CIと既存SSH→BASE側build経路を追加する。Unity成果物・image/containerとruntime6JSONを保持し、個別releaseタグと--no-depsで2サービスだけ更新する。詳細と停止条件はdocs/head/OPERATIONS.md。新鍵・runner・ネットワーク設定は追加しない。
 
-この追加は準備中。新repoの接続設定・権限・BASE実行は未確認で、配備gateは既定OFF。PR作成・merge・有効化は各承認後。旧公開切替の実施記録と、この新しい配備経路の検証完了を混同しない。
+PR #2でdevへ実装を反映済み。dev 25c625e3ba441655c33cf3e868cfca086cbd2088のDocker build CI run 38105519621とverify run 38105519655はsuccess。配備jobはliteral falseによってskippedで、新経路のBASE実行は未実施。旧公開切替の実施記録と、この新しい配備経路の検証完了を混同しない。
+
+2026-10-11の仕上げでは、最新dev/BASE稼働版/接続先ホスト鍵/Unity114ファイル/runtime6JSONを再確認し、literal falseだけを解除するfeatureを検証した。workflow変更commit 09c0385の両CIはsuccess。本人の継続指示に従い、PR #68と同じ既存ssh base用鍵を秘密値非表示で暗号化登録する従来方式で、新repoの接続設定6件を登録済み。設定完了後の有効化PRのdevマージでclassic/gatewayだけを1回自動配備する。配備後は実行SHA/image ID、公開HTTP/WS/配布hash、実ブラウザ、Unity container/image/filesとruntime6JSONの保持を比較し、文書を実結果に同期する。将来の配備成功を事前に実行済みとは記載しない。
 

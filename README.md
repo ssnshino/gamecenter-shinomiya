@@ -4,6 +4,8 @@
 
 2026-10-11 JST: BASEへの統合配置と公開切替を完了。1号店・2号店のHTTPS、配布物、API、WebSocket、ブラウザ起動・基本操作を検証済み。実行release SHAは041e0548362a2040bfd94d518866a04456849e05。詳細はsnapshot/CURRENT_SNAPSHOT.mdを参照。
 
+classic/gatewayの自動ビルド・配備経路はPR #2でdevへ追加済み。dev 25c625e3ba441655c33cf3e868cfca086cbd2088のDocker buildと配布検証CIは成功したが、BASEへの自動配備は未実行。本人の継続指示に従い、既存dev用鍵を使う従来方式で新repoの接続設定を登録済み。有効化PRのdevマージと配備後検証はこれから行い、稼働releaseとは区別する。条件と保全範囲は[運用手順](docs/head/OPERATIONS.md)を参照。
+
 | 公開先 | 用途 |
 |---|---|
 | `https://unity-games.wos.ktsys.jp/` | 共通入口 |

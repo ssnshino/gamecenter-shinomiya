@@ -46,8 +46,8 @@ jobs:
           docker network rm gamecenter-check 2>/dev/null || true
   deploy:
     needs: build
-    # Hard disabled for this merge. Removing false requires separate deployment approval.
-    if: false && github.event_name != 'pull_request' && github.ref == 'refs/heads/dev' && vars.CLASSIC_GATEWAY_DEPLOY_ENABLED == 'true'
+    # Enable only on dev after repository connection settings and deployment approval.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev' && vars.CLASSIC_GATEWAY_DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
