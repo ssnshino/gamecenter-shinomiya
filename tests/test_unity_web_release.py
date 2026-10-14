@@ -109,6 +109,42 @@ class ReleaseGuardTests(unittest.TestCase):
         source = {'Name': '/game', 'Id': 'id', 'Image': 'image', 'Config': {'Image': 'tag', 'WorkingDir': '/', 'Env': ['PASSWORD=secret-value'], 'Labels': {}}, 'State': {'Running': True, 'Status': 'running', 'StartedAt': 'start'}, 'RestartCount': 0, 'HostConfig': {'ReadonlyRootfs': True}, 'NetworkSettings': {'Networks': {}}, 'Mounts': []}
         self.assertNotIn('secret-value', json.dumps(guard.container_record(source)))
 
+    def test_inspect_mount_and_alias_order_is_canonical_without_losing_fields(self):
+        source = {'Name': '/game', 'Id': 'id', 'Image': 'image', 'Config': {'Image': 'tag', 'WorkingDir': '/', 'Labels': {}}, 'State': {'Running': True, 'Status': 'running', 'StartedAt': 'start'}, 'RestartCount': 0, 'HostConfig': {'ReadonlyRootfs': True}, 'NetworkSettings': {'Networks': {'internal': {'IPAddress': '192.168.1.2', 'Aliases': ['z', 'a', 'a']}, 'other': {'IPAddress': '192.168.2.2', 'Aliases': None}}}, 'Mounts': [{'Type': 'bind', 'Source': '/first', 'Destination': '/a', 'RW': True}, {'Type': 'volume', 'Source': '/second', 'Destination': '/b', 'RW': False}]}
+        reversed_source = copy.deepcopy(source)
+        reversed_source['Mounts'].reverse()
+        reversed_source['NetworkSettings']['Networks']['internal']['Aliases'].reverse()
+        first, second = [guard.container_record(value) for value in [source, reversed_source]]
+        self.assertEqual(first, second)
+        self.assertEqual(first['networks']['internal']['aliases'], ['a', 'a', 'z'])
+        self.assertIsNone(first['networks']['other']['aliases'])
+        self.assertEqual(source['NetworkSettings']['Networks']['internal']['Aliases'], ['z', 'a', 'a'])
+        self.assertEqual(len(first['mounts']), 2)
+        for change in ['add', 'remove', 'rw', 'source', 'destination']:
+            changed = copy.deepcopy(source)
+            if change == 'add': changed['Mounts'].append({'Type': 'bind', 'Source': '/extra', 'Destination': '/c', 'RW': True})
+            if change == 'remove': changed['Mounts'].pop()
+            if change == 'rw': changed['Mounts'][0]['RW'] = False
+            if change == 'source': changed['Mounts'][0]['Source'] = '/different'
+            if change == 'destination': changed['Mounts'][0]['Destination'] = '/different'
+            with self.subTest(change=change): self.assertNotEqual(first, guard.container_record(changed))
+
+    def test_normalized_inspect_order_passes_guard_but_actual_mount_changes_fail(self):
+        before, after, proposed = fixture()
+        extra_mount = {'Type': 'bind', 'Source': '/extra', 'Destination': '/extra', 'RW': False}
+        before['containers'][0]['mounts'].append(extra_mount)
+        after['containers'][0]['mounts'].insert(0, copy.deepcopy(extra_mount))
+        for snapshot in [before, after]:
+            snapshot['containers'] = [guard.canonical_container_record(record) for record in snapshot['containers']]
+        self.assertTrue(guard.check_preservation(before, after, proposed, NEW, 'provisional'))
+        for change in ['add', 'remove', 'rw']:
+            changed = copy.deepcopy(after)
+            if change == 'add': changed['containers'][0]['mounts'].append({'Type': 'bind', 'Source': '/another', 'Destination': '/another', 'RW': True})
+            if change == 'remove': changed['containers'][0]['mounts'].pop()
+            if change == 'rw': changed['containers'][0]['mounts'][0]['RW'] = not changed['containers'][0]['mounts'][0]['RW']
+            with self.subTest(change=change), self.assertRaisesRegex(ValueError, 'unrelated container'):
+                guard.check_preservation(before, changed, proposed, NEW, 'provisional')
+
     def test_release_file_rejects_unknown_key_and_persists_only_unity(self):
         with tempfile.TemporaryDirectory() as directory:
             path = pathlib.Path(directory) / '.env.release'
