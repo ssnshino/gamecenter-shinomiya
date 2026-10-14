@@ -1,5 +1,19 @@
 # gamecenter-shinomiya
 
+## 完了（入力・描画prototype公開）: 2026-10-14 Colony Racer共通WebGL
+
+既存Core／East／West、固定躯体・生活街区とP0-P2車体を、[https://unity-games.wos.ktsys.jp/02/colony-racer/](https://unity-games.wos.ktsys.jp/02/colony-racer/) のPC・タッチ共通版へ更新した。PCはW／Space／A・D、スマホは左のアナログ操舵・右の加速と制動。旧公開版にぷにこんがあったという推測は本人確認で訂正し、新しいtouch controllerを採用した。スマホ専用Sites案は中止・未公開。
+
+2026-10-14 23:51 JSTに公開採用を完了した。配布devと永続Unity RELEASE_TAGは `91efbec9032aaa087236e0965d7e0cb16b9ff583`、Unity sourceは `ab3394504e39b7997eeb1e454f82bfb55088ffef`、Unity imageは `sha256:48d91a6cb4d99dc0ff890ad9c63e817e88e59df43ac7c7e05e357933aae4fea6`。accepted receipt／BASE clean checkout／公開PC24checks・touch33checks計528samples／post-final115file hash・gzip・MIME・catalog APIのexit0を照合した。今回の採用は共通controller／render prototypeの公開で、接地安定の受入れとは分ける。
+
+独立 `public-acceptance-audit.json` の7群PASSで同Unity image、対象外132container、runtime6JSON、routing／Compose／gateway設定、AirRace57file、既存Colony StreamingAssets37／TemplateData14を照合した。classic／gatewayはa45dc158のimage／containerを継続し、gatewayはDNS再解決のgraceful reloadだけを行った。runtime dataをGitへ取り込んでいない。
+
+Webの入力・描画smokeと連続接地を区別する。ローカル3環境の88checks／807samplesはsmoke PASS、100km/h以上の近傍路面でcontactが間欠的に外れるため連続接地gateはfalse。motor・操舵はcontactでgateされるのでHUDだけの問題とは扱わない。iPhone hardware・実機fpsは未測定。Native r9の115条件は履歴で、WebGL合格へ転記しない。
+
+結果は [Colony WebGL更新](docs/head/COLONY_WEBGL_20261014.md)、手順は [Unity限定公開](docs/head/COLONY_WEBGL_PUBLICATION.md)。source commit・配布commit・image SHA・実URLを別に照合して再開する。以下は更新前の記録で、旧Unity image041e054と『再ビルド／公開未実施』は各記録時点の履歴。
+
+現在の停止点は共通WebGL prototype公開。連続接地の課題とiPhone実機未測定を残す。作業用Editor・local検証serverは停止済み。文書commitを稼働image SHAと混同せず、accepted receiptとlive状態を先に確認する。
+
 ゲームセンターしのみ屋の公開入口、1号店のRustゲーム、2号店のUnity WebGL配布をまとめるリポジトリ。
 
 2026-10-11 JST: BASEへの統合公開に続き、[PR #3](https://github.com/ssnshino/gamecenter-shinomiya/pull/3)をdevへマージしてclassic/gatewayを1回自動配備。[build/deploy run 38110443542](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443542)と[verify run 38110443571](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38110443571)は成功。公開HTTP・WebSocket・配布hashとMacブラウザの起動・基本操作を確認した。

@@ -1,5 +1,26 @@
 # 現在地: 2026-10-11 JST — classic/gateway自動配備・公開検証済み
 
+## 完了（入力・描画prototype公開）: 2026-10-14 Colony Racer共通WebGL
+
+既存Core／East／West、固定躯体・生活街区とP0-P2車体を、[https://unity-games.wos.ktsys.jp/02/colony-racer/](https://unity-games.wos.ktsys.jp/02/colony-racer/) のPC・タッチ共通版へ更新した。PCはW／Space／A・D、スマホは左のアナログ操舵・右の加速と制動。旧公開版にぷにこんがあったという推測は本人確認で訂正し、新しいtouch controllerを採用した。スマホ専用Sites案は中止・未公開。
+
+2026-10-14 23:51 JSTに公開採用を完了した。配布devと永続Unity RELEASE_TAGは `91efbec9032aaa087236e0965d7e0cb16b9ff583`、Unity sourceは `ab3394504e39b7997eeb1e454f82bfb55088ffef`、Unity imageは `sha256:48d91a6cb4d99dc0ff890ad9c63e817e88e59df43ac7c7e05e357933aae4fea6`。accepted receipt／BASE clean checkout／公開PC24checks・touch33checks計528samples／post-final115file hash・gzip・MIME・catalog APIのexit0を照合した。今回の採用は共通controller／render prototypeの公開で、接地安定の受入れとは分ける。
+
+独立 `public-acceptance-audit.json` の7群PASSで同Unity image、対象外132container、runtime6JSON、routing／Compose／gateway設定、AirRace57file、既存Colony StreamingAssets37／TemplateData14を照合した。classic／gatewayはa45dc158のimage／containerを継続し、gatewayはDNS再解決のgraceful reloadだけを行った。runtime dataをGitへ取り込んでいない。
+
+Webの入力・描画smokeと連続接地を区別する。ローカル3環境の88checks／807samplesはsmoke PASS、100km/h以上の近傍路面でcontactが間欠的に外れるため連続接地gateはfalse。motor・操舵はcontactでgateされるのでHUDだけの問題とは扱わない。iPhone hardware・実機fpsは未測定。Native r9の115条件は履歴で、WebGL合格へ転記しない。
+
+結果は [Colony WebGL更新](../docs/head/COLONY_WEBGL_20261014.md)、手順は [Unity限定公開](../docs/head/COLONY_WEBGL_PUBLICATION.md)。source commit・配布commit・image SHA・実URLを別に照合して再開する。以下は更新前の記録で、旧Unity image041e054と『再ビルド／公開未実施』は各記録時点の履歴。
+
+### 今回の公開・再開対応
+
+- Unity実行release: `91efbec9032aaa087236e0965d7e0cb16b9ff583`／image `sha256:48d91a6cb4d99dc0ff890ad9c63e817e88e59df43ac7c7e05e357933aae4fea6`。receipt accepted、adoptionComplete true。
+- classic／gateway実行release: `a45dc158dbe1785d971e597ec16d95fe9e77bd4e`。image／containerを再作成せず、gatewayのDNS再解決だけgraceful reloadした。
+- AirRace57file、旧Colony StreamingAssets37／TemplateData14、runtime6JSON、routing、対象外132containerを最終receiptと独立監査で再照合した。
+- initial failed公開suite2件と切替前guard停止のreceiptを保全し、逐次rerunの採用結果と区別する。
+- BASEはclean dev `91efbec9032aaa087236e0965d7e0cb16b9ff583`、永続RELEASE_TAGも同SHA。CLASSIC_RELEASE_TAG／GATEWAY_RELEASE_TAGはa45dc158を保持。文書だけの後続commitは実image変更を意味しない。
+- 次回は高速直進のcontact／solverの揺れを別に調査し、完了済み公開を再配備せずlive HEAD／dirty／receiptと実hashを照合する。iPhone実機性能、追加衝突検証は未確認。
+
 統合公開後、本人の「既存の鍵を使う従来方式で完遂」の指示に従い、自動配備を有効化してdevマージによる1回のclassic/gateway配備と公開検証を完了した。Unity編集ソースは各repoに残し、既存配布物・image/container・データを保持した。
 
 ## 現在の公開と配備
