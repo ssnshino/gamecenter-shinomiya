@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { verifyGame, safeRelative, manifest } from '../scripts/verify-game-delivery.mjs';
+import { verifyGame, safeRelative, manifest, unityProvenance } from '../scripts/verify-game-delivery.mjs';
 export async function fixture() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'game-delivery-'));
   const put = async (rel, value) => { await fs.mkdir(path.dirname(path.join(root, rel)), { recursive: true }); await fs.writeFile(path.join(root, rel), value); };
@@ -59,4 +59,51 @@ test('catalog entries must contain required bundle and prefab',async()=>{const {
 test('null round rejected',async()=>{const {root,put}=await fixture();await put('StreamingAssets/AirRace/airrace_rounds.json',JSON.stringify({1:null}));await assert.rejects(verifyGame(root,'airrace3d'),/Invalid rounds/);});
 
 test('game root symlink rejected',async()=>{const {root}=await fixture();const parent=await fs.mkdtemp(path.join(os.tmpdir(),'root-symlink-'));const link=path.join(parent,'linked');await fs.symlink(root,link);await assert.rejects(verifyGame(link,'airrace3d'),/root symlink/);});
+
+test('Unity provenance rejects unperformed and ambiguous source claims',()=>{
+  assert.throws(()=>unityProvenance('a'.repeat(40),false),/provenance/);
+  assert.throws(()=>unityProvenance('working-tree',true),/provenance/);
+});
+test('Colony provenance is scoped and survives ordinary manifest regeneration',async()=>{
+  const {root}=await fixture();const repo=await fs.mkdtemp(path.join(os.tmpdir(),'game-provenance-'));
+  await fs.mkdir(path.join(repo,'apps/unity-web/public'),{recursive:true});
+  for(const game of ['airrace3d','colony-racer']) await fs.cp(root,path.join(repo,'apps/unity-web/public',game),{recursive:true});
+  const m=await manifest(repo,'a'.repeat(40),{colonyProvenance:unityProvenance('b'.repeat(40),true)});
+  assert.equal(m.unitySourceSha,null);assert.equal(m.unityBuildPerformed,true);
+  assert.equal(m.games[0].unitySourceSha,undefined);assert.equal(m.games[1].unitySourceSha,'b'.repeat(40));
+  await fs.mkdir(path.join(repo,'docs/head'),{recursive:true});
+  await fs.writeFile(path.join(repo,'docs/head/UNITY_ARTIFACT_MANIFEST.json'),JSON.stringify(m));
+  assert.deepEqual(await manifest(repo,'a'.repeat(40)),m);
+  assert.equal((await manifest(repo,'c'.repeat(40))).unityBuildPerformed,false);
+});
+
+async function literalFixture() {
+  const f=await fixture();
+  await f.put('preview.css','body{margin:0}');await f.put('preview.js','window.previewReady=true;');
+  for(const ext of ['data','framework.js','wasm']) await f.put(`Build/p.${ext}.unityweb`,gzipSync(Buffer.from(ext)));
+  const html='<link href="preview.css" rel="stylesheet"><script src="preview.js"></script><script>const config={loaderUrl:"Build/a.loader.js",dataUrl:"Build/p.data.unityweb",frameworkUrl:"Build/p.framework.js.unityweb",codeUrl:"Build/p.wasm.unityweb"};</script>';
+  await f.put('index.html',html);
+  return {...f,html};
+}
+test('literal local Build template inventories fallback files and local controller assets',async()=>{
+  const {root}=await literalFixture();const m=await verifyGame(root,'colony-racer');
+  assert.ok(m.required.includes('preview.css'));assert.ok(m.required.includes('preview.js'));assert.ok(m.required.includes('Build/p.wasm.unityweb'));
+  const file=m.files.find(f=>f.path==='Build/p.data.unityweb');assert.equal(file.sha256,file.httpSha256);
+});
+test('literal Build references reject absolute URLs traversal and queries',async()=>{
+  for(const value of ['https://bad.example/a.wasm','/Build/a.wasm','Build/../a.wasm','Build/a.wasm?version=1']){
+    const {root,put,html}=await literalFixture();await put('index.html',html.replace('Build/p.wasm.unityweb',value));
+    await assert.rejects(verifyGame(root,'colony-racer'),/Unsafe artifact/);
+  }
+});
+test('literal preview fails when referenced controller or build file is missing',async()=>{
+  for(const missing of ['preview.css','preview.js','Build/p.wasm.unityweb']){
+    const {root}=await literalFixture();await fs.unlink(path.join(root,missing));
+    await assert.rejects(verifyGame(root,'colony-racer'),/Missing referenced file/);
+  }
+});
+test('literal preview cannot replace its local controller script with a remote URL',async()=>{
+  const {root,put,html}=await literalFixture();await put('index.html',html.replace('src="preview.js"','src="https://bad.example/preview.js"'));
+  await assert.rejects(verifyGame(root,'colony-racer'),/Unsafe artifact/);
+});
 
