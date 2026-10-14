@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceSha": "7b77aab5c3a3d325ce5ef4a27ade33a3d10669d8",
   "unitySourceSha": null,
-  "unityBuildPerformed": false,
+  "unityBuildPerformed": true,
   "games": [
     {
       "game": "airrace3d",
@@ -398,11 +398,10 @@
         "airrace_rounds.json": null
       },
       "required": [
-        "Build/633ede84d286f8a8e15f7a0bf3960220.wasm.gz",
-        "Build/737e57b897c96d5d301663a0860746ae.loader.js",
-        "Build/886371ec748e095ccda2e13ebab6437d.symbols.json.gz",
-        "Build/d04b259385ba830dce4fdad134d98d7a.data.gz",
-        "Build/dcc412335d058db475417492572a73a0.framework.js.gz",
+        "Build/245df0fff2ef0eb48aef0476d83a2322.wasm.unityweb",
+        "Build/59ba4d3a5dba5668f34f83da0fd6df73.loader.js",
+        "Build/61fb40fc50b380a33c5a7778a7d74cba.framework.js.unityweb",
+        "Build/86dee1e41e5f08e893df2849ecfc0190.data.unityweb",
         "StreamingAssets/AirRace/Bundles/airrace_aircraft_ironhawk",
         "StreamingAssets/AirRace/Bundles/airrace_aircraft_shootingstar",
         "StreamingAssets/AirRace/Bundles/airrace_aircraft_skylancer",
@@ -422,43 +421,34 @@
         "StreamingAssets/AirRace/airrace_rounds.json",
         "StreamingAssets/AirRace/round_world_catalog.json",
         "StreamingAssets/AirRace/world_object_catalog.json",
-        "TemplateData/diagnostics.css",
-        "TemplateData/diagnostics.js",
-        "TemplateData/favicon.ico",
-        "TemplateData/style.css",
-        "TemplateData/webmemd-icon.png",
-        "index.html"
+        "index.html",
+        "preview.css",
+        "preview.js"
       ],
       "files": [
         {
-          "path": "Build/633ede84d286f8a8e15f7a0bf3960220.wasm.gz",
-          "bytes": 10560264,
-          "sha256": "f1291d14e9cd1e791ee3fc61f0cc0f786555079fc5c513c381e997f69a8ba31c",
-          "httpSha256": "f757cfcffb02597092eb7691ab10edf04037f20d2e299fb8feb3bebc851f04b1"
+          "path": "Build/245df0fff2ef0eb48aef0476d83a2322.wasm.unityweb",
+          "bytes": 7544019,
+          "sha256": "f5df0f6a3af249014a2e647fe5f6f8684f384bdc1b098238a23196f5c12df354",
+          "httpSha256": "f5df0f6a3af249014a2e647fe5f6f8684f384bdc1b098238a23196f5c12df354"
         },
         {
-          "path": "Build/737e57b897c96d5d301663a0860746ae.loader.js",
-          "bytes": 27420,
-          "sha256": "a29be3f1693e730bb5b7983f17bb57818d6dc635277330ce108f4201e777217e",
-          "httpSha256": "a29be3f1693e730bb5b7983f17bb57818d6dc635277330ce108f4201e777217e"
+          "path": "Build/59ba4d3a5dba5668f34f83da0fd6df73.loader.js",
+          "bytes": 47866,
+          "sha256": "68d178c85b56b764396f19cec2180692ed3cebdef49cadd8bd47adf5cd95453f",
+          "httpSha256": "68d178c85b56b764396f19cec2180692ed3cebdef49cadd8bd47adf5cd95453f"
         },
         {
-          "path": "Build/886371ec748e095ccda2e13ebab6437d.symbols.json.gz",
-          "bytes": 2197794,
-          "sha256": "a415d96f274eacdc5cbe18702cfeac43a3c58f01fcb127ee0d8c50ca18067013",
-          "httpSha256": "1bdbc30b7d4e30750b8b1b11640dcfa0408df20daa990c3cd35501c2669bd946"
+          "path": "Build/61fb40fc50b380a33c5a7778a7d74cba.framework.js.unityweb",
+          "bytes": 90451,
+          "sha256": "dc93e66ec3af7e83a72bf5cf8db15e9c3d8837495b197d469bea85e201f2bc69",
+          "httpSha256": "dc93e66ec3af7e83a72bf5cf8db15e9c3d8837495b197d469bea85e201f2bc69"
         },
         {
-          "path": "Build/d04b259385ba830dce4fdad134d98d7a.data.gz",
-          "bytes": 4142000,
-          "sha256": "fc03b0cf570e4bd664f4fb8b15d07ae16c07fdad0091ee04c8c346a78a6b8e81",
-          "httpSha256": "644211d39bab6dc9c2ea14e88edf929ed6824c956f85210c672fde0e0c018274"
-        },
-        {
-          "path": "Build/dcc412335d058db475417492572a73a0.framework.js.gz",
-          "bytes": 95283,
-          "sha256": "969c721a78f64287409f74e4dbf67ec936a6d6016bba4777ccbd114b143cc229",
-          "httpSha256": "e0396dcd2699789bcd1b55570858471e4e920f3f6ca1d550b460215997a0397b"
+          "path": "Build/86dee1e41e5f08e893df2849ecfc0190.data.unityweb",
+          "bytes": 39620257,
+          "sha256": "99b19fd18e5e9054d4add109a4ff5fe7a84acb6c94f9f14924b605cbf1411574",
+          "httpSha256": "99b19fd18e5e9054d4add109a4ff5fe7a84acb6c94f9f14924b605cbf1411574"
         },
         {
           "path": "StreamingAssets/AirRace/Bundles/.gitkeep",
@@ -768,11 +758,25 @@
         },
         {
           "path": "index.html",
-          "bytes": 6484,
-          "sha256": "39deadfcff001da6fc26d4a6fc215099f98d146b5f90576925733f92cab14344",
-          "httpSha256": "39deadfcff001da6fc26d4a6fc215099f98d146b5f90576925733f92cab14344"
+          "bytes": 4652,
+          "sha256": "ed3b1fdc35fed17fb12afb16d2a7d27105edab8cb167aee6fed405d37cf777bb",
+          "httpSha256": "ed3b1fdc35fed17fb12afb16d2a7d27105edab8cb167aee6fed405d37cf777bb"
+        },
+        {
+          "path": "preview.css",
+          "bytes": 9090,
+          "sha256": "ae6d986f58b17c434089d0ae4462ebcefdb076760e89263aa5beecf95af585b9",
+          "httpSha256": "ae6d986f58b17c434089d0ae4462ebcefdb076760e89263aa5beecf95af585b9"
+        },
+        {
+          "path": "preview.js",
+          "bytes": 13714,
+          "sha256": "13d519b1573f9f84ec0c88247435deb1c893f1f7bbdde71def0dae282f444a4c",
+          "httpSha256": "13d519b1573f9f84ec0c88247435deb1c893f1f7bbdde71def0dae282f444a4c"
         }
-      ]
+      ],
+      "unitySourceSha": "ab3394504e39b7997eeb1e454f82bfb55088ffef",
+      "unityBuildPerformed": true
     }
   ]
 }
