@@ -236,7 +236,12 @@
     },
     pause() { if (ready) setPaused(true); },
     resume() { if (ready) setPaused(false); },
-    snapshot() { return {ready, paused, detailed, touchLayout, steeringAxis, controls:controls(), telemetry:latestTelemetry, telemetryAgeMs:performance.now()-telemetryReceivedAt, loadError, canvas:{width:canvas.width,height:canvas.height}}; }
+    snapshot() { return {ready, paused, detailed, touchLayout, steeringAxis, controls:controls(), telemetry:latestTelemetry, telemetryAgeMs:performance.now()-telemetryReceivedAt, loadError, canvas:{width:canvas.width,height:canvas.height}}; },
+    // Hidden rendering comparisons; gameplay controls and the visible UI stay the same.
+    setRenderingDiagnostic(value) {
+      if (!["ao-off", "ao-on", "ao-reset", "normals-off", "normals-on", "shadows-off", "shadows-on", "shadow-bias-original", "shadow-bias-low", "shadow-bias-medium", "shadow-bias-high"].includes(value)) return false;
+      return send("SetRenderingDiagnostic", value);
+    }
   };
   document.body.classList.add("paused");
   document.body.classList.add(touchLayout ? "touch-layout" : "desktop-layout");
