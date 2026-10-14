@@ -27,3 +27,9 @@ PC入力、アナログ半量・全量・deadzone、加速併用、独立した�
 [Unity限定公開手順](COLONY_WEBGL_PUBLICATION.md)に従い、PR→devの固定SHAからUnity imageだけ更新する。classic／gateway image、既存データ、routingは保持し、gatewayはDNS更新のgraceful reloadを行う。暫定公開のHTTP／全hash／API／実ブラウザ成功後だけUnity RELEASE_TAGを保存する。失敗・SSH中断は既知image／タグだけへ限定復旧し、混在checkoutが残る場合は未採用として記録する。
 
 小さいrawは `/Volumes/SSD250GBUSB/source/validation/colony-racer/20261014-mobile-webgl-preview`、大きなEditor・project copy・成果物は `/Users/shino/Library/Caches/ColonyRacerWebGL`。旧候補の失敗記録を保持している。source commit、配布commit、稼働image SHAは区別する。
+
+## 初回公開処理の停止と修正
+
+PR #5のdev merge `721e75ec53bd7134e62efef0011375d521ab38ee` から新Unity image `sha256:48d91a6cb4d99dc0ff890ad9c63e817e88e59df43ac7c7e05e357933aae4fea6` をbuildしたが、切替前の保持guardで停止した。133コンテナの45件がmount一覧の順序だけ異なり、identity／image／StartedAt／state・runtime6JSON・routing／release設定の実変更は0。旧Unity image／公開版を保持した。failed-build receiptは履歴として残す。
+
+比較対象のmountsとDNS aliasesの順序を正規化する修正を追加し、実記録の全133件が一致することを確認した。mount追加／削除／RW変更は引き続き拒否し、保持検査を省略していない。Python29件PASS。修正後のdev固定SHAで公開工程を行い、最終採用は別に記録する。

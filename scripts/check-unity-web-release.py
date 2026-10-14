@@ -53,9 +53,20 @@ def release_values(path):
     return values
 
 
+def canonical_container_record(record):
+    """Docker inspect order is not a mount or DNS-alias configuration change."""
+    result = dict(record)
+    result['mounts'] = sorted(record['mounts'], key=lambda mount: json.dumps(mount, sort_keys=True, separators=(',', ':')))
+    result['networks'] = {
+        name: {**network, 'aliases': sorted(network['aliases']) if isinstance(network.get('aliases'), list) else network.get('aliases')}
+        for name, network in record['networks'].items()
+    }
+    return result
+
+
 def container_record(item):
     config = item['Config']
-    return {
+    return canonical_container_record({
         'name': item['Name'], 'id': item['Id'], 'image': item['Image'], 'tag': config['Image'],
         'running': item['State']['Running'], 'state': item['State']['Status'],
         'startedAt': item['State']['StartedAt'], 'restarts': item['RestartCount'],
@@ -63,7 +74,7 @@ def container_record(item):
         'mounts': [{key: mount.get(key) for key in ['Type', 'Source', 'Destination', 'RW']} for mount in item.get('Mounts', [])],
         'labels': {key: value for key, value in config.get('Labels', {}).items() if key.startswith('com.docker.compose.')},
         'networks': {name: {'ip': net.get('IPAddress'), 'aliases': net.get('Aliases')} for name, net in item['NetworkSettings'].get('Networks', {}).items()},
-    }
+    })
 
 
 def capture(root, allow_unhealthy=False):
