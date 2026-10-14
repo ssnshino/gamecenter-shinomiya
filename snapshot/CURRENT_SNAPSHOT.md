@@ -1,5 +1,11 @@
 # 現在地: 2026-10-11 JST — classic/gateway自動配備・公開検証済み
 
+## 最新成果物: 2026-10-15 Colony Racer既存街並みの外観更新
+
+Unity source `a5c3493a9378480e24a54b99bfe169662fbf028b`から新WebGLを生成。Core/East/Westの外観・道路素材・葉の光を改善し、元の構造・物理とPC／touch操作を保持した。ローカル9描画測定、通常3環境88checks、Native先行7と最終近景1を確認。連続接地は未合格、iPhone実機は未測定。成果物と制限は[今回記録](../docs/head/COLONY_STREETSCAPE_20261015.md)。
+
+公開の採用状態は今回rawのpublic-browser-acceptance.jsonとBASE receipt accepted、live Unity image／RELEASE_TAGを照合する。Git mergeやこの文書だけでは公開完了としない。以下の91ef／2026-10-14の『現在』は旧公開の履歴であり、Unity source・配布commit・image・文書commitを区別して再開する。
+
 ## 完了（入力・描画prototype公開）: 2026-10-14 Colony Racer共通WebGL
 
 既存Core／East／West、固定躯体・生活街区とP0-P2車体を、[https://unity-games.wos.ktsys.jp/02/colony-racer/](https://unity-games.wos.ktsys.jp/02/colony-racer/) のPC・タッチ共通版へ更新した。PCはW／Space／A・D、スマホは左のアナログ操舵・右の加速と制動。旧公開版にぷにこんがあったという推測は本人確認で訂正し、新しいtouch controllerを採用した。スマホ専用Sites案は中止・未公開。
