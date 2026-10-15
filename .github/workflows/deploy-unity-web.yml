@@ -111,6 +111,10 @@ jobs:
           cd /home/shino/source/repos/upstream/gamecenter-shinomiya
           git log -1 --format=%H
           git status --porcelain --untracked-files=normal
+          echo GIT_PACK_SIZES
+          find .git/objects/pack -maxdepth 1 -type f -printf '%f %s bytes\n'
+          echo REMOTE_REFERENCE_CHECK
+          GIT_TERMINAL_PROMPT=0 timeout 25 git ls-remote origin refs/heads/dev </dev/null || echo REMOTE_REFERENCE_CHECK_FAILED
           docker inspect gamecenter-shinomiya-unity-web --format '{{.Image}}'
           find runtime/deploy -maxdepth 2 -name receipt.json -mmin -30 -exec python3 -c 'import json,sys;v=json.load(open(sys.argv[1]));print({k:v.get(k) for k in ["requestedSha","phase","adoptionComplete"]})' '{}' \;
           echo SSH_REMOTE_FINISHED
