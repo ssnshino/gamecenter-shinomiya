@@ -90,7 +90,7 @@ jobs:
   inspect:
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/diagnose/unity-actions-ssh-20261015'
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 12
     steps:
       - name: Read-only SSH and Unity release diagnosis
         env:
@@ -105,7 +105,7 @@ jobs:
           printf '%s\n' "$KNOWN_HOSTS" > "$work/known_hosts"
           chmod 600 "$work/key" "$work/known_hosts"
           unset DEPLOY_KEY
-          timeout 90 ssh -v -i "$work/key" -p "$DEPLOY_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$work/known_hosts" -o ConnectTimeout=20 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 "shino@$DEPLOY_HOST" 'bash -s' <<'REMOTE'
+          timeout 660 ssh -i "$work/key" -p "$DEPLOY_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$work/known_hosts" -o ConnectTimeout=20 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 "shino@$DEPLOY_HOST" 'bash -s' <<'REMOTE'
           set -euo pipefail
           echo SSH_REMOTE_STARTED
           cd /home/shino/source/repos/upstream/gamecenter-shinomiya
@@ -115,6 +115,8 @@ jobs:
           find .git/objects/pack -maxdepth 1 -type f -printf '%f %s bytes\n'
           echo REMOTE_REFERENCE_CHECK
           GIT_TERMINAL_PROMPT=0 timeout 25 git ls-remote origin refs/heads/dev </dev/null || echo REMOTE_REFERENCE_CHECK_FAILED
+          echo FETCH_WITH_PROGRESS
+          GIT_TERMINAL_PROMPT=0 timeout 600 git -c maintenance.auto=false -c gc.auto=0 fetch --progress origin dev </dev/null
           docker inspect gamecenter-shinomiya-unity-web --format '{{.Image}}'
           find runtime/deploy -maxdepth 2 -name receipt.json -mmin -30 -exec python3 -c 'import json,sys;v=json.load(open(sys.argv[1]));print({k:v.get(k) for k in ["requestedSha","phase","adoptionComplete"]})' '{}' \;
           echo SSH_REMOTE_FINISHED
