@@ -118,6 +118,9 @@ jobs:
           echo TRANSFER_PROCESSES
           ps -eo pid,ppid,etime,comm | awk 'NR==1 || /git|curl|ssh/'
           echo REPOSITORY_TRANSFER_STATE
+          hostname -I
+          ps -p 4088628,4116589 -o pid,stat,pcpu,pmem,rss,time,args
+          curl --fail --silent --show-error --connect-timeout 3 --max-time 5 http://192.168.1.34:18777/colony-transfer-68c265a1d79c4eca9bc7c80c/health || echo LAN_PROBE_FAILED
           git rev-parse --is-shallow-repository
           git count-objects -v
           ps -p 4088557,4088628,4116582,4116589 -o pid,ppid,stat,wchan:32,args
