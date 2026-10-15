@@ -3,8 +3,18 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { gzipSync } from 'node:zlib';
+import { gzipSync, brotliCompressSync } from 'node:zlib';
+import {contentTypeFor,contentEncodingFor} from '../apps/unity-web/src/lib/files.ts';
 import { verifyGame, safeRelative, manifest, unityProvenance } from '../scripts/verify-game-delivery.mjs';
+test('native Brotli scripts and WebAssembly retain executable MIME and encoding',()=>{
+  for(const ext of ['br','gz']){
+    assert.equal(contentTypeFor(`Build/game.wasm.${ext}`),'application/wasm');
+    assert.match(contentTypeFor(`Build/game.framework.js.${ext}`),/^application\/javascript/);
+    assert.equal(contentTypeFor(`Build/game.data.${ext}`),'application/octet-stream');
+    assert.equal(contentEncodingFor(`Build/game.data.${ext}`),ext==='br'?'br':'gzip');
+  }
+  assert.equal(contentEncodingFor('Build/legacy.data.unityweb'),null);
+});
 export async function fixture() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'game-delivery-'));
   const put = async (rel, value) => { await fs.mkdir(path.dirname(path.join(root, rel)), { recursive: true }); await fs.writeFile(path.join(root, rel), value); };
@@ -26,8 +36,15 @@ test('source SHA is mandatory',async()=>{await assert.rejects(manifest('.',undef
 
 import { createServer } from 'node:http';
 import { smoke } from '../scripts/smoke-game-delivery.mjs';
-async function smokeFixture() {
+async function smokeFixture(brotli = false) {
   const {root}=await fixture();
+  if(brotli){
+    await fs.writeFile(path.join(root,'index.html'),(await fs.readFile(path.join(root,'index.html'),'utf8')).replaceAll('.gz','.br'));
+    for(const ext of ['data','framework.js','wasm']){
+      await fs.writeFile(path.join(root,`Build/a.${ext}.br`),brotliCompressSync(Buffer.from(ext)));
+      await fs.unlink(path.join(root,`Build/a.${ext}.gz`));
+    }
+  }
   const repo=await fs.mkdtemp(path.join(os.tmpdir(),'game-smoke-'));
   const target=path.join(repo,'apps/unity-web/public/airrace3d');await fs.mkdir(path.dirname(target),{recursive:true});await fs.cp(root,target,{recursive:true});
   await fs.cp(root,path.join(repo,'apps/unity-web/public/colony-racer'),{recursive:true});
@@ -42,8 +59,8 @@ async function smokeFixture() {
         const name=names[url.pathname.split('/').at(-1)];res.setHeader('content-type','application/json');res.end(await fs.readFile(path.join(target,'StreamingAssets/AirRace',name)));return;
       }
       const rel=url.pathname.replace(/^\/(airrace3d|colony-racer)\//,'');
-      if(rel.endsWith('.gz')&&!badHeader)res.setHeader('content-encoding','gzip');
-      res.setHeader('content-type',rel.includes('.wasm')?'application/wasm':rel.includes('.js')?'application/javascript':'application/octet-stream');
+      const encoding=contentEncodingFor(rel);if(encoding&&!badHeader)res.setHeader('content-encoding',encoding);
+      res.setHeader('content-type',contentTypeFor(rel));
       res.end(corrupt&&rel==='Build/a.loader.js'?'wrong':await fs.readFile(path.join(target,rel)));
     }catch{res.statusCode=404;res.end('not found');}
   });
@@ -51,6 +68,8 @@ async function smokeFixture() {
   return {m,repo,url:`http://127.0.0.1:${server.address().port}`,close:()=>new Promise(resolve=>server.close(resolve)),corrupt:()=>{corrupt=true;},badHeader:()=>{badHeader=true;}};
 }
 test('HTTP smoke verifies gzip decoded hash and API equivalence',async()=>{const s=await smokeFixture();try{await smoke(s.m,s.url,s.repo);}finally{await s.close();}});
+test('HTTP smoke verifies native Brotli decoded hash and executable MIME',async()=>{const s=await smokeFixture(true);try{await smoke(s.m,s.url,s.repo);}finally{await s.close();}});
+test('HTTP smoke rejects missing native Brotli header',async()=>{const s=await smokeFixture(true);s.badHeader();try{await assert.rejects(smoke(s.m,s.url,s.repo),/brotli header/);}finally{await s.close();}});
 test('HTTP smoke rejects stale public artifact',async()=>{const s=await smokeFixture();s.corrupt();try{await assert.rejects(smoke(s.m,s.url,s.repo),/mismatch/);}finally{await s.close();}});
 test('HTTP smoke rejects missing gzip header',async()=>{const s=await smokeFixture();s.badHeader();try{await assert.rejects(smoke(s.m,s.url,s.repo),/gzip header/);}finally{await s.close();}});
 
