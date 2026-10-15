@@ -83,6 +83,7 @@ printf 'Provisional public Unity release. Receipt: %s/runtime/deploy/unity-colon
         remote = (self.root / 'remote-input.txt').read_text()
         self.assertIn('git show "$sha:scripts/deploy-unity-web.sh"', remote)
         self.assertIn('deploy "$sha" </dev/null', remote)
+        self.assertIn('timeout 180 git fetch origin dev </dev/null', remote)
         self.assertNotIn('FAKE_KEY', remote + result.stdout + result.stderr)
         self.assertFalse(pathlib.Path((self.root / 'key-path.txt').read_text()).exists())
 
