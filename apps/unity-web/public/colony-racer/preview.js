@@ -2,6 +2,11 @@
   "use strict";
   const $ = id => document.getElementById(id);
   const canvas = $("unity-canvas");
+  // WebKit can stop compositing a live WebGL canvas after its backing size changes,
+  // even while readPixels still contains the rendered scene. Keep that buffer and
+  // change the camera aspect separately. iOS Chrome/Edge also use WebKit.
+  const fixedFramebuffer = /AppleWebKit/.test(navigator.userAgent) && !/(Chrome|Chromium|Edg|OPR)\//.test(navigator.userAgent);
+  let framebufferLocked = false;
   const panel = $("start-panel");
   const start = $("start");
   const heldButtons = Array.from(document.querySelectorAll("[data-held]"));
@@ -12,11 +17,11 @@
   const steeringKnob = $("steering-knob");
   let steeringPointer = null, steeringAxis = 0;
   const keyActions = new Map([
-    ["KeyW", "throttle"], ["ArrowUp", "throttle"], ["KeyS", "brake"], ["ArrowDown", "brake"], ["Space", "brake"],
+    ["KeyW", "throttle"], ["ArrowUp", "throttle"], ["KeyS", "reverse"], ["ArrowDown", "reverse"], ["Space", "brake"],
     ["KeyA", "left"], ["ArrowLeft", "left"], ["KeyD", "right"], ["ArrowRight", "right"],
     ["KeyQ", "look-left"], ["KeyE", "look-right"], ["PageUp", "look-up"], ["PageDown", "look-down"]
   ]);
-  const commandKeys = new Set(["KeyR", "KeyP", "Escape", "F1", "F2", "F3"]);
+  const commandKeys = new Set(["KeyR", "KeyP", "Escape", "F1", "F2", "F3", "F4", "F5", "F6", "F7"]);
   const touchLayout = window.matchMedia("(pointer: coarse)").matches;
   let unity = null, ready = false, paused = true, detailed = !touchLayout, lastControls = "", statusTimer = 0;
   let latestTelemetry = null, telemetryReceivedAt = 0, loadError = null;
@@ -37,7 +42,7 @@
       lookY -= Math.max(-1, Math.min(1, (look.y - look.startY) / 90));
     }
     return {
-      throttle: !paused && actions.has("throttle") && !actions.has("brake") ? 1 : 0,
+      throttle: !paused && !actions.has("brake") ? (actions.has("throttle") ? 1 : 0) - (actions.has("reverse") ? 1 : 0) : 0,
       brake: paused || actions.has("brake") ? 1 : 0,
       // The existing Gamepad stick processor supplies the deadzone once, inside Unity.
       steer: paused ? 0 : Math.max(-1, Math.min(1, steeringAxis + (actions.has("right") ? 1 : 0) - (actions.has("left") ? 1 : 0))),
@@ -164,6 +169,8 @@
     if (paused || !ready) return;
     if (keyActions.has(event.code)) { keys.add(event.code); flush(); }
     else if (event.code === "KeyR") { releaseAll(); send("ResetPreview"); }
+    else if (event.code === "F4") { releaseAll(); send("VisitExpressway"); }
+    else if (["F5", "F6", "F7"].includes(event.code)) { releaseAll(); send("VisitRing", String(Number(event.code.slice(1)) - 5)); }
     else { releaseAll(); send("VisitDistrict", {F1:"Core", F2:"East", F3:"West"}[event.code]); }
   }, true);
   window.addEventListener("keyup", event => {
@@ -175,6 +182,8 @@
   document.addEventListener("visibilitychange", () => { if (document.hidden) { if (ready) setPaused(true, "画面を離れたので停止したよ。"); else releaseAll(); } });
   start.addEventListener("click", () => { if (ready) setPaused(false); });
   $("pause").addEventListener("click", () => { if (ready) setPaused(!paused); });
+  $("expressway").addEventListener("click", () => { releaseAll(); send("VisitExpressway"); });
+  document.querySelectorAll("[data-ring]").forEach(button => button.addEventListener("click", () => { releaseAll(); send("VisitRing", button.dataset.ring); }));
   $("reset").addEventListener("click", () => { releaseAll(); send("ResetPreview"); });
   document.querySelectorAll("[data-district]").forEach(button => button.addEventListener("click", () => { releaseAll(); send("VisitDistrict", button.dataset.district); }));
   $("quality").addEventListener("click", () => {
@@ -187,6 +196,10 @@
 
   function resizeCanvas() {
     const bounds = canvas.getBoundingClientRect();
+    if (fixedFramebuffer && framebufferLocked) {
+      if (bounds.width > 0 && bounds.height > 0) send("SetViewportAspect", bounds.width / bounds.height);
+      return;
+    }
     // Keep CSS full screen, cap actual framebuffer by long edge and total pixels.
     const maxEdge = detailed ? 1600 : 960;
     const maxPixels = detailed ? 1400000 : 960 * 540;
@@ -216,6 +229,7 @@
       telemetryReceivedAt = performance.now();
       if (value.ready && !ready) {
         ready = true;
+        resizeCanvas();
         start.disabled = false; start.textContent = "試走を始める";
         $("pause").disabled = false;
         $("loading").hidden = true;
@@ -236,7 +250,7 @@
     },
     pause() { if (ready) setPaused(true); },
     resume() { if (ready) setPaused(false); },
-    snapshot() { return {ready, paused, detailed, touchLayout, steeringAxis, controls:controls(), telemetry:latestTelemetry, telemetryAgeMs:performance.now()-telemetryReceivedAt, loadError, canvas:{width:canvas.width,height:canvas.height}}; },
+    snapshot() { return {ready, paused, detailed, touchLayout, fixedFramebuffer, steeringAxis, controls:controls(), telemetry:latestTelemetry, telemetryAgeMs:performance.now()-telemetryReceivedAt, loadError, canvas:{width:canvas.width,height:canvas.height}}; },
     // Hidden rendering comparisons; gameplay controls and the visible UI stay the same.
     setRenderingDiagnostic(value) {
       if (!["ao-off", "ao-on", "ao-reset", "normals-off", "normals-on", "shadows-off", "shadows-on", "shadow-bias-original", "shadow-bias-low", "shadow-bias-medium", "shadow-bias-high"].includes(value)) return false;
@@ -257,6 +271,8 @@
   loader.src = loaderUrl;
   loader.onerror = () => fail("ゲームのファイルを取得できませんでした。通信を確認して再読み込みしてね。");
   loader.onload = () => {
+    resizeCanvas();
+    framebufferLocked = true;
     createUnityInstance(canvas, config, progress => {
       $("loading").value = progress;
       $("loading-text").textContent = `Unity を読み込み中… ${Math.round(progress * 100)}%`;

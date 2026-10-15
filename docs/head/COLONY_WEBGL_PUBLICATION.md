@@ -1,3 +1,7 @@
+## 2026-10-15 Unity自動配備の追加（検証・公開待ち）
+
+今回のスマホ向けデプロイ依頼と自動配備の確認を受け、Unity専用 `.github/workflows/deploy-unity-web.yml` を追加。dev更新で既存Actions認証を利用し、Unity限定仮配備、実公開ブラウザでの起動・運転確認、finalizeの順に進め、受入れ失敗時はrollbackする。classic/gateway workflow、鍵、runner、firewallは変更しない。以下の旧作業範囲は記録当時のもの。現在の証拠は `docs/head/COLONY_ROAD_NETWORK_WEB_20261015.md` に記録し、accepted receipt確認まで公開完了と扱わない。
+
 # Colony RacerのみのWebGL公開手順
 
 2026-10-14に追加した手順。実装・ローカル試験の記録であり、この文書やscriptの存在を公開済みの証拠としない。公開先は従来と同じ `https://unity-games.wos.ktsys.jp/02/colony-racer/`。実行担当はその時点のRootで、Unityビルド、GitHub反映、BASEの暫定切替、実ブラウザ確認、最終採用を別々に記録する。

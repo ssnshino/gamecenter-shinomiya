@@ -1,3 +1,9 @@
+## 公開準備中: 2026-10-15 道路網・山地のスマホ用WebGL
+
+Unity `eeca3f261038b6d6bf271b91157b0a5abf23ac9d` から5 IC・3環状線/JCT・盛土中央分離帯・距離案内・DEM山地/森林を含むWebGLを生成。スマホから高架と3環状線へ移動できるボタンを追加。見た目用InfrastructureのCPU meshコピーを除き、森林のみ圧縮、道路Colliderと原Prefabを保持した。Brotli fallbackを使用。AirRace全資産・旧Colony StreamingAssets/TemplateDataをbyte照合して保持。
+
+既存の自動配備はclassic/gatewayのみだったため、既存Actions認証を使うUnity専用workflowを追加。CI・公開受入れ待ちで、公開切替は未実施。記録: `docs/head/COLONY_ROAD_NETWORK_WEB_20261015.md`。更新前3文書は `docs/history/20261015-before-colony-road-network/`。
+
 # 現在地: 2026-10-11 JST — classic/gateway自動配備・公開検証済み
 
 ## 最新成果物: 2026-10-15 Colony Racer既存街並みの外観更新

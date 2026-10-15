@@ -15,6 +15,7 @@ TAG_KEYS = {'RELEASE_TAG', 'CLASSIC_RELEASE_TAG', 'GATEWAY_RELEASE_TAG'}
 RUNTIME_NAMES = ['airrace_ghosts', 'airrace_scores', 'breakout_scores', 'dungeon_scores', 'fighting_scores', 'truckers_scores']
 METADATA = ['.env.routing', 'compose.dev.yaml', 'compose.public.yaml', 'gateway/default.conf']
 ALLOWED_CODE = {'scripts/deploy-unity-web.sh', 'scripts/check-unity-web-release.py', 'scripts/verify-game-delivery.mjs', 'tests/test_unity_web_release.py', 'tests/game-delivery.test.mjs'}
+ALLOWED_CODE |= {'.github/workflows/deploy-unity-web.yml', 'scripts/ci-deploy-unity-web.sh', 'scripts/smoke-colony-browser.mjs', 'tests/test_unity_ci_deploy.py'}
 RECOVERABLE_PHASES = {'awaiting-browser', 'failed-preflight', 'failed-final-health', 'failed-finalize-checkout', 'failed-persist-release-tag', 'failed-copy-browser-report', 'failed-final-capture', 'failed-final-verification', 'failed-unity-update', 'failed-health', 'failed-artifact-verification', 'rollback-failed'}
 RECOVERABLE_PHASES |= {'unity-update', 'health', 'artifact-verification', 'final-health', 'finalize-checkout', 'persist-release-tag', 'copy-browser-report', 'final-capture', 'final-verification', 'manual-rollback'}
 RETRY_PHASES = {'rolled-back', 'rolled-back-mixed-checkout-awaiting-retry'}

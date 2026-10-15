@@ -16,26 +16,26 @@
       <div class="hud-tools"><span id="district-name">Core</span><button id="quality" type="button" aria-pressed="true">詳細</button><button id="pause" type="button" disabled>停止</button></div>
     </header>
     <nav class="districts" aria-label="地区とリセット">
-      <button type="button" data-district="Core">Core</button><button type="button" data-district="East">East</button><button type="button" data-district="West">West</button><button type="button" id="reset">車を戻す</button>
+      <button type="button" data-district="Core">Core</button><button type="button" data-district="East">East</button><button type="button" data-district="West">West</button><button type="button" id="expressway">高架</button><button type="button" id="reset">車を戻す</button><button type="button" data-ring="0">南環状</button><button type="button" data-ring="1">中央環状</button><button type="button" data-ring="2">北環状</button>
     </nav>
     <div id="look-zone" aria-label="ドラッグで見回す"><span>ドラッグで見回す</span></div>
-    <aside class="desktop-guide" aria-label="キーボード操作"><strong>操作</strong><span><kbd>W</kbd> 加速　<kbd>Space</kbd> 制動　<kbd>A</kbd> / <kbd>D</kbd> 操舵</span><span><kbd>F1</kbd> / <kbd>F2</kbd> / <kbd>F3</kbd> 地区移動　<kbd>R</kbd> 車を戻す</span><span><kbd>Q</kbd> / <kbd>E</kbd> 左右を見る　<kbd>Page Up</kbd> / <kbd>Down</kbd> 上下　<kbd>P</kbd> 停止</span></aside>
+    <aside class="desktop-guide" aria-label="キーボード操作"><strong>操作</strong><span><kbd>W</kbd> 加速　<kbd>S</kbd> 後退　<kbd>Space</kbd> 制動　<kbd>A</kbd> / <kbd>D</kbd> 操舵</span><span><kbd>F1</kbd> / <kbd>F2</kbd> / <kbd>F3</kbd> 地区移動　<kbd>F4</kbd> 高架　<kbd>R</kbd> 車を戻す</span><span><kbd>Q</kbd> / <kbd>E</kbd> 左右を見る　<kbd>Page Up</kbd> / <kbd>Down</kbd> 上下　<kbd>P</kbd> 停止</span></aside>
     <footer class="controls" aria-label="運転操作">
       <div class="steering"><button type="button" id="steering-pad" role="slider" aria-label="左右の操舵パッド" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0"><span class="steering-arrows" aria-hidden="true">◀　▶</span><span id="steering-knob" aria-hidden="true"></span><small>操舵</small></button></div>
       <div class="look-buttons" aria-label="カメラ操作"><button type="button" data-held="look-up" aria-label="上を見る">↑</button><button type="button" data-held="look-left" aria-label="左を見る">←</button><button type="button" data-held="look-right" aria-label="右を見る">→</button><button type="button" data-held="look-down" aria-label="下を見る">↓</button></div>
-      <div class="pedals"><button type="button" data-held="brake" class="brake">制動</button><button type="button" data-held="throttle" class="accelerate">加速</button></div>
+      <div class="pedals"><button type="button" data-held="reverse" class="brake">後退</button><button type="button" data-held="brake" class="brake">制動</button><button type="button" data-held="throttle" class="accelerate">加速</button></div>
     </footer>
     <div id="status" role="status">Unity を読み込み中…</div>
     <section id="start-panel" class="start-panel" aria-label="試走を始める">
-      <div class="start-card"><p class="eyebrow">COLONY RACER</p><h1 id="start-title">コロニー内壁を走ろう</h1><p>Core・East・West の街並みを、<br>120km/h までの車で試走できます。</p><div class="instruction keyboard-instruction"><span>W で加速、Space で制動、A / D で操舵</span><span>F1 / F2 / F3 で地区移動、R で車を戻す</span><span>Q / E、Page Up / Down で見回す</span></div><div class="instruction touch-instruction"><span>左のパッドを左右に動かして操舵</span><span>右の 加速・制動を押し続ける</span><span>画面のドラッグで見回す</span></div><progress id="loading" value="0" max="1" aria-label="ゲーム読み込み"></progress><p id="loading-text">読み込み準備中…</p><button id="start" type="button" disabled>読み込み中…</button><small>画面を離れると自動停止。<br>右上の「詳細／軽量」で表示を切り替え。</small></div>
+      <div class="start-card"><p class="eyebrow">COLONY RACER</p><h1 id="start-title">コロニー内壁を走ろう</h1><p>街並み・30kmの直線道路・環状線を、<br>120km/h までの車で試走できます。</p><div class="instruction keyboard-instruction"><span>W で加速、S で後退、Space で制動、A / D で操舵</span><span>F1〜F3 地区、F4 高架、F5〜F7 環状線、R 復帰</span><span>Q / E、Page Up / Down で見回す</span></div><div class="instruction touch-instruction"><span>左のパッドを左右に動かして操舵</span><span>右の 加速・後退・制動を押し続ける</span><span>画面のドラッグで見回す</span></div><progress id="loading" value="0" max="1" aria-label="ゲーム読み込み"></progress><p id="loading-text">読み込み準備中…</p><button id="start" type="button" disabled>読み込み中…</button><small>画面を離れると自動停止。<br>右上の「詳細／軽量」で表示を切り替え。</small></div>
     </section>
   </main>
   <script>
     window.COLONY_UNITY_CONFIG = {
-      loaderUrl: "Build/249bc6274c4500091fd9e1d02ae57efd.loader.js",
-      dataUrl: "Build/47e1dbb26733c813fad940ba2cc9cd65.data.unityweb",
-      frameworkUrl: "Build/754a19026fbb44d9ebf3250bc83e35b0.framework.js.unityweb",
-      codeUrl: "Build/bcf566da5af94c4b7329fd0cf88e134d.wasm.unityweb",
+      loaderUrl: "Build/9eb87313a1771f8d69cdf765cd193007.loader.js",
+      dataUrl: "Build/039797c5b50e282a6830e1ba3395b666.data.unityweb",
+      frameworkUrl: "Build/cddf0eba65e9799f3cf3cfd83d2b5db7.framework.js.unityweb",
+      codeUrl: "Build/d2064f885915dfe8c239fc3316c08ff2.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "shino",
       productName: "Colony Racer",

@@ -1,0 +1,88 @@
+name: Deploy Colony WebGL
+on:
+  push:
+    branches: [dev]
+    paths: ['apps/unity-web/public/colony-racer/**', 'docs/head/UNITY_ARTIFACT_MANIFEST.json', '.github/workflows/deploy-unity-web.yml', 'scripts/ci-deploy-unity-web.sh', 'scripts/smoke-colony-browser.mjs', 'scripts/check-unity-web-release.py', 'tests/test_unity_ci_deploy.py']
+  pull_request:
+    branches: [dev]
+    paths: ['apps/unity-web/public/colony-racer/**', 'docs/head/UNITY_ARTIFACT_MANIFEST.json', '.github/workflows/deploy-unity-web.yml', 'scripts/ci-deploy-unity-web.sh', 'scripts/smoke-colony-browser.mjs', 'scripts/check-unity-web-release.py', 'tests/test_unity_ci_deploy.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gamecenter-unity-colony-production
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci && npm run check
+        working-directory: apps/unity-web
+      - run: node --test tests/game-delivery.test.mjs
+      - run: python3 -m unittest discover -s tests -p 'test_unity*.py' -v
+      - run: bash -n scripts/ci-deploy-unity-web.sh && bash -n scripts/deploy-unity-web.sh
+      - name: Verify actual artifacts against the committed manifest
+        run: |
+          SOURCE_SHA=$(node -p "require('./docs/head/UNITY_ARTIFACT_MANIFEST.json').sourceSha") node scripts/verify-game-delivery.mjs . /tmp/unity-actual.json
+          node -e "require('assert').deepStrictEqual(require('/tmp/unity-actual.json'),require('./docs/head/UNITY_ARTIFACT_MANIFEST.json'))"
+  deploy:
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare public browser verification
+        run: |
+          npm install --no-save --no-audit --prefix "$RUNNER_TEMP/colony-browser" playwright@1.62.1 sharp@0.34.5
+          "$RUNNER_TEMP/colony-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Provision only the Unity image on BASE
+        id: provision
+        run: bash scripts/ci-deploy-unity-web.sh deploy
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          DEV_DEPLOY_HOST: ${{ secrets.DEPLOY_DEV_HOST }}
+          DEV_DEPLOY_PORT: ${{ secrets.DEPLOY_DEV_PORT }}
+          DEV_DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_DEV_SSH_KEY }}
+          DEV_DEPLOY_REPO_PATH: ${{ vars.DEV_DEPLOY_REPO_PATH }}
+          DEV_DEPLOY_KNOWN_HOSTS: ${{ vars.DEV_DEPLOY_KNOWN_HOSTS }}
+      - name: Exercise the actual public WebGL
+        id: browser
+        run: node scripts/smoke-colony-browser.mjs "$GITHUB_SHA" runtime-ci/browser
+        env:
+          NODE_PATH: ${{ runner.temp }}/colony-browser/node_modules
+      - name: Accept the verified Unity release
+        id: accept
+        run: bash scripts/ci-deploy-unity-web.sh finalize "$RECEIPT" runtime-ci/browser/acceptance.json
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          DEV_DEPLOY_HOST: ${{ secrets.DEPLOY_DEV_HOST }}
+          DEV_DEPLOY_PORT: ${{ secrets.DEPLOY_DEV_PORT }}
+          DEV_DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_DEV_SSH_KEY }}
+          DEV_DEPLOY_REPO_PATH: ${{ vars.DEV_DEPLOY_REPO_PATH }}
+          DEV_DEPLOY_KNOWN_HOSTS: ${{ vars.DEV_DEPLOY_KNOWN_HOSTS }}
+          RECEIPT: ${{ steps.provision.outputs.receipt }}
+      - name: Roll back the provisional Unity image after failed acceptance
+        if: always() && steps.provision.outcome == 'success' && steps.accept.outcome != 'success'
+        run: bash scripts/ci-deploy-unity-web.sh rollback "$RECEIPT"
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          DEV_DEPLOY_HOST: ${{ secrets.DEPLOY_DEV_HOST }}
+          DEV_DEPLOY_PORT: ${{ secrets.DEPLOY_DEV_PORT }}
+          DEV_DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_DEV_SSH_KEY }}
+          DEV_DEPLOY_REPO_PATH: ${{ vars.DEV_DEPLOY_REPO_PATH }}
+          DEV_DEPLOY_KNOWN_HOSTS: ${{ vars.DEV_DEPLOY_KNOWN_HOSTS }}
+          RECEIPT: ${{ steps.provision.outputs.receipt }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unity-colony-release-${{ github.sha }}
+          path: runtime-ci/
+          if-no-files-found: ignore
