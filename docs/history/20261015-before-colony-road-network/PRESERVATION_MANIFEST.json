@@ -1,0 +1,35 @@
+{
+  "baseline": "95a396f04e4d6a482ee5b3a3e26d9b1024c432dc",
+  "files": [
+    {
+      "source": "README.md",
+      "snapshot": "docs/history/20261015-before-colony-road-network/README.md",
+      "sha256": "6139c9abf413a2b217f37a254305e6a8aa1a89280730285725e440aaeb90a4dc"
+    },
+    {
+      "source": "snapshot/CURRENT_SNAPSHOT.md",
+      "snapshot": "docs/history/20261015-before-colony-road-network/snapshot/CURRENT_SNAPSHOT.md",
+      "sha256": "57c0c7d29c4ef8aee4485d55c49659341f6303e986d45cc6e0ded54f3434d54a"
+    },
+    {
+      "source": "docs/head/UNITY_ARTIFACT_MANIFEST.json",
+      "snapshot": "docs/history/20261015-before-colony-road-network/docs/head/UNITY_ARTIFACT_MANIFEST.json",
+      "sha256": "759971bec7c0cda9d368bc18e6b9815854101c29e799e05ad335612356795b42"
+    },
+    {
+      "source": "AGENTS.md",
+      "snapshot": "docs/history/20261015-before-colony-road-network/AGENTS.md",
+      "sha256": "197c507161a81d414f8b577fb9911dacdce1547f6805cf430154701c7a9bb081"
+    },
+    {
+      "source": "docs/head/OPERATIONS.md",
+      "snapshot": "docs/history/20261015-before-colony-road-network/docs/head/OPERATIONS.md",
+      "sha256": "ba2c47558555969874faca750e9663c57b7e6888aa6a6b006cb2d9c297abca36"
+    },
+    {
+      "source": "docs/head/COLONY_WEBGL_PUBLICATION.md",
+      "snapshot": "docs/history/20261015-before-colony-road-network/docs/head/COLONY_WEBGL_PUBLICATION.md",
+      "sha256": "f9ec96c2ebe8ab821626bf2118f5f39dc5855d1a98356c1547fe269e0f5d9ec6"
+    }
+  ]
+}
