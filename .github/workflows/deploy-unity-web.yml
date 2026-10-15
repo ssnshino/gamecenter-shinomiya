@@ -121,6 +121,33 @@ jobs:
           hostname -I
           ps -p 4088628,4116589 -o pid,stat,pcpu,pmem,rss,time,args
           curl --fail --silent --show-error --connect-timeout 3 --max-time 5 http://192.168.1.34:18777/colony-transfer-68c265a1d79c4eca9bc7c80c/health || echo LAN_PROBE_FAILED
+          echo IMPORT_EXACT_RELEASE_FROM_LAN
+          bundle=$(mktemp .git/colony-lan-bundle.XXXXXX)
+          trap 'rm -f "$bundle"' EXIT
+          curl --fail --show-error --connect-timeout 5 --max-time 90 -o "$bundle" http://192.168.1.34:18777/colony-transfer-68c265a1d79c4eca9bc7c80c/release.bundle
+          echo "f466306c6bcc466def04eb323a792ad21e991476985f8887de184272c5b6d74e  $bundle" | sha256sum -c -
+          git bundle verify "$bundle"
+          python3 - <<'PY'
+          import pathlib,os,signal
+          pid=4116582
+          p=pathlib.Path('/proc')/str(pid)/'cmdline'
+          if p.exists():
+              args=p.read_bytes().split(b'\0')
+              assert args[:7]==[b'git',b'-c',b'maintenance.auto=false',b'-c',b'gc.auto=0',b'fetch',b'--progress'] and args[7:9]==[b'origin',b'dev']
+              selected={pid}
+              for _ in range(4):
+                  for proc in pathlib.Path('/proc').iterdir():
+                      if not proc.name.isdigit():continue
+                      try: parent=int((proc/'stat').read_text().split(') ')[1].split()[1])
+                      except (FileNotFoundError,ProcessLookupError):continue
+                      if parent in selected:selected.add(int(proc.name))
+              for target in sorted(selected,reverse=True):
+                  try:os.kill(target,signal.SIGTERM)
+                  except ProcessLookupError:pass
+          PY
+          git -c fetch.unpackLimit=1 fetch "$bundle" refs/remotes/origin/dev:refs/remotes/origin/dev </dev/null
+          test "$(git rev-parse origin/dev)" = fea40004273f62345721d334207be1477d8b065b
+          echo LAN_RELEASE_OBJECTS_IMPORTED
           git rev-parse --is-shallow-repository
           git count-objects -v
           ps -p 4088557,4088628,4116582,4116589 -o pid,ppid,stat,wchan:32,args
