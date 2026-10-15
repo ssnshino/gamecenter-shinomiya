@@ -25,15 +25,16 @@ printf '%s\n' "$DEV_DEPLOY_KNOWN_HOSTS" > "$work/known_hosts"
 chmod 600 "$work/key" "$work/known_hosts"
 unset DEV_DEPLOY_SSH_KEY
 mkdir -p runtime-ci
-ssh -i "$work/key" -p "$DEV_DEPLOY_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$work/known_hosts" -o ConnectTimeout=20 \
+ssh -i "$work/key" -p "$DEV_DEPLOY_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$work/known_hosts" -o ConnectTimeout=20 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 \
   "shino@$DEV_DEPLOY_HOST" "bash -s -- '$root' '$SOURCE_SHA' '$mode' '$receipt' '$payload'" <<'REMOTE' | tee "runtime-ci/$mode.log"
 set -euo pipefail
 root=$1; sha=$2; mode=$3; receipt=$4; payload=$5
+echo "Connected to BASE for Unity $mode $sha"
 cd "$root"
 [[ $(git rev-parse --show-toplevel) == "$root" && $(git branch --show-current) == dev ]] || exit 1
 [[ $sha =~ ^[a-f0-9]{40}$ ]] || exit 2
 if [[ $mode == deploy ]]; then
-  git fetch origin dev </dev/null
+  GIT_TERMINAL_PROMPT=0 timeout 180 git fetch origin dev </dev/null
   [[ $(git rev-parse origin/dev) == "$sha" ]] || { echo 'Stale Unity release'; exit 1; }
   script=$(mktemp "$(git rev-parse --git-dir)/unity-ci-entry.XXXXXX")
   trap 'rm -f "$script"' EXIT
