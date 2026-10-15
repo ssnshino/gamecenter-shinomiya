@@ -1,3 +1,9 @@
+## 公開採用済み: 2026-10-15 道路網・山地のスマホ用WebGL
+
+Unity source `eeca3f261038b6d6bf271b91157b0a5abf23ac9d`、配布release／Unity RELEASE_TAG `e36ccaf102ee8494aa0d60d4d347f268114a9924`、Unity image `sha256:36e023b1586b3f7db8d0bce9bbecf629821eb78ee62b3341e21f2f69cc69dada`。Actions run [38742023882](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38742023882) がsuccess、2026-10-15 22:27 JSTにreceipt accepted／adoptionComplete true／exitCode0を確認。公開URLの通常解像度Edge25・WebKit24 checksも合格。実iPhone/Android性能は未測定。
+
+公開先: https://unity-games.wos.ktsys.jp/02/colony-racer/ 。高架・南/中央/北環状の移動ボタンを追加。既存Actions認証を使うUnity専用自動配備を追加し、公開ブラウザ後にfinalize、失敗時rollbackまで実動作を確認した。classic/gatewayとruntime dataをguardで保持。詳細は `docs/head/COLONY_ROAD_NETWORK_WEB_20261015.md`。以下の公開待ち・未実施は各記録時点の履歴。
+
 ## 公開準備中: 2026-10-15 道路網・山地のスマホ用WebGL
 
 Unity `eeca3f261038b6d6bf271b91157b0a5abf23ac9d` から5 IC・3環状線/JCT・盛土中央分離帯・距離案内・DEM山地/森林を含むWebGLを生成。スマホから高架と3環状線へ移動できるボタンを追加。見た目用InfrastructureのCPU meshコピーを除き、森林のみ圧縮、道路Colliderと原Prefabを保持した。Brotli fallbackを使用。AirRace全資産・旧Colony StreamingAssets/TemplateDataをbyte照合して保持。

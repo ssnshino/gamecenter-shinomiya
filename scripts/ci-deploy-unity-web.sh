@@ -34,7 +34,7 @@ cd "$root"
 [[ $(git rev-parse --show-toplevel) == "$root" && $(git branch --show-current) == dev ]] || exit 1
 [[ $sha =~ ^[a-f0-9]{40}$ ]] || exit 2
 if [[ $mode == deploy ]]; then
-  GIT_TERMINAL_PROMPT=0 timeout 180 git fetch origin dev </dev/null
+  GIT_TERMINAL_PROMPT=0 timeout 1800 git fetch --progress origin dev </dev/null
   [[ $(git rev-parse origin/dev) == "$sha" ]] || { echo 'Stale Unity release'; exit 1; }
   script=$(mktemp "$(git rev-parse --git-dir)/unity-ci-entry.XXXXXX")
   trap 'rm -f "$script"' EXIT
