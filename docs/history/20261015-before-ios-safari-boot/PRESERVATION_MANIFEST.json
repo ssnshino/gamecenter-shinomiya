@@ -1,0 +1,30 @@
+{
+  "baseline": "6673ce765672efdc8d3a46903d9f89288c3929ef",
+  "files": [
+    {
+      "source": "AGENTS.md",
+      "snapshot": "docs/history/20261015-before-ios-safari-boot/AGENTS.md",
+      "sha256": "d1903533c67eb083d19109d8c549098ba4ca9b9670f6f4249b01bcf39a5483a5"
+    },
+    {
+      "source": "README.md",
+      "snapshot": "docs/history/20261015-before-ios-safari-boot/README.md",
+      "sha256": "871baa1b7d00ed11bd28bcd7e6ba00ac71ac2a39eaed4f8fa03465e3b0d4f6fe"
+    },
+    {
+      "source": "snapshot/CURRENT_SNAPSHOT.md",
+      "snapshot": "docs/history/20261015-before-ios-safari-boot/snapshot/CURRENT_SNAPSHOT.md",
+      "sha256": "dd8c0d3f9b4e2fea248487802d5fb92657bfba50e8cfc84e481f092b48677edc"
+    },
+    {
+      "source": "docs/head/OPERATIONS.md",
+      "snapshot": "docs/history/20261015-before-ios-safari-boot/docs/head/OPERATIONS.md",
+      "sha256": "a94ea3d7deed6a5d08816e9b24a4216d92bd895cd5b0d1ae7a1412112492e2c7"
+    },
+    {
+      "source": "docs/head/COLONY_WEBGL_PUBLICATION.md",
+      "snapshot": "docs/history/20261015-before-ios-safari-boot/docs/head/COLONY_WEBGL_PUBLICATION.md",
+      "sha256": "8be1f27fe03261377868cf93d960e7d267002540498fdd90a0ea92931ec25dc1"
+    }
+  ]
+}
