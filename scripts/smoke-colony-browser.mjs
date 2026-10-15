@@ -12,22 +12,24 @@ const source=manifest.games.find(g=>g.game==='colony-racer').unitySourceSha;
 const url='https://unity-games.wos.ktsys.jp/02/colony-racer/';
 const report={complete:false,pass:false,distributionSha:sha,unitySourceSha:source,url,observations:[],checks:[],errors:[],pageErrors:[],environment:'Ubuntu Actions Chromium software WebGL; not a physical phone'};
 await fs.mkdir(out,{recursive:true});
-let browser;
+let browser,p;
 const state=p=>p.evaluate(()=>window.ColonyRacerWebPreview?.snapshot());
 const observed=(name,snapshot)=>report.observations.push({name,pass:true,observedUtc:new Date().toISOString(),tool:'Playwright Chromium',snapshot});
 const wait=(p,fn,timeout=45000)=>p.waitForFunction(fn,null,{timeout,polling:250});
 try{
  browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- const context=await browser.newContext({viewport:{width:844,height:390},deviceScaleFactor:1,hasTouch:true,isMobile:true});
- const p=await context.newPage();
+ const context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,hasTouch:true,isMobile:true});
+ p=await context.newPage();
  p.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});p.on('pageerror',e=>report.pageErrors.push(String(e)));
  await p.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
  await wait(p,()=>window.ColonyRacerWebPreview?.snapshot().ready||window.ColonyRacerWebPreview?.snapshot().loadError,300000);
  if((await state(p)).loadError)throw Error('Unity load failed');
- await p.locator('#start').click();
+ await p.locator('#start').click({timeout:120000});
  await wait(p,()=>{const s=window.ColonyRacerWebPreview.snapshot();return !s.paused&&s.telemetry?.reflectionReady;},180000);
  if(!(await p.title()).includes('Colony Racer')||p.url()!==url)throw Error('Wrong public page');
  observed('loaded',await state(p));
+ await p.screenshot({path:path.join(out,'portrait-started.png')});
+ await p.setViewportSize({width:844,height:390});
  async function shot(name){
   const bytes=await p.screenshot({path:path.join(out,name+'.png')});
   const stats=await sharp(bytes).extract({left:211,top:130,width:422,height:140}).stats();
@@ -61,7 +63,13 @@ try{
  observed('reset',await state(p));await shot('reset');
  if(report.errors.length||report.pageErrors.length)throw Error('Public runtime errors');
  report.complete=true;report.pass=true;
-}catch(e){report.failure=String(e.stack||e);process.exitCode=1;}
+}catch(e){
+ report.failure=String(e.stack||e);process.exitCode=1;
+ if(p){
+  try{report.failedSnapshot=await state(p);}catch{}
+  try{await p.screenshot({path:path.join(out,'failure.png'),timeout:10000});}catch{}
+ }
+}
 finally{
  await fs.writeFile(path.join(out,'acceptance.json'),JSON.stringify(report,null,2)+'\n');
  if(browser)await browser.close();
