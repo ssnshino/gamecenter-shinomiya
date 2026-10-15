@@ -1,7 +1,7 @@
 <!-- IOS_SAFARI_BOOT_START -->
 ## 現在: iPhone Safariの起動クラッシュに対応（2026-10-15）
 
-ユーザー実機でSafariが繰り返しクラッシュした。PC/WebKit smoke合格をiPhone適合と扱わない。対策版公開済み・iPhone実機の解消は未確認。約93MB→219MBのJS Brotli展開を、ブラウザnative展開へ変更。圧縮byte・展開後byteとUnityゲーム内容は同一。JS/WASMの.br MIMEを補正し、通常Edge/WebKitの確認を行った。機種・落ちる段階は確認待ち。原因はメモリ不足の可能性があり、断定していない。
+ユーザー実機でSafariが繰り返しクラッシュした。PC/WebKit smoke合格をiPhone適合と扱わない。対策版公開済み・iPhone実機の解消は未確認。約93MB→219MBのJS Brotli展開を、ブラウザnative展開へ変更。圧縮byte・展開後byteとUnityゲーム内容は同一。JS/WASMの.br MIMEを補正し、通常Edge/WebKitの確認を行った。実機はiPhone 17、開始ボタンが表示される前にクラッシュすると本人確認済み。原因はメモリ不足の可能性があり、断定していない。
 
 詳細と公開receiptは `docs/head/IOS_SAFARI_BOOT_20261015.md`。以前の公開受入れはPC/ソフトウェアブラウザでの受入れであり、iPhone起動成功の証拠ではない。
 <!-- IOS_SAFARI_BOOT_END -->
@@ -52,7 +52,9 @@
   "distributionSha": "db6b78b7631800b6b16fa9bcb6ba4239eda84a7e",
   "imageId": "sha256:d928cb12a1439ea451ecc92fa14eb1b7fd9fd23a030678c06b5f042f2f8fd16e",
   "receipt": "runtime/deploy/unity-colony-db6b78b7631800b6b16fa9bcb6ba4239eda84a7e-20261015T135010Z",
-  "artifactId": 11979271921
+  "artifactId": 11979271921,
+  "reportedDevice": "iPhone 17",
+  "reportedCrashStage": "before start button appears"
 }
 ```
 
