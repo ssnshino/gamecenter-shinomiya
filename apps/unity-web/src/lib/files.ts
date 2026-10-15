@@ -18,9 +18,9 @@ export function contentTypeFor(filePath: string): string {
   const lower = filePath.toLowerCase();
   if (lower.endsWith(".html")) return "text/html; charset=utf-8";
   if (lower.endsWith(".css")) return "text/css; charset=utf-8";
-  if (lower.endsWith(".js") || lower.endsWith(".js.gz")) return "application/javascript; charset=utf-8";
-  if (lower.endsWith(".wasm") || lower.endsWith(".wasm.gz")) return "application/wasm";
-  if (lower.endsWith(".json") || lower.endsWith(".json.gz")) return "application/json; charset=utf-8";
+  if (lower.endsWith(".js") || lower.endsWith(".js.gz") || lower.endsWith(".js.br")) return "application/javascript; charset=utf-8";
+  if (lower.endsWith(".wasm") || lower.endsWith(".wasm.gz") || lower.endsWith(".wasm.br")) return "application/wasm";
+  if (lower.endsWith(".json") || lower.endsWith(".json.gz") || lower.endsWith(".json.br")) return "application/json; charset=utf-8";
   if (lower.endsWith(".png")) return "image/png";
   if (lower.endsWith(".ico")) return "image/x-icon";
   if (lower.includes("airrace_") || path.basename(lower) === "bundles") return "application/octet-stream";

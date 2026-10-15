@@ -1,0 +1,7 @@
+# iPhone Safari起動クラッシュ対応
+
+ユーザーの実機写真はSafariの再読み込み反復後のクラッシュ画面。PC WebKit合格を実機のメモリ適合へ読み替えない。機種・クラッシュ段階は確認中。
+
+まず現在の93MB BrotliデータをJS fallbackで219MBへ展開する配信を、既存ブラウザのnative Brotliへ変更する。圧縮byteと展開後byteを照合し、Unityゲームコード・地形・運転物理は維持。`.br`配信に欠けているJS/WASM MIMEを補う。AirRace既存gzipと旧StreamingAssets/TemplateData、classic/gatewayを保持する。
+
+manifest照合、Brotli展開hash・実HTTP Content-Encoding/MIME、通常Edge/WebKitの起動・操作とloader fallbackが不要であることを確認。Linux CI後にUnity限定Actionsで配備・実ブラウザ受入れ・finalizeする。Safari実機の再確認まではクラッシュ解消と断定しない。改善しない場合は実機条件をもとに常駐geometry/texture/sceneのメモリを削減する。
