@@ -2,7 +2,8 @@ name: Deploy Colony WebGL
 on:
   push:
     branches: [dev]
-    paths: ['apps/unity-web/public/colony-racer/**', 'docs/head/UNITY_ARTIFACT_MANIFEST.json', '.github/workflows/deploy-unity-web.yml', 'scripts/ci-deploy-unity-web.sh', 'scripts/smoke-colony-browser.mjs', 'scripts/check-unity-web-release.py', 'tests/test_unity_ci_deploy.py']
+    # Only changed game bytes or provenance start an automatic public release.
+    paths: ['apps/unity-web/public/colony-racer/**', 'docs/head/UNITY_ARTIFACT_MANIFEST.json']
   pull_request:
     branches: [dev]
     paths: ['apps/unity-web/public/colony-racer/**', 'docs/head/UNITY_ARTIFACT_MANIFEST.json', '.github/workflows/deploy-unity-web.yml', 'scripts/ci-deploy-unity-web.sh', 'scripts/smoke-colony-browser.mjs', 'scripts/check-unity-web-release.py', 'tests/test_unity_ci_deploy.py']
@@ -33,7 +34,7 @@ jobs:
     needs: validate
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

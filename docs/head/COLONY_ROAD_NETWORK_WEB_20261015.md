@@ -1,3 +1,9 @@
+## 公開採用済み: 2026-10-15 道路網・山地のスマホ用WebGL
+
+Unity source `eeca3f261038b6d6bf271b91157b0a5abf23ac9d`、配布release／Unity RELEASE_TAG `e36ccaf102ee8494aa0d60d4d347f268114a9924`、Unity image `sha256:36e023b1586b3f7db8d0bce9bbecf629821eb78ee62b3341e21f2f69cc69dada`。Actions run [38742023882](https://github.com/ssnshino/gamecenter-shinomiya/actions/runs/38742023882) がsuccess、2026-10-15 22:27 JSTにreceipt accepted／adoptionComplete true／exitCode0を確認。公開URLの通常解像度Edge25・WebKit24 checksも合格。実iPhone/Android性能は未測定。
+
+公開先: https://unity-games.wos.ktsys.jp/02/colony-racer/ 。高架・南/中央/北環状の移動ボタンを追加。既存Actions認証を使うUnity専用自動配備を追加し、公開ブラウザ後にfinalize、失敗時rollbackまで実動作を確認した。classic/gatewayとruntime dataをguardで保持。詳細は `docs/head/COLONY_ROAD_NETWORK_WEB_20261015.md`。以下の公開待ち・未実施は各記録時点の履歴。
+
 # 2026-10-15 道路網・山地のスマホ用WebGL
 
 公開候補を準備し、Unity専用Actionsを検証中。accepted receiptはまだなく、公開済みとは扱わない。
@@ -14,3 +20,13 @@ Windowsでは既存Nodeテスト19/21（symlink EPERM 2件）、Python既存22�
 
 公開先: https://unity-games.wos.ktsys.jp/02/colony-racer/
 更新前文書の正確なGit blobとSHA256は `docs/history/20261015-before-colony-road-network/PRESERVATION_MANIFEST.json`。
+
+## 自動配備の使い方と回線
+
+Unity編集repoのpushだけではWebGLは生成されない。EditorでWebGLをbuildし、この配布repoのColony成果物とmanifestを更新してdevへ反映するとUnity専用workflowが動く。PRは検証だけで秘密鍵を使わない。配備helperや文書だけの更新は再配備を起動しない。手動起動はdevを指定する。
+
+WAN経由の大容量Git取得が20分以上かかった一方、Windows 192.168.1.34→BASE 192.168.1.23の約98MB bundleは約8秒（約11MiB/s）で転送できた。bundle SHA256 f466306c6bcc466def04eb323a792ad21e991476985f8887de184272c5b6d74e と固定Git refを検証してobjectだけ取り込んだ。臨時LAN serverは停止済み。今後の通常WAN取得に30分の上限と進捗、SSH keepaliveを設け、job全体は60分を確保する。
+
+GPUなしCIの初回検証は開始buttonの30秒timeoutで失敗し、実rollbackが成功した。通常解像度でのsoftware rendererはローカルで約0.3〜0.5fpsを観測。最終CIは実ページのframebufferのみ長辺256pxで検証し、スマホサイズのUIと実操作を保持。実機性能検証として扱わない。最終CIの6観測と12 checks、および通常GPUの公開Edge25/WebKit24を区別する。
+
+accepted receipt: runtime/deploy/unity-colony-e36ccaf102ee8494aa0d60d4d347f268114a9924-20261015T132242Z。正本のActions artifactは unity-colony-release-e36ccaf102ee8494aa0d60d4d347f268114a9924（artifact11976454093）。Windows出力 network-web-public-ci-accepted、network-web-public-edge、network-web-public-webkit にraw記録を保存。
