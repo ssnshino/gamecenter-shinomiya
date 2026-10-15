@@ -117,6 +117,11 @@ jobs:
           GIT_TERMINAL_PROMPT=0 timeout 25 git ls-remote origin refs/heads/dev </dev/null || echo REMOTE_REFERENCE_CHECK_FAILED
           echo TRANSFER_PROCESSES
           ps -eo pid,ppid,etime,comm | awk 'NR==1 || /git|curl|ssh/'
+          echo REPOSITORY_TRANSFER_STATE
+          git rev-parse --is-shallow-repository
+          git count-objects -v
+          ps -p 4088557,4088628,4116582,4116589 -o pid,ppid,stat,wchan:32,args
+          find .git -maxdepth 3 -name '*.lock' -printf '%p %s bytes\n'
           docker inspect gamecenter-shinomiya-unity-web --format '{{.Image}}'
           find runtime/deploy -maxdepth 2 -name receipt.json -mmin -30 -exec python3 -c 'import json,sys;v=json.load(open(sys.argv[1]));print({k:v.get(k) for k in ["requestedSha","phase","adoptionComplete"]})' '{}' \;
           echo SSH_REMOTE_FINISHED
