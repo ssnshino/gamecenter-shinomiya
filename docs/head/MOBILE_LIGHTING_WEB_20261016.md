@@ -1,3 +1,19 @@
+# スマホ照明修正版の公開結果
+
+照明修正版を公開採用。Unity source `937b98ac785d59354c61c1a3299caaac867a8455`、配布release/Unity RELEASE_TAG `40db65b345aea1ee025b8d83b5d858e4c216c4a9`。Actions run38853563393 success、公開10checks/6operations PASS、receipt accepted/adoptionComplete true/exitCode0、retryRequired/mixedCheckout false。実iPhoneの再確認は待ち。
+
+URL: https://unity-games.wos.ktsys.jp/02/colony-racer/?v=lighting-20261016 。軽量でも対応デバイスはHDR/Neutralトーンマップを保持、AOはOFF。Web主光0.85、影強度0.60、露出0、ミラー受光0.15。影距離45/100mとLOD・物理は維持。高速道路/環状線/IC/JCT・N/S長距離道路・山/追加地形・森林は引き続きオミット、コード/元データ保持。
+
+元Scene/Prefab hash不変、Infrastructure767mesh/482collider/3,325,408 summed verticesは起動成功版と同一。data57,353,448bytes/展開後100,944,814bytes。AirRace・旧StreamingAssets/TemplateDataはmanifest照合で保持。ローカルEdge27/WebKit26 PASS。同一視点の遠方路面190x40pixelの白画素率81.26%→0%。PCスクリーンショット比較であり実iPhoneの性能・見え方の証明ではない。
+
+復元先: 市街地切り分け版8c0b9e52590ad0ff00c534f55522012bc278579e（実iPhone17起動・走行済み）、full版f75d8649bb6112326355c45b26f91bd66265f228。Windows EditorのPlay初期化は別件として未検証、Webの走行PASSに読み替えない。
+
+## 受入れ証拠
+
+Actions38853563393のartifactとWindows outputs/lighting-web-public-ci-acceptedを正本とする。公開ブラウザはsoftware framebuffer長辺256pxで性能評価には使わない。通常解像度Edge27/WebKit26はoutputs/lighting-web-edge、outputs/lighting-web-webkit。同一視点比較はoutputs/mobile-lighting-ab-r2、outputs/mobile-lighting-after-r1、outputs/mobile-lighting-comparison.json。
+
+## 実装時の記録
+
 # スマホ照明の修正候補（2026-10-16）
 
 市街地切り分け版はiPhone 17で起動・実走できた。ユーザー写真では近景が青暗く、遠方が白飛びする。軽量/詳細の切替でも変わらないとユーザー確認。基準release 8c0b9e52590ad0ff00c534f55522012bc278579eを復元先に保持する。
