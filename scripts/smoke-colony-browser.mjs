@@ -41,6 +41,14 @@ try{
  await wait(p,()=>{const s=window.ColonyRacerWebPreview.snapshot();return !s.paused&&s.telemetry?.reflectionReady;},180000);
  if(!(await p.title()).includes('Colony Racer')||p.url()!==url)throw Error('Wrong public page');
  observed('loaded',await state(p));
+ // Older accepted artifacts remain valid rollback targets without these fields.
+ const lighting=(await state(p)).telemetry;
+ if(typeof lighting.colorGradingActive==='boolean'){
+  const pass=lighting.colorGradingActive&&lighting.cameraHdr===lighting.hdrSupported&&!lighting.aoActive&&Math.abs(lighting.keyLightIntensity-.85)<.01&&Math.abs(lighting.mirrorSurfaceStrength-.15)<.01;
+  report.checks.push({name:'mobile lighting profile',pass,telemetry:lighting});
+  if(!pass)throw Error('Mobile lighting profile not applied');
+ }
+
  await p.screenshot({path:path.join(out,'portrait-started.png')});
  await p.setViewportSize({width:844,height:390});
  await softwareBuffer();
