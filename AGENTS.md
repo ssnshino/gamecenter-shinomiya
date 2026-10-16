@@ -1,3 +1,11 @@
+<!-- MOBILE_QUALITY_FIXED_START -->
+## 現在: スマホは軽量固定、配備採用完了（2026-10-16）
+
+配布release/永続RELEASE_TAG c6ad33dbb2507cd22c36c207b70f6679bbb368d3、engine source937b98a、Web template sourceba32cf8。Actions38860158039 success、公開10checks/6operations PASS、accepted/adoptionComplete true。iPhoneで軽量は走行でき、詳細切替で落ちるとユーザー確認したためtouchを軽量固定にした。PC切替は維持。今回の実iPhone再読込は未確認。市街地の影は未解消、地区間道路は良好というユーザー観察。
+
+別作業の停止済みALADDIN検証container3個の削除をユーザーが確認し、元の失敗記録を保持した別reviewed receiptで復旧。通常保護コードは不変、他サービス/データ/configを再検証。1エリアCore重視は提案段階で未実装。詳細と復元はdocs/head/MOBILE_QUALITY_GUARD_20261016.md。以前の入口はdocs/history/20261016-before-quality-guard-adoptionへexact bytes/hashで保全。以下は各時点の履歴。
+<!-- MOBILE_QUALITY_FIXED_END -->
+
 <!-- MOBILE_LIGHTING_ACCEPTED_START -->
 ## 現在: スマホ照明修正版を公開（2026-10-16）
 

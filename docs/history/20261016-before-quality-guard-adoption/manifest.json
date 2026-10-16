@@ -1,0 +1,32 @@
+[
+  {
+    "path": "docs/head/MOBILE_QUALITY_GUARD_20261016.md",
+    "sha256": "fcedd29528afb59db853f341d04c7ffdfb035dfae9e4b9a743633e7e9e71e284",
+    "bytes": 2941
+  },
+  {
+    "path": "README.md",
+    "bytes": 16346,
+    "sha256": "d1de216840ea27130f50b69e4f8af954403620d6c96e176a98b4c7d7af34378f"
+  },
+  {
+    "path": "AGENTS.md",
+    "bytes": 8635,
+    "sha256": "3b1f84c695d5b1b1410ee153bef4f521a499f2b0739957989c5d4a63542e215f"
+  },
+  {
+    "path": "snapshot/CURRENT_SNAPSHOT.md",
+    "bytes": 26211,
+    "sha256": "3bc15fbed5da4f860de872d3ca563495c17c9ce07f07919e2d37028dae88f88e"
+  },
+  {
+    "path": "docs/head/OPERATIONS.md",
+    "bytes": 18418,
+    "sha256": "3c943b02d0ea9845a10b4dfaf495a439f0aeb9455461febceab97fd0ea8caf46"
+  },
+  {
+    "path": "docs/head/COLONY_WEBGL_PUBLICATION.md",
+    "bytes": 20027,
+    "sha256": "fc195f9ea1939b9df6c74dda0140d7fbebc02f210917f424e8eb784b419a50a5"
+  }
+]
