@@ -1,3 +1,15 @@
+<!-- CITY_DIAGNOSTIC_ACCEPTED_START -->
+## 現在: 市街地切り分け版がiPhone 17で起動・走行（2026-10-16）
+
+Unity source d30013583556733cadb80d1cb043af65272c7d5e、配布release/Unity RELEASE_TAG8c0b9e52590ad0ff00c534f55522012bc278579e。Actions38846295459 success、公開9checks/6operationsとreceipt accepted/adoptionComplete true/exitCode0を確認。iPhone 17で開始画面・走行の実機確認あり。写真HUD118〜120km/h・接地、軽量26〜30fps/詳細34fpsはその時点の表示で持続性能保証ではない。
+
+高速道路・環状線/IC/JCT・長距離地上道・山/追加景観地形をcity-diagnosticで一時オミット。市街地3地区・元の橋・鉄骨・安全内壁/採光帯・街区LODは保持。data57,351,365bytes/展開後100,916,295bytes。ローカルEdge22/WebKit21 PASS。通常/診断/再読込/通常復帰の生成検証もPASS。元データは保存されfullへ切替可能。
+
+URL: https://unity-games.wos.ktsys.jp/02/colony-racer/?v=city-diagnostic-20261016 。前便forest版も実機では起動前クラッシュした。今回写真では遠方白飛び・近景の平坦さが残り、軽量/詳細切替でも改善しない。照明調整は次便であり、今回の受入れに含めない。Windows Editor再生成/Play確認もWebの成功と区別する。
+
+詳細: docs/head/CITY_DIAGNOSTIC_WEB_20261016.md。更新前入口資料はdocs/history/20261016-before-city-diagnostic-acceptanceにexact bytes/hashで保全。以下は過去状態の記録。
+<!-- CITY_DIAGNOSTIC_ACCEPTED_END -->
+
 # 市街地中心のiPhone起動切り分け版
 
 森林なし公開版でもiPhone 17は開始前に落ちる、とユーザー実機で確認。高速道路/山/N-S方面直線道路を一時的に外し、すぐ復帰できる版を依頼された。今回の公開は診断用であり、iPhone修正成功とは扱わない。
@@ -10,6 +22,6 @@ Web Build Succeeded/errors0/warnings286（再コンパイルに伴う既存API�
 
 ローカルEdge22/WebKit21 checks PASS。開始・3地区・縦横touch・加速/制動/操舵/復帰・省略道路ボタン非表示を確認。CIは明示的なcityDiagnostic telemetry時のみ道路移動の代わりに非表示/無効化を確認し、通常版の道路試験は保持。256px software CIを実機性能の証拠にはしない。AirRace/保持catalog/Bundle/StreamingAssets/TemplateDataの一致をmanifestで確認。
 
-配備は既存のUnity専用Actionsを使い、guard→仮配備→公開ブラウザ→acceptedの順。公開採用は進行中。予定URL: https://unity-games.wos.ktsys.jp/02/colony-racer/?v=city-diagnostic-20261016
+配備は既存のUnity専用Actionsを使い、guard→仮配備→公開ブラウザ→acceptedの順。公開採用済み。release8c0b9e52590ad0ff00c534f55522012bc278579e、Actions38846295459 success。receipt /home/shino/source/repos/upstream/gamecenter-shinomiya/runtime/deploy/unity-colony-8c0b9e52590ad0ff00c534f55522012bc278579e-20261016T033639Z、accepted/adoptionComplete true/exitCode0。公開software browser9checks/6operations PASS、native gzip/MIME確認済み。実iPhoneで開始・走行確認。照明問題は残り次便。URL: https://unity-games.wos.ktsys.jp/02/colony-racer/?v=city-diagnostic-20261016
 
 復帰: UnityはCOLONY_SCENERY_PROFILE=fullで再生成。Editorメニュー（source follow-up）はColony Racer > Diagnostics > Restore Full Scenery。公開の直前生成済みWebGLはrelease f75d8649bb6112326355c45b26f91bd66265f228に保存済みで、Unity再ビルドなしにGit復元/再配備できる。
