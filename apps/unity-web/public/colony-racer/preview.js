@@ -227,6 +227,10 @@
       try { value = JSON.parse(json); } catch { return; }
       latestTelemetry = Object.freeze(value);
       telemetryReceivedAt = performance.now();
+      document.querySelectorAll("#expressway, [data-ring]").forEach(button => {
+        button.hidden = value.cityDiagnostic === true;
+        button.disabled = value.cityDiagnostic === true;
+      });
       if (value.ready && !ready) {
         ready = true;
         resizeCanvas();
@@ -244,7 +248,7 @@
       $("district-name").textContent = value.district || "Core";
       if (performance.now() - statusTimer > 500) {
         statusTimer = performance.now();
-        $("status").textContent = `${value.district || "Core"} · ${Number(value.fps || 0).toFixed(0)} fps · ${detailed ? "詳細" : "軽量"} · 上限120km/h`;
+        $("status").textContent = `${value.cityDiagnostic ? "市街地切り分け版 · " : ""}${value.district || "Core"} · ${Number(value.fps || 0).toFixed(0)} fps · ${detailed ? "詳細" : "軽量"} · 上限120km/h`;
       }
       window.dispatchEvent(new CustomEvent("colony-telemetry", {detail:latestTelemetry}));
     },

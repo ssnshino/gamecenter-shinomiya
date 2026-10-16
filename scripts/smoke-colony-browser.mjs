@@ -57,12 +57,23 @@ try{
   await p.waitForFunction(n=>{const t=window.ColonyRacerWebPreview.snapshot().telemetry;return t.district===n&&t.grounded;},name,{timeout:60000,polling:250});
  }
  observed('districts',await state(p));
- for(const [selector,label] of [['#expressway','Expressway'],['[data-ring="0"]','S LOOP'],['[data-ring="1"]','CENTRAL LOOP'],['[data-ring="2"]','N LOOP']]){
+ const cityDiagnostic=(await state(p)).telemetry.cityDiagnostic===true;
+ report.sceneryProfile=cityDiagnostic?'city-diagnostic':'full';
+ if(cityDiagnostic){
+  for(const selector of ['#expressway','[data-ring="0"]','[data-ring="1"]','[data-ring="2"]']){
+   const omitted=await p.locator(selector).evaluate(e=>e.hidden&&e.disabled);
+   report.checks.push({name:'omitted '+selector,pass:omitted});
+   if(!omitted)throw Error('Omitted road destination still enabled');
+  }
+  await p.locator('[data-district="Core"]').click();
+  await wait(p,()=>window.ColonyRacerWebPreview.snapshot().telemetry.district==='Core');
+  await shot('city-diagnostic');
+ }else for(const [selector,label] of [['#expressway','Expressway'],['[data-ring="0"]','S LOOP'],['[data-ring="1"]','CENTRAL LOOP'],['[data-ring="2"]','N LOOP']]){
   await p.locator(selector).click();
   await p.waitForFunction(n=>{const t=window.ColonyRacerWebPreview.snapshot().telemetry;return t.district===n&&t.grounded;},label,{timeout:60000,polling:250});
   report.checks.push({name:label,pass:true,snapshot:await state(p)});await shot(label.replaceAll(' ','-'));
  }
- await p.locator('#expressway').click();
+ if(!cityDiagnostic)await p.locator('#expressway').click();
  await p.keyboard.down('w');
  await wait(p,()=>{const t=window.ColonyRacerWebPreview.snapshot().telemetry;return t.throttle>.9&&t.speedKmh>10;},60000);
  observed('accelerate',await state(p));await p.keyboard.up('w');
