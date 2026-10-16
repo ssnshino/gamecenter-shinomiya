@@ -17,3 +17,8 @@
 .districts{right:calc(12px + var(--safe-right));flex-wrap:wrap;max-width:600px}
 .touch-layout #look-zone{top:calc(190px + var(--safe-top))}
 @media(max-height:480px) and (orientation:landscape){.districts{max-width:none}.touch-layout #look-zone{top:calc(126px + var(--safe-top))}}
+
+/* Cover gaps and HUD text as well as individual controls.
+   Menus retain native scrolling/pinching; driving uses two-thumb game input. */
+#preview{touch-action:manipulation}
+body:not(.paused) #preview{touch-action:none}
