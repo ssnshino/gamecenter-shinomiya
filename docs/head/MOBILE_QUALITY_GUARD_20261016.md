@@ -1,0 +1,9 @@
+# タッチ端末の軽量固定（2026-10-16）
+
+iPhone実機で軽量は120km/h・30fpsの走行写真あり。詳細へ切り替えるとSafariが落ちる、とユーザー確認。前便照明修正でも市街地の影は未解消。地区間道路の影は良いという観察があり、別途調査する。
+
+タッチ端末は品質ボタンを軽量固定・disabledとし、合成clickでもdetail送信を抑止する。PCの詳細/軽量切替は維持。Unity data/wasm/framework/loaderは前便40db65bと同一。Unityの新ビルドではなくWeb操作部のみの修正。Engine sourceは937b98a、Webテンプレートsourceはba32cf8。
+
+実テンプレート＋Unity通信stubを使うEdge/WebKit、touch/desktopの4条件PASS。touchは画面回転と合成clickでもdetail送信ゼロ、desktopはdetail→light→detail。stubテストは実ゲーム・実機性能の証明には使わない。公開自動配備の実ゲーム受入れは未実施。
+
+復元は前便40db65bのpreview.jsとmanifestへ戻す。市街地の影修正、詳細クラッシュの根因特定と復帰は未完了。
