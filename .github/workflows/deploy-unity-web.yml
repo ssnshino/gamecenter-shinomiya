@@ -18,7 +18,12 @@ jobs:
         working-directory: apps/unity-web
       - run: node --test tests/game-delivery.test.mjs
       - run: python3 scripts/test_review_external_cleanup.py
+      - uses: actions/checkout@v4
+        with:
+          ref: c6ad33dbb2507cd22c36c207b70f6679bbb368d3
+          path: production-policy
       - run: python3 -m unittest discover -s tests -p 'test_unity*.py' -v
+        working-directory: production-policy
       - run: bash -n scripts/ci-deploy-unity-web.sh && bash -n scripts/deploy-unity-web.sh
       - name: Verify actual artifacts against the committed manifest
         run: |
@@ -26,6 +31,7 @@ jobs:
           node -e "require('assert').deepStrictEqual(require('/tmp/unity-actual.json'),require('./docs/head/UNITY_ARTIFACT_MANIFEST.json'))"
   deploy:
     needs: validate
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/reconcile/quality-cleanup-20261016'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
