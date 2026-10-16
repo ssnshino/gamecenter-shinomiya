@@ -187,6 +187,7 @@
   $("reset").addEventListener("click", () => { releaseAll(); send("ResetPreview"); });
   document.querySelectorAll("[data-district]").forEach(button => button.addEventListener("click", () => { releaseAll(); send("VisitDistrict", button.dataset.district); }));
   $("quality").addEventListener("click", () => {
+    if (touchLayout) return; // Detail switching crashes the reported iPhone; retain its working light profile.
     detailed = !detailed;
     $("quality").textContent = detailed ? "詳細" : "軽量";
     $("quality").setAttribute("aria-pressed", String(detailed));
@@ -263,7 +264,9 @@
   };
   document.body.classList.add("paused");
   document.body.classList.add(touchLayout ? "touch-layout" : "desktop-layout");
-  $("quality").textContent = detailed ? "詳細" : "軽量";
+  $("quality").textContent = touchLayout ? "軽量固定" : (detailed ? "詳細" : "軽量");
+  $("quality").disabled = touchLayout;
+  if (touchLayout) $("quality").title = "スマホでは安定性のため軽量に固定しています";
   $("quality").setAttribute("aria-pressed", String(detailed));
   // Renew held state so a stalled/lost browser controller cannot leave the car accelerating.
   window.setInterval(() => { if (ready && !paused) flush(true); }, 100);
