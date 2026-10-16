@@ -1,3 +1,13 @@
+<!-- MOBILE_DOUBLE_TAP_ACCEPTED_START -->
+## 現在: ダブルタップ拡大防止版を公開（2026-10-16）
+
+配布release/Unity RELEASE_TAG `004110fd8efd70e1a5890608b8f0cb92a5a36e88`。Actions38863673644 success、公開実ゲーム10checks/6operations PASS、receipt accepted/adoptionComplete true/exitCode0、retryRequired/mixedCheckout false。Web template source fb9df73eb723ed5661ea973bc83c5f8027bd44fe。Unity engine source937b98aの既存buildを使用し、今回Unity再buildはしていない。
+
+URL: https://unity-games.wos.ktsys.jp/02/colony-racer/?v=double-tap-20261016 。ゲーム全体にtouch-action、Safariの近接連続tap補助を追加。2本指入力を連続tap判定から除き、button連続操作を保持。純Nodeイベント9条件PASS、CUA実ゲームの起動・品質切替・連続reset・縦横表示/倍率1・console error0を確認。実iPhoneのnative zoom解消はユーザー再確認待ち。
+
+前版はユーザーが軽量化を体感し30fps表示を報告（持続性能測定ではない）。スマホ軽量固定を維持。市街地の影は未解決、1エリアCore重視は相談段階。詳細はdocs/head/MOBILE_DOUBLE_TAP_20261016.md。更新前文書はdocs/history/20261016-before-double-tap-acceptanceへexact bytes/hashで保存。以下は各時点の履歴。
+<!-- MOBILE_DOUBLE_TAP_ACCEPTED_END -->
+
 <!-- MOBILE_QUALITY_FIXED_START -->
 ## 現在: スマホは軽量固定、配備採用完了（2026-10-16）
 

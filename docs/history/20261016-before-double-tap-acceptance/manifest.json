@@ -1,0 +1,32 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 17461,
+    "sha256": "ac61c63d944f974209605be05e843024db005f38e858a73b8f45df968189452a"
+  },
+  {
+    "path": "AGENTS.md",
+    "bytes": 9750,
+    "sha256": "0ea3ea17dab02d44ed5e95c52dbacb247a4721c0f5e0c00ad07e080671ac1d5f"
+  },
+  {
+    "path": "snapshot/CURRENT_SNAPSHOT.md",
+    "bytes": 27326,
+    "sha256": "50bde78943131e4cdb8d565b50175f9c7ff14a9d964e880fb47846e139a6f237"
+  },
+  {
+    "path": "docs/head/OPERATIONS.md",
+    "bytes": 19533,
+    "sha256": "9066607870842b603f6223c4f79b2875b1ec0e6e26fea307c491a8c36afee683"
+  },
+  {
+    "path": "docs/head/COLONY_WEBGL_PUBLICATION.md",
+    "bytes": 21142,
+    "sha256": "e46dddadfe0358a134f2f0a52c1ea5146de8147a480a8d91abc625bcb8c12831"
+  },
+  {
+    "path": "docs/head/MOBILE_DOUBLE_TAP_20261016.md",
+    "bytes": 1471,
+    "sha256": "49be652e72ef961916d9a89f1b8d5c9a1d9af2528fac2634a871c388f91cbeb3"
+  }
+]
