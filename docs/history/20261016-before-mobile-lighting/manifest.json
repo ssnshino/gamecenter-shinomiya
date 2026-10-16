@@ -1,0 +1,37 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "b31bb4ce93172f323dd651a37119f981cb43e6e5ec5d9bcfd2df4a0a234c573a",
+    "bytes": 14740
+  },
+  {
+    "path": "AGENTS.md",
+    "sha256": "7b9866188876b41da63009bf3a9cc563df8c1c5ad8ddf13aacc81d136822d5b8",
+    "bytes": 6980
+  },
+  {
+    "path": "snapshot/CURRENT_SNAPSHOT.md",
+    "sha256": "aa62fe53a1ad9e8e2e355e1fb2d5d871c90988f4c9f2dac77b942832486639c8",
+    "bytes": 24668
+  },
+  {
+    "path": "docs/head/OPERATIONS.md",
+    "sha256": "56d9421fc71263095a27553963517fdd32b0a2f5fce4fff510ce7f5f6bf6f7f4",
+    "bytes": 16825
+  },
+  {
+    "path": "docs/head/COLONY_WEBGL_PUBLICATION.md",
+    "sha256": "d5ec6821f44504d34307fbfefaa36c880162d700f5296af46c03e61ab5a0f94c",
+    "bytes": 18490
+  },
+  {
+    "path": "docs/head/IOS_SAFARI_BOOT_20261015.md",
+    "sha256": "b02f58bd38628a5fc0cf758afab0cabd42bc9965089858ab6521127ff29c4661",
+    "bytes": 6558
+  },
+  {
+    "path": "docs/head/CITY_DIAGNOSTIC_WEB_20261016.md",
+    "sha256": "473ec8ab7db2725ae8b0fe0bfc86769932135cae8fbfa70c109624f86fdbcf7e",
+    "bytes": 4428
+  }
+]
