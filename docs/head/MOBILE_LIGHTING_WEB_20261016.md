@@ -9,3 +9,9 @@ Unity source 937b98ac785d59354c61c1a3299caaac867a8455。軽量でも対応デバ
 基準版の同一視点A/Bでは影OFFで手前まで白飛びし、bias変更/AO切替では主症状が変わらなかった。境目の正確な物理原因の断定ではない。HDRは描画バッファの負担を追加するため、実iPhoneで起動と見え方の再確認が必要。
 
 検証・配備の結果は後記。現時点では候補であり、accepted receiptと実機再確認は未取得。Windows EditorのPlay検証とWeb検証は区別する。
+
+## ビルド・比較
+
+Unity 6000.4.3f1 / native gzip / ETC2 / DiskSizeLTO。Succeeded、errors0、warnings320（旧API等を含む）。Infrastructure 767mesh / 482collider / 3,325,408 summed verticesは起動成功版と一致し、元Scene/Prefab hashも不変。data 57,353,448bytes / 展開後100,944,814bytes（基準57,351,365 / 100,916,295）。WASM 6,936,156 / 19,982,037bytes。AirRace全資産・旧StreamingAssets/TemplateDataをmanifestで照合し保持。
+
+ローカルEdge 27条件PASS。軽量HDR/grade、AO OFF、主光0.85/ミラー0.15、縦横UI、3地区、加速・制動・操舵・reset/pause/resumeを確認。遠方路面の白飛びが抑えられたスクリーンショットあり。WebKitも26条件PASS。同一視点A/Bは検証中。実機の性能・見え方をPCでの結果に読み替えない。
