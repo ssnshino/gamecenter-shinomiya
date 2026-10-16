@@ -1,0 +1,41 @@
+{
+  "sourceCommit": "f75d8649bb6112326355c45b26f91bd66265f228",
+  "method": "Exact pre-notice working-tree bytes; prior histories unchanged",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 11738,
+      "sha256": "fedbf134832b7c0e3c85a86c56133c851c1476ae5fb0bafb9fa546d3f4d2c50b"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 4027,
+      "sha256": "efcae1c0294544bdb46acd0f4eb180b35bfc4bb21064477424ffd7ef2158e5ab"
+    },
+    {
+      "path": "snapshot/CURRENT_SNAPSHOT.md",
+      "bytes": 21603,
+      "sha256": "7d9a51766c77d3e75a927c1f851a172c113d8090921ab299982183761639bfed"
+    },
+    {
+      "path": "docs/head/OPERATIONS.md",
+      "bytes": 13810,
+      "sha256": "6bfad6010039643bc3ba69a9a922dd346f0445dcdc4fc57bc7149c4ea3c2df53"
+    },
+    {
+      "path": "docs/head/COLONY_WEBGL_PUBLICATION.md",
+      "bytes": 15419,
+      "sha256": "be442dab7d22fa0af9e8cddd82e69f184ab9468a016f21963287be5e3e86a541"
+    },
+    {
+      "path": "docs/head/IOS_SAFARI_BOOT_20261015.md",
+      "bytes": 3574,
+      "sha256": "eb66214bba49a627a8edf89c048925eb08ff868923e5ef463e3cb5f7ad0356ae"
+    },
+    {
+      "path": "docs/head/FOREST_MOBILE_WEB_20261016.md",
+      "bytes": 2305,
+      "sha256": "647a6e9dc56a9d9dc968c3c2b92c0ea91d46bd009072cb1a99e70634c285e8a2"
+    }
+  ]
+}
