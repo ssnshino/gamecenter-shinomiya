@@ -26,6 +26,33 @@
   let unity = null, ready = false, paused = true, detailed = !touchLayout, lastControls = "", statusTimer = 0;
   let latestTelemetry = null, telemetryReceivedAt = 0, loadError = null;
 
+  // Some Safari versions still zoom absolute-positioned game controls.
+  // Cancel only a nearby second single-finger tap, leaving pointer controls
+  // and multi-touch intact. Restore button activation when its native click
+  // is cancelled together with the browser zoom.
+  const preview = $("preview");
+  let lastTap = null, multiTouchGesture = false;
+  preview.addEventListener("touchstart", event => {
+    if (event.touches.length > 1) { multiTouchGesture = true; lastTap = null; }
+  }, {passive:true});
+  preview.addEventListener("touchcancel", () => { lastTap = null; multiTouchGesture = false; }, {passive:true});
+  preview.addEventListener("touchend", event => {
+    if (multiTouchGesture || event.touches.length || event.changedTouches.length !== 1) {
+      lastTap = null;
+      if (!event.touches.length) multiTouchGesture = false;
+      return;
+    }
+    const point = event.changedTouches[0], now = performance.now();
+    const repeated = lastTap && now - lastTap.time < 350 &&
+      Math.hypot(point.clientX - lastTap.x, point.clientY - lastTap.y) < 32;
+    lastTap = {time:now, x:point.clientX, y:point.clientY};
+    if (!repeated || !event.cancelable) return;
+    event.preventDefault();
+    const button = event.target instanceof Element ? event.target.closest("button") : null;
+    if (button && !button.disabled) button.click();
+  }, {passive:false});
+  preview.addEventListener("dblclick", event => event.preventDefault());
+
   function send(method, payload) {
     if (!unity || !ready) return false;
     if (payload === undefined) unity.SendMessage("ColonyRacerWebPreviewBridge", method);
