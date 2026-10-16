@@ -1,3 +1,19 @@
+## 最新: 軽量固定版を正式採用（外部後片付け確認後）
+
+ユーザーが停止済みALADDIN検証コンテナ3個の削除を「はい、別作業の後片付け」と確認。配布release/永続RELEASE_TAG/checkout `c6ad33dbb2507cd22c36c207b70f6679bbb368d3` を正式採用した。復旧Actions38860158039はsuccess、公開実ゲーム10checks/6operations PASS、receipt accepted/adoptionComplete true/exitCode0、retryRequired/mixedCheckout false。新しいゲームビルドではなく、Unity engine source937b98a、Web template sourceba32cf8の軽量固定。
+
+通常の保護コードは変更していない。元の失敗receipt/全filehashを保全し、確認済み3個の名前・ID・image・停止状態・read-only・project・mountが一致する場合だけ、別のreviewed receiptを作成。その他全コンテナ・runtimeデータ・routing/Compose・Unity image/実assetsは元の厳密guardで再検証した。7件のレビュー処理テストと既存Linux検証もPASS。
+
+採用receipt: runtime/deploy/unity-colony-c6ad33dbb2507cd22c36c207b70f6679bbb368d3-20261016T061623Z。artifact12028738513 / SHA256 aa411a3e02a9b11780ae0bdecd08754a979ec0cca2146888b106b96e65892e83。
+
+原失敗receipt: runtime/deploy/unity-colony-c6ad33dbb2507cd22c36c207b70f6679bbb368d3-20261016T055417Z。新receipt内のexternal-cleanup-review.json、original-before.json、original-receipt.jsonに監査証拠。公開Unity imageはsha256:329ca7276293fc7f15820c4fa37b73f25fd319e68cff0a2ee466659665d745dc。原記録は書換えていない。
+
+URL: https://unity-games.wos.ktsys.jp/02/colony-racer/?v=light-fixed-20261016 。スマホでは「軽量固定」、PCの詳細/軽量切替は維持。公開JS hash09da5a8d3e694d4f4747cdcd1ca9c4693c4ed5b578c5317f7ed5fe3f638d42b5。スマホで今回の再読込確認は未実施。詳細モード根因修正や市街地の影解消を主張しない。
+
+1エリアCore重視の提案は相談段階で未実装。他地区を削除/生成OFFにはしていない。
+
+以下は各時点の記録。
+
 ## 最新: 仮配備は動作、採用/復帰が保護チェックで停止
 
 配布c6ad33dbb2507cd22c36c207b70f6679bbb368d3、Actions38858134517。公開実ゲーム10checks/6operations PASS。軽量固定JSの公開byteはローカル検証と一致（SHA256 09da5a8d3e694d4f4747cdcd1ca9c4693c4ed5b578c5317f7ed5fe3f638d42b5）。

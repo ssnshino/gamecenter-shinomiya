@@ -1,0 +1,23 @@
+## 最新: 仮配備は動作、採用/復帰が保護チェックで停止
+
+配布c6ad33dbb2507cd22c36c207b70f6679bbb368d3、Actions38858134517。公開実ゲーム10checks/6operations PASS。軽量固定JSの公開byteはローカル検証と一致（SHA256 09da5a8d3e694d4f4747cdcd1ca9c4693c4ed5b578c5317f7ed5fe3f638d42b5）。
+
+最終採用と自動rollbackは「unrelated container changed」で停止した。読み取り専用調査run38858984519では、差分は停止済みの別project queens-checker / aladdin-checker-accept-20261016-1,-2,-3 の削除だけ。ゲーム配信の他サービス、runtime保存データ、routing metadataは不変。ユーザーは別作業をしていると回答済みだが、この3個の後片付けかは確認待ち。保護チェックは無効化・迂回していない。
+
+公開実体はc6ad33d（image sha256:329ca7276293fc7f15820c4fa37b73f25fd319e68cff0a2ee466659665d745dc）、checkout/永続RELEASE_TAGは40db65b345aea1ee025b8d83b5d858e4c216c4a9で、adoptionComplete=false。正式採用/rollback完了と報告しない。receipt runtime/deploy/unity-colony-c6ad33dbb2507cd22c36c207b70f6679bbb368d3-20261016T055417Z、phase failed-manual-rollback。
+
+証拠outputs/quality-guard-public-ci-failed、outputs/quality-guard-provisional-state.json。artifact12028450671 / SHA256 b088ec9e8b2e13bfc96e46f8a46f442391b4a959e78ab1c1d8348c837c858ba4。確認後に既存保護の目的を維持した状態回復を設計する。別作業のサービスや削除済みtest containerを復元しない。
+
+ユーザーの1エリア重視案にはCore集中・他地区の元データ保持/生成OFFを提案した。相談段階で実装していない。市街地影も未解消、ミラーを候補とするA/Bは未実施。
+
+以下は実装時点の記録。
+
+# タッチ端末の軽量固定（2026-10-16）
+
+iPhone実機で軽量は120km/h・30fpsの走行写真あり。詳細へ切り替えるとSafariが落ちる、とユーザー確認。前便照明修正でも市街地の影は未解消。地区間道路の影は良いという観察があり、別途調査する。
+
+タッチ端末は品質ボタンを軽量固定・disabledとし、合成clickでもdetail送信を抑止する。PCの詳細/軽量切替は維持。Unity data/wasm/framework/loaderは前便40db65bと同一。Unityの新ビルドではなくWeb操作部のみの修正。Engine sourceは937b98a、Webテンプレートsourceはba32cf8。
+
+実テンプレート＋Unity通信stubを使うEdge/WebKit、touch/desktopの4条件PASS。touchは画面回転と合成clickでもdetail送信ゼロ、desktopはdetail→light→detail。stubテストは実ゲーム・実機性能の証明には使わない。公開自動配備の実ゲーム受入れは未実施。
+
+復元は前便40db65bのpreview.jsとmanifestへ戻す。市街地の影修正、詳細クラッシュの根因特定と復帰は未完了。
